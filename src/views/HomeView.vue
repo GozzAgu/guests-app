@@ -19,12 +19,12 @@
       </div>
       <div class="flex justify-around">
         <div class="bg-opacity-0 p-3 flex justify-around bg-blue-50 border-double border-2 rounded-xl m-2 w-40">
-          <p> Total </p>
-          <i class="ri-user-fill text-gray-600 "></i>
+          <p class="guest-text"> Total </p>
+          <i class="guest-text ri-user-fill text-gray-600 "></i>
         </div>
         <div class="bg-opacity-0 p-3 flex justify-around bg-blue-50 border-double border-2 rounded-xl m-2 w-40">
-          <p> Selected </p>
-          <i class="ri-user-follow-fill text-gray-600"></i>
+          <p class="guest-text"> Selected </p>
+          <i class="guest-text ri-user-follow-fill text-gray-600"></i>
         </div>
       </div>
     </div>
