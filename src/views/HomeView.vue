@@ -30,8 +30,11 @@
     </div>
 
     <div class="tab border-dotted border-2 m-5 rounded-2xl h-80">
-      <div class="p-5 flex justify-between">
+      <div class="p-5">
         <h1 class="text-center font-semibold">Table</h1>
+        <div>
+          <div class="loader m-auto mt-24"></div>
+        </div>
       </div>
     </div>
 
@@ -112,5 +115,19 @@ onMounted(() => {
       color: #aab8c6
     }
   }
+}
+
+.loader {
+  border: 10px solid #f3f3f3;
+  border-top: 10px solid rgb(100, 161, 252);
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 3s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 </style>
