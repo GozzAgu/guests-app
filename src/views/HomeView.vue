@@ -3,7 +3,7 @@
     <NavComponent/>
 
     <div class="welcome bg-blue-50 m-5 h-20 rounded-2xl flex justify-between">
-      <p class="welcome-text p-5 font-bold text-gray-600">Welcome {{ displayName }}</p>
+      <p class="welcome-text p-5 font-bold text-xl text-gray-600">Welcome {{ displayName }}</p>
       <div class="p-5">
         <button @click="toggleDark">
           <i v-if="isDark" class="welcome-font ri-contrast-2-line text-3xl text-gray-600"></i>
