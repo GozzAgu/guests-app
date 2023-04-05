@@ -18,11 +18,13 @@
         <input class="border-2 p-1 rounded-lg w-40" type="text" placeholder="search for guest" />
       </div>
       <div class="flex justify-around">
-        <div class="p-3 flex justify-between bg-blue-100 rounded-xl m-2 w-40 h-10">
-          <i class="ri-user-fill text-gray-600 "> Total ( 4 )</i>
+        <div class="p-3 flex justify-around bg-blue-50 border-double border-4 rounded-xl m-2 w-40">
+          <p> Total </p>
+          <i class="ri-user-fill text-gray-600 "></i>
         </div>
-        <div class="p-3 flex justify-between bg-blue-100 rounded-xl m-2 w-40 h-10">
-          <i class="ri-user-follow-fill text-gray-600"> Selected ( 4 )</i>
+        <div class="p-3 flex justify-around bg-blue-50 border-dotted border-4 rounded-xl m-2 w-40">
+          <p> Selected </p>
+          <i class="ri-user-follow-fill text-gray-600"></i>
         </div>
       </div>
     </div>
