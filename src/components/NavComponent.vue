@@ -8,7 +8,7 @@
             />
         </div>
         
-        <div v-if="isLoggedIn" class="mt-2">
+        <div v-if="isLoggedIn" class="mt-2 mb-2">
             <router-link to="/signin" 
                 class=
                 "w-60 
@@ -16,8 +16,8 @@
                 cursor-pointer
                 bg-blue-400 
                 text-white
-                pt-1 
-                pb-1 
+                pt-2 
+                pb-2 
                 pl-5 
                 pr-5 
                 rounded 
@@ -32,7 +32,7 @@
             </router-link> 
         </div>
 
-        <div v-else class="mt-2">
+        <div v-else class="mt-2 mb-2">
             <router-link to="/signin" 
                 class=
                 "w-60 
@@ -40,10 +40,10 @@
                 cursor-pointer
                 bg-blue-400 
                 text-white
-                pt-1 
-                pb-1 
-                pl-5 
-                pr-5 
+                pt-2 
+                pb-2 
+                pl-7 
+                pr-7 
                 rounded 
                 hover:bg-blue-500 
                 transition 
