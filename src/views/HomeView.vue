@@ -22,14 +22,14 @@
           <p> Total </p>
           <i class="ri-user-fill text-gray-600 "></i>
         </div>
-        <div class="p-3 flex justify-around bg-blue-50 border-dotted border-4 rounded-xl m-2 w-40">
+        <div class="p-3 flex justify-around bg-blue-50 border-double border-4 rounded-xl m-2 w-40">
           <p> Selected </p>
           <i class="ri-user-follow-fill text-gray-600"></i>
         </div>
       </div>
     </div>
 
-    <div class="tab border-2 m-5 rounded-2xl h-80">
+    <div class="tab border-dotted border-2 m-5 rounded-2xl h-80">
       <div class="p-5 flex justify-between">
         <h1 class="text-center font-semibold">Table</h1>
       </div>
