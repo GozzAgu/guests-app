@@ -31,7 +31,7 @@
 
     <div class="tab border-dotted border-2 m-5 rounded-2xl h-80">
       <div class="p-5">
-        <h1 class="text-center font-semibold">Table</h1>
+        <h1 class="font-semibold">Table</h1>
         <div>
           <div class="loader m-auto mt-24"></div>
         </div>
