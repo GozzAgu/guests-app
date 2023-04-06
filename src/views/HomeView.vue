@@ -19,17 +19,17 @@
       </div>
       <div class="flex justify-around">
         <div class="bg-opacity-0 p-3 flex justify-around bg-blue-50 border-double border-2 rounded-xl m-2 w-40">
-          <p class="guest-text"> Total </p>
+          <p class="guest-text text-gray-700"> Total </p>
           <i class="guest-text ri-user-fill text-gray-600 "></i>
         </div>
         <div class="bg-opacity-0 p-3 flex justify-around bg-blue-50 border-double border-2 rounded-xl m-2 w-40">
-          <p class="guest-text"> Selected </p>
+          <p class="guest-text text-gray-700"> Selected </p>
           <i class="guest-text ri-user-follow-fill text-gray-600"></i>
         </div>
       </div>
     </div>
 
-<div class="max-w-2xl mx-auto mt-5">
+<div class="max-w-2xl mx-auto mt-8">
   <div class="flex flex-col m-5">
     <div class="overflow-x-auto shadow-md rounded-xl">
         <div class="inline-block min-w-full align-middle">
@@ -43,19 +43,19 @@
                                     <label for="checkbox-all" class="sr-only">checkbox</label>
                                 </div>
                             </th>
-                            <th scope="col" class="py-3 px-2 text-xs font-bold tracking-wider text-left text-gray-900 uppercase dark:text-gray-400">
+                            <th scope="col" class="py-3 px-2 text-xs font-bold tracking-wider text-left text-gray-700 uppercase">
                                 Name
                             </th>
-                            <th scope="col" class="py-3 px-2 text-xs font-bold tracking-wider text-left text-gray-900 uppercase dark:text-gray-400">
+                            <th scope="col" class="py-3 px-2 text-xs font-bold tracking-wider text-left text-gray-700 uppercase">
                                 Code
                             </th>
-                            <th scope="col" class="py-3 px-2 text-xs font-bold tracking-wider text-left text-gray-900 uppercase dark:text-gray-400">
+                            <th scope="col" class="py-3 px-2 text-xs font-bold tracking-wider text-left text-gray-700 uppercase">
                                 Gender
                             </th>
-                            <th scope="col" class="py-3 px-2 text-xs font-bold tracking-wider text-left text-gray-900 uppercase dark:text-gray-400">
+                            <th scope="col" class="py-3 px-2 text-xs font-bold tracking-wider text-left text-gray-700 uppercase">
                                 Time
                             </th>
-                            <th scope="col" class="py-3 px-2 text-xs font-medium tracking-wider text-left text-gray-900 uppercase dark:text-gray-400">
+                            <th scope="col" class="py-3 px-2 text-xs font-medium tracking-wider text-left text-gray-700 uppercase">
                                 
                             </th>
                         </tr>
