@@ -1,6 +1,10 @@
 <template>
   <div class="body" :class="[isDark ? 'dark-mode' : '']" @click="closeModal">
     <NavComponent/>
+    <div class="text-center">
+      <p class="font-bold text-gray-600 mt-2 animate-bounce">App in progress</p>
+      <div class="loader m-auto mt-3"></div>
+    </div>
 
     <div class="welcome bg-blue-50 m-5 h-20 rounded-2xl flex justify-between md:justify-around">
       <p class="welcome-text p-5 font-bold text-xl text-gray-600">Welcome {{ displayName }}</p>
@@ -149,12 +153,6 @@
       </div>
     </div>
 
-    <!-- <input type="text" placeholder="newnew" v-model="guest" />
-    <button @click="newnew">send</button> -->
-
-    <!-- <div v-for="guest in guests" :key="guest">
-      <p>{{ guest }}</p>
-    </div> -->
     <FooterComponent/>
   </div>
   
@@ -173,13 +171,6 @@ const isLoggedIn = ref(false);
 const isDark = ref(false);
 const showModal = ref(true);
 // const isTableVisible = ref(true);
-// const guest = ref('');
-// const guests = ref([]);
-
-// const newnew = () => {
-//   guests.value.unshift(guest.value);
-//   guest.value = '';
-// }
 
 const closeModal = () => {
   showModal.value = false
@@ -235,11 +226,11 @@ onMounted(() => {
 }
 
 .loader {
-  border: 10px solid #f3f3f3;
-  border-top: 10px solid rgb(100, 161, 252);
+  border: 5px solid #f3f3f3;
+  border-top: 5px solid rgb(100, 161, 252);
   border-radius: 50%;
-  width: 50px;
-  height: 50px;
+  width: 30px;
+  height: 30px;
   animation: spin 3s linear infinite;
 }
 
