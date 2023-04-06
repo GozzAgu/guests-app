@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import SignIn from '@/components/SignIn.vue'
 import SignUp from '@/components/SignUp.vue'
+import ModalComponent from '@/components/ModalComponent.vue'
 
 const routes = [
   {
@@ -21,6 +22,11 @@ const routes = [
     path: '/signup',
     name: 'signup',
     component: SignUp
+  },
+  {
+    path: '/modal',
+    name: 'modal',
+    component: ModalComponent
   }
 ]
 
