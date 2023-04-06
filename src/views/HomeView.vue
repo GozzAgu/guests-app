@@ -87,6 +87,58 @@
                             <td class="py-4 px-2 text-sm font-medium whitespace-nowrap text-gray-500">11:00</td>
                             <td class="py-4 px-2 text-sm font-medium whitespace-nowrap"><i class="ri-delete-bin-5-fill text-red-400"></i></td>
                         </tr>
+                        <tr class="hover:bg-gray-100">
+                            <td class="p-3 w-3">
+                                <div class="flex items-center">
+                                    <input id="checkbox-table-1" type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300">
+                                    <label for="checkbox-table-1" class="sr-only">checkbox</label>
+                                </div>
+                            </td>
+                            <td class="py-4 px-2 text-sm font-medium whitespace-nowrap text-gray-500">Gozie</td>
+                            <td class="py-4 px-2 text-sm font-medium whitespace-nowrap text-gray-500">1234</td>
+                            <td class="py-4 px-2 text-sm font-medium whitespace-nowrap text-gray-500">Male</td>
+                            <td class="py-4 px-2 text-sm font-medium whitespace-nowrap text-gray-500">11:00</td>
+                            <td class="py-4 px-2 text-sm font-medium whitespace-nowrap"><i class="ri-delete-bin-5-fill text-red-400"></i></td>
+                        </tr>
+                        <tr class="hover:bg-gray-100">
+                            <td class="p-3 w-3">
+                                <div class="flex items-center">
+                                    <input id="checkbox-table-1" type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300">
+                                    <label for="checkbox-table-1" class="sr-only">checkbox</label>
+                                </div>
+                            </td>
+                            <td class="py-4 px-2 text-sm font-medium whitespace-nowrap text-gray-500">Gozie</td>
+                            <td class="py-4 px-2 text-sm font-medium whitespace-nowrap text-gray-500">1234</td>
+                            <td class="py-4 px-2 text-sm font-medium whitespace-nowrap text-gray-500">Male</td>
+                            <td class="py-4 px-2 text-sm font-medium whitespace-nowrap text-gray-500">11:00</td>
+                            <td class="py-4 px-2 text-sm font-medium whitespace-nowrap"><i class="ri-delete-bin-5-fill text-red-400"></i></td>
+                        </tr>
+                        <tr class="hover:bg-gray-100">
+                            <td class="p-3 w-3">
+                                <div class="flex items-center">
+                                    <input id="checkbox-table-1" type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300">
+                                    <label for="checkbox-table-1" class="sr-only">checkbox</label>
+                                </div>
+                            </td>
+                            <td class="py-4 px-2 text-sm font-medium whitespace-nowrap text-gray-500">Gozie</td>
+                            <td class="py-4 px-2 text-sm font-medium whitespace-nowrap text-gray-500">1234</td>
+                            <td class="py-4 px-2 text-sm font-medium whitespace-nowrap text-gray-500">Male</td>
+                            <td class="py-4 px-2 text-sm font-medium whitespace-nowrap text-gray-500">11:00</td>
+                            <td class="py-4 px-2 text-sm font-medium whitespace-nowrap"><i class="ri-delete-bin-5-fill text-red-400"></i></td>
+                        </tr>
+                        <tr class="hover:bg-gray-100">
+                            <td class="p-3 w-3">
+                                <div class="flex items-center">
+                                    <input id="checkbox-table-1" type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300">
+                                    <label for="checkbox-table-1" class="sr-only">checkbox</label>
+                                </div>
+                            </td>
+                            <td class="py-4 px-2 text-sm font-medium whitespace-nowrap text-gray-500">Gozie</td>
+                            <td class="py-4 px-2 text-sm font-medium whitespace-nowrap text-gray-500">1234</td>
+                            <td class="py-4 px-2 text-sm font-medium whitespace-nowrap text-gray-500">Male</td>
+                            <td class="py-4 px-2 text-sm font-medium whitespace-nowrap text-gray-500">11:00</td>
+                            <td class="py-4 px-2 text-sm font-medium whitespace-nowrap"><i class="ri-delete-bin-5-fill text-red-400"></i></td>
+                        </tr>
                     </tbody>
                 </table>
             </div>
