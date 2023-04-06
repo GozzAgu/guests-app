@@ -2,7 +2,7 @@
   <div class="body" :class="[isDark ? 'dark-mode' : '']">
     <NavComponent/>
 
-    <div class="welcome bg-blue-50 m-5 h-20 rounded-2xl flex justify-between">
+    <div class="welcome bg-blue-50 m-5 h-20 rounded-2xl flex justify-between md:justify-around">
       <p class="welcome-text p-5 font-bold text-xl text-gray-600">Welcome {{ displayName }}</p>
       <div class="p-5">
         <button @click="toggleDark">
@@ -29,14 +29,71 @@
       </div>
     </div>
 
-    <div class="tab border-dotted border-2 m-5 rounded-2xl h-80">
-      <div class="p-5">
-        <h1 class="font-semibold">Table</h1>
-        <div>
-          <div class="loader m-auto mt-24"></div>
+<div class="max-w-2xl mx-auto mt-5">
+  <div class="flex flex-col m-5">
+    <div class="overflow-x-auto shadow-md rounded-xl">
+        <div class="inline-block min-w-full align-middle">
+            <div class="overflow-hidden">
+                <table class="min-w-full divide-y divide-gray-200 table-fixed">
+                    <thead class="bg-blue-50">
+                        <tr>
+                            <th scope="col" class="p-3">
+                                <div class="flex items-center">
+                                    <input id="checkbox-all" type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300">
+                                    <label for="checkbox-all" class="sr-only">checkbox</label>
+                                </div>
+                            </th>
+                            <th scope="col" class="py-3 px-2 text-xs font-bold tracking-wider text-left text-gray-900 uppercase dark:text-gray-400">
+                                Name
+                            </th>
+                            <th scope="col" class="py-3 px-2 text-xs font-bold tracking-wider text-left text-gray-900 uppercase dark:text-gray-400">
+                                Code
+                            </th>
+                            <th scope="col" class="py-3 px-2 text-xs font-bold tracking-wider text-left text-gray-900 uppercase dark:text-gray-400">
+                                Gender
+                            </th>
+                            <th scope="col" class="py-3 px-2 text-xs font-bold tracking-wider text-left text-gray-900 uppercase dark:text-gray-400">
+                                Time
+                            </th>
+                            <th scope="col" class="py-3 px-2 text-xs font-medium tracking-wider text-left text-gray-900 uppercase dark:text-gray-400">
+                                
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-200">
+                        <tr class="hover:bg-gray-50">
+                            <td class="p-3 w-3">
+                                <div class="flex items-center">
+                                    <input id="checkbox-table-1" type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300">
+                                    <label for="checkbox-table-1" class="sr-only">checkbox</label>
+                                </div>
+                            </td>
+                            <td class="py-4 px-2 text-sm font-medium whitespace-nowrap text-gray-500">Gozie</td>
+                            <td class="py-4 px-2 text-sm font-medium whitespace-nowrap text-gray-500">1234</td>
+                            <td class="py-4 px-2 text-sm font-medium whitespace-nowrap text-gray-500">Male</td>
+                            <td class="py-4 px-2 text-sm font-medium whitespace-nowrap text-gray-500">11:00</td>
+                            <td class="py-4 px-2 text-sm font-medium whitespace-nowrap"><i class="ri-delete-bin-5-fill text-red-400"></i></td>
+                        </tr>
+                        <tr class="hover:bg-gray-100">
+                            <td class="p-3 w-3">
+                                <div class="flex items-center">
+                                    <input id="checkbox-table-1" type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300">
+                                    <label for="checkbox-table-1" class="sr-only">checkbox</label>
+                                </div>
+                            </td>
+                            <td class="py-4 px-2 text-sm font-medium whitespace-nowrap text-gray-500">Gozie</td>
+                            <td class="py-4 px-2 text-sm font-medium whitespace-nowrap text-gray-500">1234</td>
+                            <td class="py-4 px-2 text-sm font-medium whitespace-nowrap text-gray-500">Male</td>
+                            <td class="py-4 px-2 text-sm font-medium whitespace-nowrap text-gray-500">11:00</td>
+                            <td class="py-4 px-2 text-sm font-medium whitespace-nowrap"><i class="ri-delete-bin-5-fill text-red-400"></i></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
-      </div>
     </div>
+  </div>
+</div>
 
     <!-- <input type="text" placeholder="newnew" v-model="guest" />
     <button @click="newnew">send</button> -->
@@ -58,7 +115,8 @@ import { ref, onBeforeUpdate, onMounted } from 'vue';
 
 const displayName = ref('');
 const isLoggedIn = ref(false);
-const isDark = ref(false)
+const isDark = ref(false);
+// const isTableVisible = ref(true);
 // const guest = ref('');
 // const guests = ref([]);
 
