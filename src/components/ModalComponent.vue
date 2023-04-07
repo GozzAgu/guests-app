@@ -1,7 +1,7 @@
 <template>
     <div class="overlay" @click="close"></div>
 
-    <div class="modal max-w-sm p-2 mx-auto bg-white border-gray-200 shadow rounded-xl hover:shadow-lg transition-all duration-150 ease-linear"
+    <div class="modal max-w-sm p-2 mx-auto bg-white border-gray-200 shadow rounded-xl hover:shadow-lg"
     >
         <div class="relative p-3"> 
             <div class="flex justify-between">
@@ -79,9 +79,14 @@ const closeModal = () => {
     z-index: 1;
     position: absolute;
     left: 50%;
-    top: 50%;
+    top: 65%;
     transform: translate(-50%, -50%);
-    /* animation-name: animatetop;
-    animation-duration: 0.7s */
+    animation-name: animatetop;
+    animation-duration: 0.7s
+}
+
+@keyframes animatetop {
+  from {opacity: 0}
+  to {top: 500px; opacity: 1}
 }
 </style>
