@@ -79,14 +79,14 @@ const closeModal = () => {
     z-index: 1;
     position: absolute;
     left: 50%;
-    top: 65%;
+    top: 42%;
     transform: translate(-50%, -50%);
     animation-name: animatetop;
     animation-duration: 0.7s
 }
 
 @keyframes animatetop {
-  from {opacity: 0}
-  to {top: 500px; opacity: 1}
+  from {top: -250px; opacity: 0}
+  to {top: 350px; opacity: 1}
 }
 </style>
