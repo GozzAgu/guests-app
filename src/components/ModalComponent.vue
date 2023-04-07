@@ -6,7 +6,7 @@
         <div class="relative p-3"> 
             <div class="flex justify-between">
                 <h1 class="text-lg font-bold text-gray-700">Invite Guest</h1>
-                <i class="ri-close-circle-fill text-3xl text-gray-500"></i>
+                <i @click="closeModal" class="ri-close-circle-fill text-3xl text-gray-500"></i>
             </div>    
             <div class=
                 "mt-4 flex 
@@ -53,7 +53,13 @@
 </template>
 
 <script setup>
+import { defineEmits } from 'vue';
 
+const emit = defineEmits(['close']);
+
+const closeModal = () => {
+    emit('close');
+}
 </script>
 
 <style scoped>

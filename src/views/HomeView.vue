@@ -1,5 +1,5 @@
 <template>
-  <div class="body" :class="[isDark ? 'dark-mode' : '']" @click="closeModal">
+  <div class="body" :class="[isDark ? 'dark-mode' : '']">
     <NavComponent/>
     <div class="text-center">
       <p class="font-bold text-gray-600 mt-2 animate-bounce">App in progress</p>
@@ -33,7 +33,7 @@
       </div>
     </div>
 
-    <ModalComponent v-if="showModal"/>
+    <ModalComponent v-if="showModal" @close="showModal=false"/>
 
     <div class="max-w-2xl mx-auto mt-8">
       <div class="flex flex-col m-5">
@@ -153,7 +153,7 @@
       </div>
     </div>
 
-    <FooterComponent/>
+    <FooterComponent @modal="showModal=true"/>
   </div>
   
 </template>
@@ -169,12 +169,8 @@ import { ref, onBeforeUpdate, onMounted } from 'vue';
 const displayName = ref('');
 const isLoggedIn = ref(false);
 const isDark = ref(false);
-const showModal = ref(true);
-// const isTableVisible = ref(true);
+const showModal = ref(false);
 
-const closeModal = () => {
-  showModal.value = false
-}
 const toggleDark = () => {
   isDark.value = !isDark.value;
 }
