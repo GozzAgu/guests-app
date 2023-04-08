@@ -10,7 +10,7 @@
         >
             <img src="../assets/Guest-Logo.png" 
                 class=
-                "w-60 
+                "w-40 
                 m-auto" 
             />
         </div>
@@ -30,7 +30,7 @@
             flex 
             items-center 
             justify-center 
-            mt-20"
+            mt-10"
         >
             <div>
                 <div class=
