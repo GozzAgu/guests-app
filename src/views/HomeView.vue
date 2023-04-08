@@ -23,11 +23,11 @@
       </div>
       <div class="flex justify-around">
         <div class="bg-opacity-0 p-3 flex justify-around bg-blue-50 border-double border-2 rounded-xl m-2 w-40">
-          <p class="guest-text text-gray-700"> Total </p>
+          <p class="guest-text text-gray-700"> Total {{ guests.length }}</p>
           <i class="guest-text ri-user-fill text-gray-600 "></i>
         </div>
         <div class="bg-opacity-0 p-3 flex justify-around bg-blue-50 border-double border-2 rounded-xl m-2 w-40">
-          <p class="guest-text text-gray-700"> Selected </p>
+          <p class="guest-text text-gray-700"> Selected {{ checked.length }}</p>
           <i class="guest-text ri-user-follow-fill text-gray-600"></i>
         </div>
       </div>
@@ -45,8 +45,8 @@
                             <tr>
                                 <th scope="col" class="p-3">
                                     <div class="flex items-center">
-                                        <input id="checkbox-all" type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300">
-                                        <label for="checkbox-all" class="sr-only">checkbox</label>
+                                        <!-- <input id="checkbox-all" type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300"> -->
+                                        <!-- <label for="checkbox-all" class="sr-only">checkbox</label> -->
                                     </div>
                                 </th>
                                 <th scope="col" class="py-3 px-2 text-sm font-bold tracking-wider text-left text-gray-700 uppercase">
@@ -70,7 +70,7 @@
                             <tr class="hover:bg-gray-50">
                                 <td class="p-3 w-3">
                                     <div class="flex items-center">
-                                        <input id="checkbox-table-1" type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300">
+                                        <input v-model="checked" :value="guest" id="checkbox-table-1" type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300">
                                         <label for="checkbox-table-1" class="sr-only">checkbox</label>
                                     </div>
                                 </td>
@@ -99,39 +99,35 @@ import NavComponent from '../components/NavComponent.vue';
 import FooterComponent from '@/components/FooterComponent.vue';
 import { auth } from '@/main';
 import { onAuthStateChanged } from '@firebase/auth';
-import { ref, onBeforeUpdate, onMounted } from 'vue';
+import { ref,  onMounted } from 'vue';
 
 const displayName = ref('');
 const isLoggedIn = ref(false);
 const isDark = ref(false);
 const showModal = ref(false);
-const guests = ref([])
+const guests = ref([]);
+const checked = ref([]);
 
 const toggleDark = () => {
   isDark.value = !isDark.value;
 }
 
 const addNewGuest = (newGuest) => {
-  console.log(newGuest);
-  guests.value.unshift(newGuest);
-}
-
-onBeforeUpdate(() => {
-  if(auth.currentUser) {
-    displayName.value = auth.currentUser.email;
+  if(newGuest) {
+    guests.value.unshift(newGuest);
   }
-});
+}
 
 onMounted(() => {
   onAuthStateChanged(auth, (user) => {
-    
     if(user) {
       isLoggedIn.value = true;
+      displayName.value = auth.currentUser.email;
     } else {
       isLoggedIn.value = false;
     }
-    console.log(user);
-  })
+  });
+
 });
 </script>
 
