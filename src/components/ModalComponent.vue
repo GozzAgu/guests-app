@@ -22,6 +22,7 @@
                     focus:border-b-blue-200" 
                     type="text" 
                     placeholder="Guest's name"
+                    v-model="newGuest.name"
                 />
             </div>
 
@@ -40,25 +41,50 @@
                     border-gray-200 
                     focus:outline-none 
                     focus:border-b-blue-200" 
+                    v-model="selected"
                 >
-                    <option value="Male">Male</option>
-                    <option value="Female">Female</option>
+                    <option value="">Gender</option>
+                    <option v-for="option in options" :key="option">{{ option.text }}</option>
                 </select>
             </div>
             <div class="flex flex-row mt-6 space-x-2 justify-evenly">
-                <a href="#" class="w-full py-3 text-sm font-medium text-center text-white transition duration-150 ease-linear bg-blue-600 rounded-lg hover:bg-blue-400">Invite</a>
+                <a @click="addNewGuest" href="#" class="w-full py-3 text-sm font-medium text-center text-white transition duration-150 ease-linear bg-blue-400 rounded-lg hover:bg-blue-300">Invite</a>
             </div>
         </div>
     </div>
 </template>
 
 <script setup>
-import { defineEmits } from 'vue';
+import { defineEmits, ref } from 'vue';
+const newGuest = ref({
+    name: '',
+    code: '',
+    gender: '',
+    time: ''
+});
 
-const emit = defineEmits(['close']);
+const options = ref([
+    {
+        id: 1,
+        text: 'Male'
+    },
+    {
+        id: 2,
+        text: 'Female'
+    }
+]);
+
+const selected = ref('')
+
+const emit = defineEmits(['close', 'new-guest']);
 
 const closeModal = () => {
     emit('close');
+}
+
+const addNewGuest = () => {
+    newGuest.value.gender = selected.value;
+    emit('new-guest', newGuest.value);
 }
 </script>
 
