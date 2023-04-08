@@ -82,9 +82,22 @@ const closeModal = () => {
     emit('close');
 }
 
+const getTime = () => {
+    const date =  ref(new Date());
+    const time = ref(date.value.getHours() + ':' + date.value.getMinutes());
+    return time;
+};
+
 const addNewGuest = () => {
-    newGuest.value.gender = selected.value;
-    emit('new-guest', newGuest.value);
+    if(newGuest.value.name.length > 2) {
+        newGuest.value.gender = selected.value;
+        newGuest.value.code = Math.floor(Math.random() * 10000) + 1;
+        newGuest.value.time = getTime();
+        emit('new-guest', newGuest.value);
+        emit('close');
+    } else {
+        alert('No guest added');
+    }
 }
 </script>
 
@@ -108,7 +121,7 @@ const addNewGuest = () => {
     top: 42%;
     transform: translate(-50%, -50%);
     animation-name: animatetop;
-    animation-duration: 0.7s
+    animation-duration: 0.7s;
 }
 
 @keyframes animatetop {
