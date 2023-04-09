@@ -66,7 +66,7 @@
                                 </th>
                             </tr>
                         </thead>
-                        <tbody v-for="guest in guests" :key="guest" class="divide-y divide-gray-200">
+                        <tbody v-for="(guest, index) in guests" :key="index" class="divide-y divide-gray-200">
                             <tr class="hover:bg-gray-50">
                                 <td class="p-3 w-3">
                                     <div class="flex items-center">
@@ -78,7 +78,7 @@
                                 <td class="py-4 px-2 text-sm font-medium whitespace-nowrap text-gray-500">{{ guest.code}}</td>
                                 <td class="py-4 px-2 text-sm font-medium whitespace-nowrap text-gray-500">{{ guest.gender }}</td>
                                 <td class="py-4 px-2 text-sm font-medium whitespace-nowrap text-gray-500">{{ guest.time }}</td>
-                                <td class="py-4 px-2 text-sm font-medium whitespace-nowrap"><i class="ri-delete-bin-5-fill text-red-400"></i></td>
+                                <td class="py-4 px-2 text-sm font-medium whitespace-nowrap"><i @click="deleteGuest(index)" class="ri-delete-bin-5-fill text-red-400"></i></td>
                             </tr>
                         </tbody>
                     </table>
@@ -118,6 +118,10 @@ const addNewGuest = (newGuest) => {
   }
 }
 
+const deleteGuest = (index) => {
+    guests.value.splice(index, 1);
+}
+
 onMounted(() => {
   onAuthStateChanged(auth, (user) => {
     if(user) {
@@ -127,7 +131,6 @@ onMounted(() => {
       isLoggedIn.value = false;
     }
   });
-
 });
 </script>
 
