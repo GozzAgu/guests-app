@@ -24,26 +24,26 @@ const openModal = () => {
 // }
 
 const mousedown = (e) => {
-    window.addEventListener('mousemove', mousemove);
-      window.addEventListener('mouseup', mouseup);
+    window.addEventListener('mousemove', mousemove)
+      window.addEventListener('mouseup', mouseup)
 
-      let prevX = e.clientX;
-      let prevY = e.clientY;
+      let prevX = e.clientX
+      let prevY = e.clientY
 
       function mousemove (e) {
-        const newX = prevX - e.clientX;
-        const newY = prevY - e.clientY;
+        const newX = prevX - e.clientX
+        const newY = prevY - e.clientY
 
-        const rect = draggableContainer.value.getBoundingClientRect();
-        draggableContainer.value.style.left = rect.left - newX + 'px';
-        draggableContainer.value.style.top = rect.top - newY + 'px';
+        const rect = draggableContainer.value.getBoundingClientRect()
+        draggableContainer.value.style.left = rect.left - newX + 'px'
+        draggableContainer.value.style.top = rect.top - newY + 'px'
 
-        prevX = e.clientX;
-        prevY = e.clientY;
+        prevX = e.clientX
+        prevY = e.clientY
       }
       function mouseup () {
-        window.removeEventListener('mousemove', mousemove);
-        window.removeEventListener('mouseup', mouseup);
-      };
+        window.removeEventListener('mousemove', mousemove)
+        window.removeEventListener('mouseup', mouseup)
+      }
 }
 </script>
