@@ -152,7 +152,7 @@
                     pb-4 
                     mb-6"
                 >
-                    <router-link to='/' class=
+                    <router-link to='/signin' class=
                         "w-60 
                         text-center
                         cursor-pointer
@@ -169,7 +169,7 @@
                         duration-500 
                         transform"
                     >
-                        Don't have an account ?
+                        Already have an account ?
                     </router-link>
                 </div>
             </div>

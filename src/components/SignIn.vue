@@ -134,7 +134,7 @@
                     pb-4 
                     mb-6"
                 >
-                    <router-link to='/' class=
+                    <router-link to='/signup' class=
                         "w-60 
                         text-center
                         cursor-pointer
