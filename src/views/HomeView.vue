@@ -100,6 +100,8 @@ import FooterComponent from '@/components/FooterComponent.vue';
 import { auth } from '@/main';
 import { onAuthStateChanged } from '@firebase/auth';
 import { ref,  onMounted } from 'vue';
+import { db } from '../main.js';
+import { collection, addDoc, getDocs } from 'firebase/firestore';
 
 const displayName = ref('');
 const isLoggedIn = ref(false);
@@ -112,10 +114,16 @@ const toggleDark = () => {
   isDark.value = !isDark.value;
 }
 
-const addNewGuest = (newGuest) => {
-  if(newGuest) {
+const addNewGuest = async(newGuest) => {
+  // if(newGuest) {
+  //   guests.value.unshift(newGuest);
+  // }
+  console.log(newGuest)
+  const docRef = await addDoc(collection(db, "guests"), {
+        ...newGuest
+    });
     guests.value.unshift(newGuest);
-  }
+    console.log(docRef)
 }
 
 const deleteGuest = (index) => {
@@ -132,6 +140,14 @@ onMounted(() => {
     }
   });
 });
+
+onMounted(async() => {
+    const querySnapshot = await getDocs(collection(db, 'guests'));
+    querySnapshot.forEach((doc) => {
+        console.log(doc.id, '=>', doc.data())
+        guests.value.push(doc.data())
+    })
+})
 </script>
 
 <style lang="scss">
