@@ -6,7 +6,7 @@
       <div class="loader m-auto mt-3"></div>
     </div>
 
-    <div class="welcome bg-blue-50 m-5 h-20 rounded-2xl flex justify-between md:justify-around">
+    <div class="welcome bg-blue-50 m-5 lg:ml-60 lg:mr-60 h-20 rounded-2xl flex justify-between md:justify-around">
       <p class="welcome-text p-5 font-bold text-xl text-gray-600">Welcome {{ displayName }}</p>
       <div class="p-5">
         <button @click="toggleDark">
@@ -16,8 +16,8 @@
       </div> 
     </div>
 
-    <div class="guests bg-blue-50 m-5 rounded-2xl">
-      <div class="p-5 flex justify-between">
+    <div class="guests bg-blue-50 m-5 lg:ml-60 lg:mr-60 rounded-2xl">
+      <div class="p-5 flex justify-between md:justify-around lg:justify-around">
         <h1 class="text-center font-bold text-gray-600 mt-1 guest-text"><i class="ri-file-user-fill"></i> GUESTS </h1>
         <input class="border-2 p-1 rounded-lg w-40" type="text" placeholder="search for guest" />
       </div>
