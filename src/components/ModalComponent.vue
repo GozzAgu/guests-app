@@ -125,7 +125,7 @@ const addNewGuest = () => {
 }
 
 @keyframes animatetop {
-  from {top: -250px; opacity: 0}
-  to {top: 350px; opacity: 1}
+  from {top: -150px; opacity: 0}
+  to {top: 42%; opacity: 1}
 }
 </style>
