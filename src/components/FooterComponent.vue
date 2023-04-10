@@ -1,6 +1,6 @@
 <template>
     <!-- <div class="flex justify-center fixed inset-x-0 -bottom-6"> -->
-        <div class="text-center absolute inset-x-0 bottom-10" ref="draggableContainer">
+        <div class="text-center fixed inset-x-0 bottom-10" ref="draggableContainer">
             <i draggable="true" @mousedown="mousedown" id="btn" @click="openModal" class="ri-user-add-fill text-blue-300 text-xl p-6 shadow-lg rounded-full bg-blue-50"></i>
         </div>
         
