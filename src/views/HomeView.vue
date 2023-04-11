@@ -102,6 +102,7 @@ import { onAuthStateChanged } from '@firebase/auth';
 import { ref,  onMounted } from 'vue';
 import { db } from '../main.js';
 import { collection, addDoc, getDocs } from 'firebase/firestore';
+// import firebase from "firebase";
 
 const displayName = ref('');
 const isLoggedIn = ref(false);
@@ -115,19 +116,16 @@ const toggleDark = () => {
 }
 
 const addNewGuest = async(newGuest) => {
-  // if(newGuest) {
-  //   guests.value.unshift(newGuest);
-  // }
   console.log(newGuest)
-  const docRef = await addDoc(collection(db, "guests"), {
-        ...newGuest
-    });
-    guests.value.unshift(newGuest);
-    console.log(docRef)
+  const docRef = await  addDoc(collection(db, "users"), {
+      ...newGuest
+  });
+  guests.value.unshift(newGuest);
+  console.log(docRef)
 }
 
 const deleteGuest = (index) => {
-    guests.value.splice(index, 1);
+  guests.value.splice(index, 1);
 }
 
 onMounted(() => {
@@ -142,11 +140,11 @@ onMounted(() => {
 });
 
 onMounted(async() => {
-    const querySnapshot = await getDocs(collection(db, 'guests'));
-    querySnapshot.forEach((doc) => {
-        console.log(doc.id, '=>', doc.data())
-        guests.value.push(doc.data())
-    })
+  const querySnapshot = await getDocs(collection(db, 'users'));
+  querySnapshot.forEach((doc) => {
+    console.log(doc.id, '=>', doc.data())
+    guests.value.push(doc.data())
+  })
 })
 </script>
 
