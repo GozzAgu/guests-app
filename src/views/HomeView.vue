@@ -19,7 +19,7 @@
     <div class="guests bg-blue-50 m-5 lg:ml-60 lg:mr-60 rounded-2xl">
       <div class="p-5 flex justify-between md:justify-around lg:justify-around">
         <h1 class="text-center font-bold text-gray-600 mt-1 guest-text"><i class="ri-file-user-fill"></i> GUESTS </h1>
-        <input class="border-2 p-1 rounded-lg w-40" type="text" placeholder="search for guest" />
+        <input v-model="search" class="border-2 p-1 rounded-lg w-40" type="text" placeholder="search for guest" />
       </div>
       <div class="flex justify-around">
         <div class="bg-opacity-0 p-3 flex justify-around bg-blue-50 border-double border-2 rounded-xl m-2 w-40">
@@ -66,7 +66,7 @@
                                 </th>
                             </tr>
                         </thead>
-                        <tbody v-for="(guest, index) in guests" :key="index" class="divide-y divide-gray-200">
+                        <tbody v-for="(guest, index) in searchGuests" :key="index" class="divide-y divide-gray-200">
                             <tr class="hover:bg-gray-50">
                                 <td class="p-3 w-3">
                                     <div class="flex items-center">
@@ -99,7 +99,7 @@ import NavComponent from '../components/NavComponent.vue';
 import FooterComponent from '@/components/FooterComponent.vue';
 import { auth } from '@/main';
 import { onAuthStateChanged } from '@firebase/auth';
-import { ref,  onMounted } from 'vue';
+import { ref,  onMounted, computed } from 'vue';
 import { db } from '../main.js';
 import { collection, addDoc, getDocs } from 'firebase/firestore';
 // import firebase from "firebase";
@@ -110,23 +110,39 @@ const isDark = ref(false);
 const showModal = ref(false);
 const guests = ref([]);
 const checked = ref([]);
+const search = ref('')
 
 const toggleDark = () => {
   isDark.value = !isDark.value;
 }
 
 const addNewGuest = async(newGuest) => {
-  console.log(newGuest)
-  const docRef = await  addDoc(collection(db, "users"), {
-      ...newGuest
-  });
-  guests.value.unshift(newGuest);
-  console.log(docRef)
+  // console.log(newGuest)
+  // const docRef = await  addDoc(collection(db, "users"), {
+  //     ...newGuest
+  // });
+  // guests.value.unshift(newGuest);
+  // console.log(docRef)
+
+  const colRef = collection(db, 'users')
+    const dataObj = {
+        ...newGuest
+    }
+    const docRef = await addDoc(colRef, dataObj)
+    console.log(docRef.id)
+    guests.value.unshift(newGuest);
+    console.log(newGuest)
 }
 
 const deleteGuest = (index) => {
   guests.value.splice(index, 1);
 }
+
+const searchGuests = computed(() => {
+  return guests.value.filter((guest) => {
+    return guest.name.toLowerCase().match(search.value.toLowerCase());
+  })
+})
 
 onMounted(() => {
   onAuthStateChanged(auth, (user) => {
