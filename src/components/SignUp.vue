@@ -77,24 +77,6 @@
                         focus:outline-none 
                         focus:border-b-blue-200" 
                         type="text" 
-                        placeholder="Username"
-                        v-model="user.displayName"
-                    />
-                </div>
-
-                <div class=
-                    "mt-4 flex 
-                    justify-center"
-                >
-                    <input class=
-                        "w-60 
-                        p-1 
-                        text-gray-400
-                        border-b-2 
-                        border-gray-200 
-                        focus:outline-none 
-                        focus:border-b-blue-200" 
-                        type="text" 
                         placeholder="Email"
                         v-model="user.email"
                     />
@@ -185,9 +167,9 @@
 import { ref } from 'vue';
 import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
 import { auth } from '../main';
+// import { addDoc, collection, db } from 'firebase/firestore';
 
 const user = ref({
-    displayName: '',
     email: '',
     password: ''
 })
@@ -205,6 +187,7 @@ const signUp = () => {
     })
     .catch((error) => {
         console.log(error.message)
-    })
+    });
 }
+
 </script>
