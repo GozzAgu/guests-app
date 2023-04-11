@@ -134,7 +134,7 @@ const addNewGuest = async(newGuest) => {
     console.log(newGuest)
 }
 
-const deleteGuest = (index) => {
+const deleteGuest = async (index) => {
   guests.value.splice(index, 1);
 }
 
