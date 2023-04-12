@@ -125,12 +125,14 @@ const addNewGuest = async(newGuest) => {
   // console.log(docRef)
 
   const colRef = collection(db, 'users')
+  const guestId = auth.currentUser.uid;
     const dataObj = {
-        ...newGuest
+      ...newGuest,
+      guestId
     }
     const docRef = await addDoc(colRef, dataObj)
-    console.log(docRef.id)
     guests.value.unshift(newGuest);
+    console.log(docRef.id)
     console.log(newGuest)
 }
 
