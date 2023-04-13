@@ -34,6 +34,7 @@
     </div>
 
     <ModalComponent v-if="showModal" @close="showModal=false" @new-guest="addNewGuest"/>
+    <trackComponent v-if="showTrackModal" @close-history="showTrackModal=false"/>
 
     <div class="max-w-2xl mx-auto mt-8">
       <div class="flex flex-col m-5">
@@ -49,25 +50,28 @@
                                         <!-- <label for="checkbox-all" class="sr-only">checkbox</label> -->
                                     </div>
                                 </th>
-                                <th scope="col" class="py-3 px-2 text-sm font-bold tracking-wider text-left text-gray-700 uppercase">
+                                <th scope="col" class="py-3 px-1 text-sm font-bold tracking-wider text-left text-gray-700 uppercase">
                                     Name
                                 </th>
-                                <th scope="col" class="py-3 px-2 text-sm font-bold tracking-wider text-left text-gray-700 uppercase">
+                                <th scope="col" class="py-3 px-1 text-sm font-bold tracking-wider text-left text-gray-700 uppercase">
                                     Code
                                 </th>
-                                <th scope="col" class="py-3 px-2 text-sm font-bold tracking-wider text-left text-gray-700 uppercase">
+                                <th scope="col" class="py-3 px-1 text-sm font-medium text-left text-gray-700 uppercase">
+                                    
+                                  </th>
+                                <th scope="col" class="py-3 px-1 text-sm font-bold tracking-wider text-left text-gray-700 uppercase">
                                     Gender
                                 </th>
-                                <th scope="col" class="py-3 px-2 text-sm font-bold tracking-wider text-left text-gray-700 uppercase">
+                                <th scope="col" class="py-3 px-1 text-sm font-bold tracking-wider text-left text-gray-700 uppercase">
                                     Time
                                 </th>
-                                <th scope="col" class="py-3 px-2 text-sm font-medium tracking-wider text-left text-gray-700 uppercase">
+                                <th scope="col" class="py-3 px-1 text-sm font-medium text-left text-gray-700 uppercase">
                                     
                                 </th>
                             </tr>
                         </thead>
                         <tbody v-for="(guest, index) in searchGuests" :key="index" class="divide-y divide-gray-200">
-                            <tr @click="showGuest(index, guest)" class="hover:bg-gray-50">
+                            <tr class="hover:bg-gray-50">
                                 <td class="p-3 w-3">
                                     <div class="flex items-center">
                                         <input v-model="checked" :value="guest" id="checkbox-table-1" type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300">
@@ -76,6 +80,7 @@
                                 </td>
                                 <td class="py-4 px-2 text-sm font-medium whitespace-nowrap text-gray-500">{{ guest.name }}</td>
                                 <td class="py-4 px-2 text-sm font-medium whitespace-nowrap text-gray-500">{{ guest.code}}</td>
+                                <td class="py-4 px-2 text-sm font-medium whitespace-nowrap"><i  @click="showTrackModal=true" class="text-blue-300 ri-mind-map"></i></td>
                                 <td class="py-4 px-2 text-sm font-medium whitespace-nowrap text-gray-500">{{ guest.gender }}</td>
                                 <td class="py-4 px-2 text-sm font-medium whitespace-nowrap text-gray-500">{{ guest.time }}</td>
                                 <td class="py-4 px-2 text-sm font-medium whitespace-nowrap"><i @click="deleteGuest(index)" class="ri-delete-bin-5-fill text-red-400"></i></td>
@@ -95,6 +100,7 @@
 
 <script setup>
 import ModalComponent from '../components/ModalComponent.vue';
+import trackComponent from '@/components/trackComponent.vue';
 import NavComponent from '../components/NavComponent.vue';
 import FooterComponent from '@/components/FooterComponent.vue';
 import { auth } from '@/main';
@@ -108,6 +114,7 @@ const displayName = ref('');
 const isLoggedIn = ref(false);
 const isDark = ref(false);
 const showModal = ref(false);
+const showTrackModal = ref(false);
 const guests = ref([]);
 const checked = ref([]);
 const search = ref('')
@@ -127,10 +134,10 @@ const addNewGuest = async(newGuest) => {
   console.log(docRef)
 }
 
-const showGuest = (index, guest) => {
-  console.log(index, guest)
-  alert(guest.name)
-}
+// const showGuest = (index, guest) => {
+//   console.log(index, guest)
+//   alert(guest.name)
+// }
 
 const deleteGuest = async (index) => {
   guests.value.splice(index, 1);

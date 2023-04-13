@@ -1,6 +1,5 @@
 <template>
-    <div class="overlay" @click="close"></div>
-
+    <div class="overlay"></div>
     <div class="modal max-w-sm p-2 mx-auto bg-white border-gray-200 shadow rounded-xl hover:shadow-lg"
     >
         <div class="relative p-3"> 
