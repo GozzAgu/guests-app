@@ -108,7 +108,6 @@ import { onAuthStateChanged } from '@firebase/auth';
 import { ref,  onMounted, computed } from 'vue';
 import { db } from '../main.js';
 import { collection, addDoc, getDocs } from 'firebase/firestore';
-// import firebase from "firebase";
 
 const displayName = ref('');
 const isLoggedIn = ref(false);
@@ -117,7 +116,7 @@ const showModal = ref(false);
 const showTrackModal = ref(false);
 const guests = ref([]);
 const checked = ref([]);
-const search = ref('')
+const search = ref('');
 
 const toggleDark = () => {
   isDark.value = !isDark.value;

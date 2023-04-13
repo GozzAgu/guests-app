@@ -1,7 +1,7 @@
 <template>
     <div class="overlay" @click="close"></div>
     <div class="modal max-w-sm p-2 h-40 w-60 mx-auto bg-white border-gray-200 shadow rounded-xl hover:shadow-lg">
-        <h1 class="p-2">Guest History</h1>
+        <h1 class="text-lg font-bold text-gray-700">Guest History</h1>
     </div>
 </template>
 
