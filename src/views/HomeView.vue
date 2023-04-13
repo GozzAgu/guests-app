@@ -128,6 +128,7 @@ const addNewGuest = async(newGuest) => {
 }
 
 const showGuest = (index, guest) => {
+  console.log(index, guest)
   alert(guest.name)
 }
 
