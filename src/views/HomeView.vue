@@ -67,7 +67,7 @@
                             </tr>
                         </thead>
                         <tbody v-for="(guest, index) in searchGuests" :key="index" class="divide-y divide-gray-200">
-                            <tr class="hover:bg-gray-50">
+                            <tr @click="showGuest(index, guest)" class="hover:bg-gray-50">
                                 <td class="p-3 w-3">
                                     <div class="flex items-center">
                                         <input v-model="checked" :value="guest" id="checkbox-table-1" type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300">
@@ -117,23 +117,18 @@ const toggleDark = () => {
 }
 
 const addNewGuest = async(newGuest) => {
-  // console.log(newGuest)
-  // const docRef = await  addDoc(collection(db, "users"), {
-  //     ...newGuest
-  // });
-  // guests.value.unshift(newGuest);
-  // console.log(docRef)
-
-  const colRef = collection(db, 'users')
-  const guestId = auth.currentUser.uid;
-    const dataObj = {
+  console.log(newGuest)
+  const guestOf = auth.currentUser.uid;
+  const docRef = await  addDoc(collection(db, "guests"), {
       ...newGuest,
-      guestId
-    }
-    const docRef = await addDoc(colRef, dataObj)
-    guests.value.unshift(newGuest);
-    console.log(docRef.id)
-    console.log(newGuest)
+      guestOf
+  });
+  guests.value.unshift(newGuest);
+  console.log(docRef)
+}
+
+const showGuest = (index, guest) => {
+  alert(guest.name)
 }
 
 const deleteGuest = async (index) => {
@@ -158,7 +153,7 @@ onMounted(() => {
 });
 
 onMounted(async() => {
-  const querySnapshot = await getDocs(collection(db, 'users'));
+  const querySnapshot = await getDocs(collection(db, 'guests'));
   querySnapshot.forEach((doc) => {
     console.log(doc.id, '=>', doc.data())
     guests.value.push(doc.data())
