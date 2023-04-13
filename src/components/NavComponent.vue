@@ -3,8 +3,8 @@
         <div>
             <img src="../assets/Guest-Logo.png"
                 class=
-                "w-40 
-                mt-2" 
+                "w-20 
+                mt-4" 
             />
         </div>
         
