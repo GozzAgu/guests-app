@@ -124,7 +124,7 @@
                         delay-50 
                         duration-500 
                         transform"
-                        @click="signIn"
+                        @click="signIn()"
                     >
                         Sign In
                     </router-link>
@@ -176,20 +176,18 @@ const user = ref({
     email: '',
     password: ''
 });
-const router = useRouter
+const router = useRouter();
 const noUser = ref(false);
 
 const signIn = () => {
     signInWithEmailAndPassword(auth, user.value.email, user.value.password)
-    .then((credential) => {
+    .then((credential) => {  
         updateProfile(auth.currentUser, {
             displayName: user.value.email
         })
-        .then(() => {
-            console.log(auth.currentUser.displayName)
-            console.log(credential)
-            router.push('/')
-        })
+        router.push('/');
+        console.log(auth.currentUser.displayName)
+        console.log(credential)
     })
     .catch((error) => {
         console.log(error.message, 'no user');
@@ -197,7 +195,7 @@ const signIn = () => {
         setTimeout(function(){
             noUser.value = false;
         }, 3000);
-        router.push({ path: '/signin' })
+        router.push('/signin')
     });
 }
 </script>

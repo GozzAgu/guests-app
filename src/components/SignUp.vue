@@ -187,15 +187,15 @@ const signUp = () => {
             displayName: user.value.email,
         })
         console.log(credential.user.uid)
-        router.push('/');
+        router.push('/') 
     })
     .catch(error=>{
-        console.log(error.message)
-        router.push('/signup')
-        noUser.value = true;
-        setTimeout(function(){
-            noUser.value = false;
-        }, 3000);
-    })  
+            console.log(error.message)
+            router.push('/signup')
+            noUser.value = true;
+            setTimeout(function(){
+                noUser.value = false;
+            }, 3000);
+        })  
 }
 </script>
