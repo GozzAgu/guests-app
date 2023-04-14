@@ -5,7 +5,6 @@ import {initializeApp} from 'firebase/app'
 import { getFirestore } from 'firebase/firestore';
 import { getAuth } from 'firebase/auth';
 import 'remixicon/fonts/remixicon.css';
-// import { Firestore } from 'firebase/firestore';
 
 const config = {
     apiKey: 'AIzaSyAH-o0-TVc4p6TVuJAvhGgnP2vgDaYuSWA',
