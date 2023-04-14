@@ -93,7 +93,6 @@
         </div>
       </div>
     </div>
-
     <FooterComponent @modal="showModal=true"/>
   </div>
   
@@ -107,7 +106,7 @@ import NavComponent from '../components/NavComponent.vue';
 import FooterComponent from '@/components/FooterComponent.vue';
 import { auth } from '@/main';
 import { onAuthStateChanged } from '@firebase/auth';
-import { ref,  onMounted, computed } from 'vue';
+import { ref, onMounted, computed } from 'vue';
 import { db } from '../main.js';
 import { collection, addDoc, getDocs } from 'firebase/firestore';
 
@@ -128,7 +127,7 @@ const toggleDark = () => {
 const addNewGuest = async(newGuest) => {
   console.log(newGuest)
   const guestOf = auth.currentUser.uid;
-  const docRef = await  addDoc(collection(db, "guests"), {
+  const docRef = await addDoc(collection(db, "guests" + ' ' + guestOf), {
       ...newGuest,
       guestOf
   });
@@ -163,16 +162,27 @@ onMounted(() => {
     } else {
       isLoggedIn.value = false;
     }
-  });
+    showGuest();
+  }); 
+  
 });
 
-onMounted(async() => {
-  const querySnapshot = await getDocs(collection(db, 'guests'));
+const showGuest = async() => {
+  const guestOf = auth.currentUser.uid;
+  const querySnapshot = await getDocs(collection(db, "guests" + ' ' + guestOf));
+  console.log(querySnapshot.docs)
   querySnapshot.forEach((doc) => {
-    console.log(doc.id, '=>', doc.data())
-    guests.value.push(doc.data())
-  })
-})
+    console.log(doc.id, '=>', doc.data());
+    guests.value.push(doc.data());
+  });
+  }
+  
+//   onSnapshot(doc(db, "guests"), (doc) => {
+//     console.log("Current data: ", doc.data());
+
+// });
+// });
+
 </script>
 
 <style lang="scss">
