@@ -161,10 +161,10 @@ onMounted(() => {
       displayName.value = auth.currentUser.displayName;
     } else {
       isLoggedIn.value = false;
+      
     }
     showGuest();
-  }); 
-  
+  });
 });
 
 const showGuest = async() => {
@@ -175,13 +175,7 @@ const showGuest = async() => {
     console.log(doc.id, '=>', doc.data());
     guests.value.push(doc.data());
   });
-  }
-  
-//   onSnapshot(doc(db, "guests"), (doc) => {
-//     console.log("Current data: ", doc.data());
-
-// });
-// });
+}
 
 </script>
 

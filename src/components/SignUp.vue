@@ -167,8 +167,6 @@
 import { ref } from 'vue';
 import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
 import { auth } from '../main';
-// import { addDoc, collection, db } from 'firebase/firestore';
-// import { db } from '../main.js';
 
 const user = ref({
     email: '',
@@ -179,12 +177,9 @@ const signUp = () => {
     createUserWithEmailAndPassword(auth, user.value.email, user.value.password)
     .then((credential) => {
         updateProfile(auth.currentUser, {
-            displayName: user.value.displayName,
+            displayName: user.value.email,
         })
         console.log(credential.user.uid)
-        // db.collection('users').doc(credential.user.uid).set({
-        //     displayName: 'John',
-        // })
         
         .catch(error=>{
             console.log('fail to add data: ',error)

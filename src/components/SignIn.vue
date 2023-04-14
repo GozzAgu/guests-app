@@ -4,6 +4,7 @@
         p-5 
         h-screen"
     >
+    <ToastComponent v-if="error"/>
         <div 
             class=
             "mt-4"
@@ -165,13 +166,17 @@
 
 <script setup>
 import { ref } from 'vue';
-import { signInWithEmailAndPassword, updateProfile } from 'firebase/auth';
+import { signInWithEmailAndPassword, updateProfile, setPersistence, browserSessionPersistence } from 'firebase/auth';
 import { auth } from '../main';
+import ToastComponent from '@/components/ToastComponent.vue';
+import { useRouter } from 'vue-router';
 
 const user = ref({
     email: '',
     password: ''
-})
+});
+const router = useRouter
+const error = ref(false);
 
 const signIn = () => {
     signInWithEmailAndPassword(auth, user.value.email, user.value.password)
@@ -185,7 +190,17 @@ const signIn = () => {
         })
     })
     .catch((error) => {
-        console.log(error.message)
+        console.log(error.message, 'no user');
+        error.value = true;
+        router.push({ path: '/signin' })
+    });
+
+    setPersistence(auth, browserSessionPersistence)
+    .then(() => {
+        return signInWithEmailAndPassword(auth, user.value.email, user.value.password);
     })
+    .catch(() => {
+        console.log('error')
+    });
 }
 </script>

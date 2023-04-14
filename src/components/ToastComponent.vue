@@ -1,5 +1,5 @@
 <template>
-    <div class="modal h-10 border-green-200 border-2 w-40 mx-auto bg-white shadow-lg rounded-xl">
+    <div class="modal h-10 border-green-200 border-2 w-40 mx-auto bg-green-100 shadow-lg rounded-xl">
         <h1 class="text-md text-center mt-1 font-bold text-green-500">Guest generated!</h1>
     </div>
 </template>
