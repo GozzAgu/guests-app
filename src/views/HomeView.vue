@@ -24,12 +24,12 @@
       </div>
       <div class="flex justify-around">
         <div class="bg-opacity-0 p-3 flex justify-around bg-blue-50 border-double border-2 rounded-xl m-2 w-40">
-          <p class="guest-text text-gray-700"> Total {{ guests.length }}</p>
-          <i class="guest-text ri-user-fill text-gray-600 "></i>
+          <p class="guest-text text-gray-700"> Total </p>
+          <i class="guest-text ri-user-fill text-gray-600 ">{{ guests.length }}</i>
         </div>
         <div class="bg-opacity-0 p-3 flex justify-around bg-blue-50 border-double border-2 rounded-xl m-2 w-40">
-          <p class="guest-text text-gray-700"> Selected {{ checked.length }}</p>
-          <i class="guest-text ri-user-follow-fill text-gray-600"></i>
+          <p class="guest-text text-gray-700"> Selected </p>
+          <i class="guest-text ri-user-follow-fill text-gray-600">{{ checked.length }}</i>
         </div>
       </div>
     </div>
