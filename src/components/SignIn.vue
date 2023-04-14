@@ -4,7 +4,6 @@
         p-5 
         h-screen"
     >
-    <ToastComponent v-if="error"/>
         <div 
             class=
             "mt-4"
@@ -65,6 +64,8 @@
                     </h1>
                 </div>
 
+                <ErrorToastComponent v-if="noUser"/>
+
                 <div class=
                     "mt-4 flex 
                     justify-center"
@@ -107,7 +108,7 @@
                     pb-4 
                     mt-12"
                 >
-                    <router-link to="/" class=
+                    <router-link to="" class=
                         "w-60 
                         text-center
                         cursor-pointer
@@ -166,17 +167,17 @@
 
 <script setup>
 import { ref } from 'vue';
-import { signInWithEmailAndPassword, updateProfile, setPersistence, browserSessionPersistence } from 'firebase/auth';
+import { signInWithEmailAndPassword, updateProfile } from 'firebase/auth';
 import { auth } from '../main';
-import ToastComponent from '@/components/ToastComponent.vue';
 import { useRouter } from 'vue-router';
+import ErrorToastComponent from '@/components/ErrorToastComponent.vue'
 
 const user = ref({
     email: '',
     password: ''
 });
 const router = useRouter
-const error = ref(false);
+const noUser = ref(false);
 
 const signIn = () => {
     signInWithEmailAndPassword(auth, user.value.email, user.value.password)
@@ -191,16 +192,11 @@ const signIn = () => {
     })
     .catch((error) => {
         console.log(error.message, 'no user');
-        error.value = true;
+        noUser.value = true;
+        setTimeout(function(){
+            noUser.value = false;
+        }, 3000);
         router.push({ path: '/signin' })
-    });
-
-    setPersistence(auth, browserSessionPersistence)
-    .then(() => {
-        return signInWithEmailAndPassword(auth, user.value.email, user.value.password);
-    })
-    .catch(() => {
-        console.log('error')
     });
 }
 </script>

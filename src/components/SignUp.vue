@@ -64,6 +64,8 @@
                     </h1>
                 </div>
 
+                <ErrorToastComponent v-if="noUser"/>
+
                 <div class=
                     "mt-4 flex 
                     justify-center"
@@ -106,7 +108,7 @@
                     pb-4 
                     mt-12"
                 >
-                    <router-link to="/" class=
+                    <router-link to="" class=
                         "w-60 
                         text-center
                         cursor-pointer
@@ -167,6 +169,11 @@
 import { ref } from 'vue';
 import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
 import { auth } from '../main';
+import { useRouter } from 'vue-router';
+import ErrorToastComponent from '@/components/ErrorToastComponent.vue'
+
+const router = useRouter();
+const noUser = ref(false);
 
 const user = ref({
     email: '',
@@ -180,10 +187,15 @@ const signUp = () => {
             displayName: user.value.email,
         })
         console.log(credential.user.uid)
-        
-        .catch(error=>{
-            console.log('fail to add data: ',error)
-        })  
+        router.push('/') 
     })
+    .catch(error=>{
+        console.log(error.message)
+        router.push('/signup')
+        noUser.value = true;
+        setTimeout(function(){
+            noUser.value = false;
+        }, 3000);
+    })  
 }
 </script>
