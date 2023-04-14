@@ -187,7 +187,7 @@ const signUp = () => {
             displayName: user.value.email,
         })
         console.log(credential.user.uid)
-        router.push('/') 
+        router.push('/');
     })
     .catch(error=>{
         console.log(error.message)

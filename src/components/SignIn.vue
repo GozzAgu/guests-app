@@ -188,7 +188,7 @@ const signIn = () => {
         .then(() => {
             console.log(auth.currentUser.displayName)
             console.log(credential)
-            router.push({ path: '/' })
+            router.push('/')
         })
     })
     .catch((error) => {
