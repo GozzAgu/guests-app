@@ -3,6 +3,7 @@ import HomeView from '../views/HomeView.vue'
 import SignIn from '@/components/SignIn.vue'
 import SignUp from '@/components/SignUp.vue'
 import ModalComponent from '@/components/ModalComponent.vue'
+import ToastComponent from '@/components/ToastComponent.vue'
 
 const routes = [
   {
@@ -27,6 +28,11 @@ const routes = [
     path: '/modal',
     name: 'modal',
     component: ModalComponent
+  },
+  {
+    path: '/toast',
+    name: 'toast',
+    component: ToastComponent
   }
 ]
 

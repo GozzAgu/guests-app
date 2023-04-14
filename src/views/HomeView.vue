@@ -1,6 +1,7 @@
 <template>
   <div class="body" :class="[isDark ? 'dark-mode' : '']">
     <NavComponent/>
+    <ToastComponent v-if="showToast"/>
     <div class="text-center">
       <p class="font-bold text-gray-600 mt-2 animate-bounce">App in progress</p>
       <div class="loader m-auto mt-3"></div>
@@ -100,6 +101,7 @@
 
 <script setup>
 import ModalComponent from '../components/ModalComponent.vue';
+import ToastComponent from '@/components/ToastComponent.vue';
 import trackComponent from '@/components/trackComponent.vue';
 import NavComponent from '../components/NavComponent.vue';
 import FooterComponent from '@/components/FooterComponent.vue';
@@ -117,6 +119,7 @@ const showTrackModal = ref(false);
 const guests = ref([]);
 const checked = ref([]);
 const search = ref('');
+const showToast = ref(false)
 
 const toggleDark = () => {
   isDark.value = !isDark.value;
@@ -130,6 +133,10 @@ const addNewGuest = async(newGuest) => {
       guestOf
   });
   guests.value.unshift(newGuest);
+  showToast.value = true;
+  setTimeout(function(){
+    showToast.value = false;
+  }, 3000);
   console.log(docRef)
 }
 
