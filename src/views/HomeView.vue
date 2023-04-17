@@ -127,7 +127,7 @@ const toggleDark = () => {
 const addNewGuest = async(newGuest) => {
   console.log(newGuest)
   const guestOf = auth.currentUser.uid;
-  const docRef = await addDoc(collection(db, `guests ${guestOf}`), {
+  const docRef = await addDoc(collection(db, "guests" + ' ' + guestOf), {
       ...newGuest,
       guestOf
   });
