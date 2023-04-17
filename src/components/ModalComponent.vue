@@ -59,7 +59,8 @@ const newGuest = ref({
     name: '',
     code: '',
     gender: '',
-    time: ''
+    time: '',
+    date: '',
 });
 
 const options = ref([
@@ -92,6 +93,7 @@ const addNewGuest = () => {
         newGuest.value.gender = selected.value;
         newGuest.value.code = Math.floor(Math.random() * 10000) + 1;
         newGuest.value.time = getTime();
+        newGuest.value.date = new Date();
         emit('new-guest', newGuest.value);
         emit('close');
     } else {

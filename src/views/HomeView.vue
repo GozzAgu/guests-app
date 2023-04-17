@@ -71,7 +71,7 @@
                                 </th>
                             </tr>
                         </thead>
-                        <tbody v-for="(guest, index) in searchGuests" :key="index" class="divide-y divide-gray-200">
+                        <tbody v-for="guest in searchGuests" :key="guest" class="divide-y divide-gray-200">
                             <tr class="hover:bg-gray-50">
                               <td  class="p-3 w-3">
                                   <div class="flex items-center">
@@ -84,7 +84,7 @@
                               <td class="py-4 px-2 text-sm font-medium whitespace-nowrap"><i  @click="showTrackModal=true" class="text-blue-300 ri-mind-map"></i></td>
                               <td class="py-4 px-2 text-sm font-medium whitespace-nowrap text-gray-500">{{ guest.gender }}</td>
                               <td class="py-4 px-2 text-sm font-medium whitespace-nowrap text-gray-500">{{ guest.time }}</td>
-                              <td class="py-4 px-2 text-sm font-medium whitespace-nowrap"><i @click="deleteGuest(index)" class="ri-delete-bin-5-fill text-red-400"></i></td>
+                              <td class="py-4 px-2 text-sm font-medium whitespace-nowrap"><i @click="deleteGuest(guest)" class="ri-delete-bin-5-fill text-red-400"></i></td>
                             </tr>
                         </tbody>
                     </table>
@@ -108,7 +108,7 @@ import { auth } from '@/main';
 import { onAuthStateChanged } from '@firebase/auth';
 import { ref, onMounted, computed } from 'vue';
 import { db } from '../main.js';
-import { collection, addDoc, getDocs } from 'firebase/firestore';
+import { collection, addDoc, getDocs, doc, deleteDoc } from 'firebase/firestore';
 
 const displayName = ref('');
 const isLoggedIn = ref(false);
@@ -139,20 +139,26 @@ const addNewGuest = async(newGuest) => {
   console.log(docRef)
 }
 
-// const showGuest = (index, guest) => {
-//   console.log(index, guest)
-//   alert(guest.name)
+// const deleteGuest = async (guestID) => {
+//   // guests.value.splice(index, 1);
+//   console.log(guestID)
 // }
 
-const deleteGuest = async (index) => {
-  guests.value.splice(index, 1);
+const deleteGuest = async (guestID) => {
+  const guestOf = auth.currentUser.uid;
+  guests.value.splice(guests.value.indexOf(guestID), 1);
+  try {
+    await deleteDoc(doc(db, `guests ${guestOf}`, guestID.id));
+  }catch(error) {
+    console.log(error)
+  }
 }
 
 const searchGuests = computed(() => {
   return guests.value.filter((guest) => {
     return guest.name.toLowerCase().match(search.value.toLowerCase());
-  })
-})
+  });
+});
 
 onMounted(() => {
   onAuthStateChanged(auth, (user) => {
@@ -170,10 +176,13 @@ onMounted(() => {
 const showGuest = async() => {
   const guestOf = auth.currentUser.uid;
   const querySnapshot = await getDocs(collection(db, "guests" + ' ' + guestOf));
-  console.log(querySnapshot.docs)
+  // console.log(querySnapshot.docs)
   querySnapshot.forEach((doc) => {
-    console.log(doc.id, '=>', doc.data());
-    guests.value.push(doc.data());
+    let guestData = doc.data();
+    guestData.id = doc.id;
+    // let guestID = guestData.id;
+    guests.value.unshift(guestData);
+    console.log(guestData);
   });
 }
 
