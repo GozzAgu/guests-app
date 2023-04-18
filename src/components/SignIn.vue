@@ -79,7 +79,7 @@
                         focus:outline-none 
                         focus:border-b-blue-200" 
                         type="text" 
-                        placeholder="Email"
+                        placeholder="user@gmail.com"
                         v-model="user.email"
                     />
                 </div>
@@ -96,8 +96,8 @@
                         border-gray-200 
                         focus:outline-none 
                         focus:border-b-blue-200" 
-                        type="text" 
-                        placeholder="Password"
+                        type="password" 
+                        placeholder="******"
                         v-model="user.password"
                     />
                 </div>
