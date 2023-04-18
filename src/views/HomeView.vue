@@ -71,6 +71,7 @@
                                 </th>
                             </tr>
                         </thead>
+                        
                         <tbody v-for="guest in searchGuests" :key="guest" class="divide-y divide-gray-200">
                             <tr class="hover:bg-gray-50">
                               <td  class="p-3 w-3">
@@ -94,6 +95,49 @@
       </div>
     </div>
     <FooterComponent @modal="showModal=true"/>
+    <nav class="fixed bottom-0 right-0" aria-label="Page navigation">
+      <ul class="list-style-none flex gap-x-2 mt-5 mb-2">
+        <li>
+          <a
+            class="pointer-events-none relative block rounded bg-transparent px-3 py-1.5 text-sm text-neutral-500 transition-all duration-300 dark:text-neutral-400"
+            >Previous</a
+          >
+        </li>
+        <li>
+          <a
+            class="relative block rounded bg-blue-100 px-3 py-1.5 text-sm font-medium text-blue-700 transition-all duration-300"
+            href="#!"
+            >1
+            <span
+              class="absolute -m-px h-px w-px overflow-hidden whitespace-nowrap border-0 p-0 [clip:rect(0,0,0,0)]"
+              >(current)</span
+            >
+          </a
+          >
+        </li>
+        <li aria-current="page">
+          <a
+          class="relative block rounded bg-transparent px-3 py-1.5 text-sm text-neutral-600 transition-all duration-300 hover:bg-neutral-100  dark:text-gray-500 dark:hover:bg-blue-300 dark:hover:text-white"
+            href="#!"
+            >2 
+          </a>
+        </li>
+        <li>
+          <a
+            class="relative block rounded bg-transparent px-3 py-1.5 text-sm text-neutral-600 transition-all duration-300 hover:bg-neutral-100 dark:text-gray-500 dark:hover:bg-blue-300 dark:hover:text-white"
+            href="#!"
+            >3</a
+          >
+        </li>
+        <li>
+          <a
+            class="relative block rounded bg-transparent px-3 py-1.5 text-sm text-neutral-600 transition-all duration-300 hover:bg-neutral-100 dark:text-gray-500 dark:hover:bg-blue-300 dark:hover:text-white"
+            href="#!"
+            >Next</a
+          >
+        </li>
+      </ul>
+    </nav>
   </div>
   
 </template>
@@ -139,11 +183,6 @@ const addNewGuest = async(newGuest) => {
   console.log(docRef)
 }
 
-// const deleteGuest = async (guestID) => {
-//   // guests.value.splice(index, 1);
-//   console.log(guestID)
-// }
-
 const deleteGuest = async (guestID) => {
   if(confirm("Do you want to delete guest?")){
     const guestOf = auth.currentUser.uid;
@@ -154,8 +193,6 @@ const deleteGuest = async (guestID) => {
       console.log(error)
     }
   }
-
-  
 }
 
 const searchGuests = computed(() => {
