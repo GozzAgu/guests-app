@@ -20,7 +20,7 @@
     <div class="guests bg-blue-50 m-5 lg:ml-60 lg:mr-60 rounded-2xl">
       <div class="p-5 flex justify-between md:justify-around lg:justify-around">
         <h1 class="text-center font-bold text-gray-600 mt-1 guest-text"><i class="ri-file-user-fill"></i> GUESTS </h1>
-        <div class="flex bg-white border-2 rounded-lg gap-x-2 w-40">
+        <div class="flex bg-white border-2 rounded-lg gap-x-1 w-40">
           <i class="ri-search-2-line pl-2 mt-1"></i>
           <input v-model="search" class="p-1 w-full focus:outline-none" type="text" placeholder="search for guest" />
         </div>  
