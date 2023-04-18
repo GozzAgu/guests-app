@@ -95,8 +95,8 @@
       </div>
     </div>
     <FooterComponent @modal="showModal=true"/>
-    <nav class="fixed bottom-0 right-0" aria-label="Page navigation">
-      <ul class="list-style-none flex gap-x-2 mt-5 mb-2">
+    <nav class="fixed bottom-0 right-0 left-0" aria-label="Page navigation">
+      <ul class="list-style-none flex justify-center gap-x-2 mt-5 p-2 bg-blue-50">
         <li>
           <a
             class="pointer-events-none relative block rounded bg-transparent px-3 py-1.5 text-sm text-neutral-500 transition-all duration-300 dark:text-neutral-400"
