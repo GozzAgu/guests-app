@@ -20,7 +20,10 @@
     <div class="guests bg-blue-50 m-5 lg:ml-60 lg:mr-60 rounded-2xl">
       <div class="p-5 flex justify-between md:justify-around lg:justify-around">
         <h1 class="text-center font-bold text-gray-600 mt-1 guest-text"><i class="ri-file-user-fill"></i> GUESTS </h1>
-        <input v-model="search" class="border-2 p-1 rounded-lg w-40" type="text" placeholder="search for guest" />
+        <div class="flex bg-white border-2 rounded-lg gap-x-2 w-40">
+          <i class="ri-search-2-line pl-2 mt-1"></i>
+          <input v-model="search" class="p-1 w-full focus:outline-none" type="text" placeholder="search for guest" />
+        </div>  
       </div>
       <div class="flex justify-around">
         <div class="bg-opacity-0 p-3 flex justify-around bg-blue-50 border-double border-2 rounded-xl m-2 w-40">
@@ -38,7 +41,7 @@
     <trackComponent v-if="showTrackModal" @close-history="showTrackModal=false"/>
 
     <div class="max-w-2xl mx-auto mt-8">
-      <div class="flex flex-col m-5">
+      <div v-if="guests.length > 0" class="flex flex-col m-5">
         <div class="overflow-x-auto shadow-md rounded-xl">
             <div class="inline-block min-w-full align-middle">
                 <div class="overflow-hidden">
@@ -71,7 +74,7 @@
                                 </th>
                             </tr>
                         </thead>
-                        
+                       
                         <tbody v-for="guest in searchGuests" :key="guest" class="divide-y divide-gray-200">
                             <tr class="hover:bg-gray-50">
                               <td  class="p-3 w-3">
@@ -93,10 +96,18 @@
             </div>
         </div>
       </div>
+
+      <div v-else class="flex justify-center">
+        <div> 
+          <i class="ri-file-paper-line text-gray-300 text-7xl"></i>
+          <p class="font-serif text-gray-500">No Guests ! </p>
+        </div>
+      </div>
+      
     </div>
     <FooterComponent @modal="showModal=true"/>
-    <nav class="fixed bottom-0 right-0 left-0" aria-label="Page navigation">
-      <ul class="list-style-none flex justify-center gap-x-2 mt-5 p-2 bg-blue-50">
+    <nav class="guests fixed bottom-0 right-0 left-0 bg-blue-50" aria-label="Page navigation">
+      <ul class="guests list-style-none flex justify-center gap-x-2 mt-2 mb-1 bg-blue-50">
         <li>
           <a
             class="pointer-events-none relative block rounded bg-transparent px-3 py-1.5 text-sm text-neutral-500 transition-all duration-300 dark:text-neutral-400"
@@ -139,7 +150,6 @@
       </ul>
     </nav>
   </div>
-  
 </template>
 
 <script setup>
@@ -242,16 +252,16 @@ const showGuest = async() => {
   .guests {
     background-color: #4a6076;
     .guest-text {
-      color: #aab8c6
+      color: #e0e5eb
     }
   }
   .welcome {
     background-color: #4a6076;
     .welcome-text {
-      color: #aab8c6
+      color: #e0e5eb
     }
     .welcome-font {
-      color: #aab8c6
+      color: #e0e5eb
     }
   }
 }
