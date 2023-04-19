@@ -129,7 +129,7 @@ const user = ref({
     email: '',
 });
 
-const emailSent = ref(true);
+const emailSent = ref(false);
 
 const changePassword = () => {
     const auth = getAuth();
