@@ -26,11 +26,11 @@
         </div>  
       </div>
       <div class="flex justify-around">
-        <div class="bg-opacity-0 p-3 flex justify-around bg-blue-50 border-double border-2 rounded-xl m-2 w-40">
+        <div class="bg-opacity-0 p-3 flex justify-around bg-blue-50 border-dotted border-2 rounded-xl m-2 w-40">
           <p class="guest-text text-gray-700"> Total </p>
           <i class="guest-text ri-user-fill text-gray-600 ">{{ guests.length }}</i>
         </div>
-        <div class="bg-opacity-0 p-3 flex justify-around bg-blue-50 border-double border-2 rounded-xl m-2 w-40">
+        <div class="bg-opacity-0 p-3 flex justify-around bg-blue-50 border-dotted border-2 rounded-xl m-2 w-40">
           <p class="guest-text text-gray-700"> Selected </p>
           <i class="guest-text ri-user-follow-fill text-gray-600">{{ checked.length }}</i>
         </div>
@@ -54,22 +54,22 @@
                                         <!-- <label for="checkbox-all" class="sr-only">checkbox</label> -->
                                     </div>
                                 </th>
-                                <th scope="col" class="py-3 px-1 text-sm font-bold tracking-wider text-left text-gray-700 uppercase">
+                                <th scope="col" class="py-3 px-1 text-xs font-bold tracking-wider text-left text-gray-700 uppercase">
                                     Name
                                 </th>
-                                <th scope="col" class="py-3 px-1 text-sm font-bold tracking-wider text-left text-gray-700 uppercase">
+                                <th scope="col" class="py-3 px-1 text-xs font-bold tracking-wider text-left text-gray-700 uppercase">
                                     Code
                                 </th>
-                                <th scope="col" class="py-3 px-1 text-sm font-medium text-left text-gray-700 uppercase">
+                                <th scope="col" class="py-3 px-1 text-xs font-medium text-left text-gray-700 uppercase">
                                     
                                   </th>
-                                <th scope="col" class="py-3 px-1 text-sm font-bold tracking-wider text-left text-gray-700 uppercase">
+                                <th scope="col" class="py-3 px-1 text-xs font-bold tracking-wider text-left text-gray-700 uppercase">
                                     Gender
                                 </th>
-                                <th scope="col" class="py-3 px-1 text-sm font-bold tracking-wider text-left text-gray-700 uppercase">
+                                <th scope="col" class="py-3 px-1 text-xs font-bold tracking-wider text-left text-gray-700 uppercase">
                                     Time
                                 </th>
-                                <th scope="col" class="py-3 px-1 text-sm font-medium text-left text-gray-700 uppercase">
+                                <th scope="col" class="py-3 px-1 text-xs font-medium text-left text-gray-700 uppercase">
                                     
                                 </th>
                             </tr>
@@ -83,12 +83,12 @@
                                       <label for="checkbox-table-1" class="sr-only">checkbox</label>
                                   </div>
                               </td>
-                              <td class="py-4 px-2 text-sm font-medium whitespace-nowrap text-gray-500">{{ guest.name }}</td>
-                              <td class="py-4 px-2 text-sm font-medium whitespace-nowrap text-gray-500">{{ guest.code}}</td>
-                              <td class="py-4 px-2 text-sm font-medium whitespace-nowrap"><i  @click="showTrackModal=true" class="text-blue-300 ri-mind-map"></i></td>
-                              <td class="py-4 px-2 text-sm font-medium whitespace-nowrap text-gray-500">{{ guest.gender }}</td>
-                              <td class="py-4 px-2 text-sm font-medium whitespace-nowrap text-gray-500">{{ guest.time }}</td>
-                              <td class="py-4 px-2 text-sm font-medium whitespace-nowrap"><i @click="deleteGuest(guest)" class="ri-delete-bin-5-fill text-red-400"></i></td>
+                              <td class="py-4 px-2 text-xs font-medium whitespace-nowrap text-gray-500">{{ guest.name }}</td>
+                              <td class="py-4 px-2 text-xs font-medium whitespace-nowrap text-gray-500">{{ guest.code}}</td>
+                              <td class="py-4 px-2 text-xs font-medium whitespace-nowrap"><i  @click="showTrackModal=true" class="text-blue-300 ri-mind-map"></i></td>
+                              <td class="py-4 px-2 text-xs font-medium whitespace-nowrap text-gray-500">{{ guest.gender }}</td>
+                              <td class="py-4 px-2 text-xs font-medium whitespace-nowrap text-gray-500">{{ guest.time }}</td>
+                              <td class="py-4 px-2 text-xs font-medium whitespace-nowrap"><i @click="deleteGuest(guest)" class="ri-delete-bin-5-fill text-red-400"></i></td>
                             </tr>
                         </tbody>
                     </table>
@@ -203,7 +203,7 @@ const deleteGuest = async (guestID) => {
       console.log(error)
     }
   }
-}
+};
 
 const searchGuests = computed(() => {
   return guests.value.filter((guest) => {
@@ -227,11 +227,9 @@ onMounted(() => {
 const showGuest = async() => {
   const guestOf = auth.currentUser.uid;
   const querySnapshot = await getDocs(collection(db, "guests" + ' ' + guestOf));
-  // console.log(querySnapshot.docs)
   querySnapshot.forEach((doc) => {
     let guestData = doc.data();
     guestData.id = doc.id;
-    // let guestID = guestData.id;
     guests.value.unshift(guestData);
     console.log(guestData);
   });
