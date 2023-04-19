@@ -87,10 +87,10 @@
                               </td>
                               <td class="guest-text py-4 px-2 text-xs font-medium whitespace-nowrap text-gray-500">{{ guest.name }}</td>
                               <td class="guest-text py-4 px-2 text-xs font-medium whitespace-nowrap text-gray-500">{{ guest.code}}</td>
-                              <td class="guest-text py-4 px-2 text-xs font-medium whitespace-nowrap"><i  @click="showTrackModal=true" class="text-blue-300 ri-mind-map"></i></td>
+                              <td class="guest-text py-4 px-2 text-sm font-medium whitespace-nowrap"><i  @click="showTrackModal=true" class="text-blue-300 ri-mind-map"></i></td>
                               <td class="guest-text py-4 px-2 text-xs font-medium whitespace-nowrap text-gray-500">{{ guest.gender }}</td>
                               <td class="guest-text py-4 px-2 text-xs font-medium whitespace-nowrap text-gray-500">{{ guest.time }}</td>
-                              <td class="guest-text py-4 px-2 text-xs font-medium whitespace-nowrap"><i @click="deleteGuest(guest)" class="ri-delete-bin-5-fill text-red-400"></i></td>
+                              <td class="guest-text py-4 px-2 text-sm font-medium whitespace-nowrap"><i @click="deleteGuest(guest)" class="ri-delete-bin-5-fill text-red-400"></i></td>
                             </tr>
                         </tbody>
                     </table>
