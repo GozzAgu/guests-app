@@ -11,7 +11,7 @@
       <p class="welcome-text p-5 font-bold text-large text-gray-600">Welcome, {{ displayName }}</p>
       <div class="p-5">
         <button @click="toggleDark">
-          <i v-if="isDark" class="ri-sun-fill text-2xl text-gray-100"></i>
+          <i v-if="isDark" class="ri-sun-fill text-2xl text-orange-200"></i>
           <i v-else class="ri-moon-clear-fill text-2xl text-gray-600"></i>
         </button>
       </div> 
