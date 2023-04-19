@@ -129,13 +129,15 @@ const user = ref({
     email: '',
 });
 
-const emailSent = ref(false);
+const emailSent = ref(true);
 
 const changePassword = () => {
     const auth = getAuth();
     sendPasswordResetEmail(auth, user.value.email)
     .then(() => {
-        console.log('email sent')
+        console.log('email sent');
+        emailSent.value = true;
+        user.value.email = '';
     })
     .catch((error) => {
         console.log(error)

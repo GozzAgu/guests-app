@@ -1,5 +1,5 @@
 <template>
-    <div class="modal h-20 border-green-300 border-2 w-40 mx-auto bg-green-200 shadow-lg rounded-xl">
+    <div class="modal h-20 border-green-300 border-2 w-40 mx-auto bg-green-100 shadow-lg rounded-xl">
         <h1 class="text-md text-center mt-1 font-bold text-green-500">
             <i class="ri-checkbox-circle-line text-4xl"></i>
             <p>Email sent</p>
