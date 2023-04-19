@@ -137,6 +137,9 @@ const changePassword = () => {
     .then(() => {
         console.log('email sent');
         emailSent.value = true;
+        setTimeout(function(){
+            emailSent.value = false;
+        }, 3000);
         user.value.email = '';
     })
     .catch((error) => {
