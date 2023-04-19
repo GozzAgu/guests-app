@@ -30,7 +30,7 @@
             flex 
             items-center 
             justify-center 
-            mt-10"
+            mt-16"
         >
             <div>
                 <div class=
@@ -43,7 +43,7 @@
                         text-gray-600 
                         font-bold mb-8"
                     >
-                        Sign In
+                        Forgot Password
                     </h1>
                 </div>
 
@@ -60,7 +60,7 @@
                         font-semibold 
                         mb-8"
                     >
-                        Hey, Enter your credentials to get signed into your account
+                        Hey, Enter your new password
                     </h1>
                 </div>
 
@@ -79,26 +79,8 @@
                         focus:outline-none 
                         focus:border-b-blue-200" 
                         type="text" 
-                        placeholder="user@gmail.com"
+                        placeholder="Enter your email"
                         v-model="user.email"
-                    />
-                </div>
-
-                <div class=
-                    "mt-4 flex 
-                    justify-center"
-                >
-                    <input class=
-                        "w-60 
-                        p-1 
-                        text-gray-400
-                        border-b-2 
-                        border-gray-200 
-                        focus:outline-none 
-                        focus:border-b-blue-200" 
-                        type="password" 
-                        placeholder="******"
-                        v-model="user.password"
                     />
                 </div>
 
@@ -124,62 +106,9 @@
                         delay-50 
                         duration-500 
                         transform"
-                        @click="signIn()"
+                        @click="changePassword()"
                     >
-                        Sign In
-                    </router-link>
-                </div>
-
-                <div class=
-                    "flex 
-                    justify-center 
-                    pb-4 
-                    mb-6"
-                >
-                    <router-link to='/signup' class=
-                        "w-60 
-                        text-center
-                        cursor-pointer
-                        border-2 
-                        pt-1 
-                        pb-1 
-                        pl-5 
-                        pr-5 
-                        rounded 
-                        text-blue-400 
-                        hover:border-blue-400 
-                        transition 
-                        delay-50 
-                        duration-500 
-                        transform"
-                    >
-                        Don't have an account ?
-                    </router-link>
-                </div>
-
-                <div class=
-                    "flex 
-                    justify-center 
-                    pb-4 
-                    mb-6"
-                >
-                    <router-link to='/forgot' class=
-                        "w-60 
-                        text-center
-                        cursor-pointer
-                        pt-1 
-                        pb-1 
-                        pl-5 
-                        pr-5 
-                        rounded 
-                        text-blue-400 
-                        hover:text-blue-700 
-                        transition 
-                        delay-50 
-                        duration-500 
-                        transform"
-                    >
-                        Forgot password ?
+                        Submit
                     </router-link>
                 </div>
             </div>
@@ -193,35 +122,23 @@
 
 <script setup>
 import { ref } from 'vue';
-import { signInWithEmailAndPassword, updateProfile } from 'firebase/auth';
-import { auth } from '../main';
-import { useRouter } from 'vue-router';
+import { getAuth, sendPasswordResetEmail } from 'firebase/auth';
 import ErrorToastComponent from '@/components/ErrorToastComponent.vue'
 
 const user = ref({
     email: '',
-    password: ''
 });
-const router = useRouter();
+
 const noUser = ref(false);
 
-const signIn = () => {
-    signInWithEmailAndPassword(auth, user.value.email, user.value.password)
-    .then((credential) => {  
-        updateProfile(auth.currentUser, {
-            displayName: user.value.email
-        })
-        router.push('/');
-        console.log(auth.currentUser.displayName)
-        console.log(credential)
+const changePassword = () => {
+    const auth = getAuth();
+    sendPasswordResetEmail(auth, user.value.email)
+    .then(() => {
+        console.log('email sent')
     })
     .catch((error) => {
-        console.log(error.message, 'no user');
-        noUser.value = true;
-        setTimeout(function(){
-            noUser.value = false;
-        }, 3000);
-        router.push('/signin')
+        console.log(error)
     });
 }
 </script>
