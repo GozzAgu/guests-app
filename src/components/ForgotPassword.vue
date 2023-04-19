@@ -135,7 +135,6 @@ const changePassword = () => {
     const auth = getAuth();
     sendPasswordResetEmail(auth, user.value.email)
     .then(() => {
-        console.log('email sent');
         emailSent.value = true;
         setTimeout(function(){
             emailSent.value = false;

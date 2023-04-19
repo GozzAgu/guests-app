@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
+import SecurityView from '@/views/SecurityView.vue'
 import SignIn from '@/components/SignIn.vue'
 import SignUp from '@/components/SignUp.vue'
 import ForgotPassword from '@/components/ForgotPassword.vue'
@@ -12,6 +13,11 @@ const routes = [
     meta: {
       requiresAuth: true
     }
+  },
+  {
+    path: '/security',
+    name: 'security',
+    component: SecurityView,
   },
   {
     path: '/signin',

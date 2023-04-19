@@ -220,7 +220,6 @@ onMounted(() => {
       displayName.value = auth.currentUser.displayName;
     } else {
       isLoggedIn.value = false;
-      
     }
     showGuest();
   });
