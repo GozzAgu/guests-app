@@ -64,7 +64,7 @@
                     </h1>
                 </div>
 
-                <ErrorToastComponent v-if="noUser"/>
+                <EmailSentToast v-if="emailSent"/>
 
                 <div class=
                     "mt-4 flex 
@@ -123,13 +123,13 @@
 <script setup>
 import { ref } from 'vue';
 import { getAuth, sendPasswordResetEmail } from 'firebase/auth';
-import ErrorToastComponent from '@/components/ErrorToastComponent.vue'
+import EmailSentToast from '@/components/EmailSentToast.vue'
 
 const user = ref({
     email: '',
 });
 
-const noUser = ref(false);
+const emailSent = ref(false);
 
 const changePassword = () => {
     const auth = getAuth();
