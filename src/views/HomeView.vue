@@ -1,7 +1,7 @@
 <template>
   <div class="body" :class="[isDark ? 'dark-mode' : '']">
     <NavComponent/>
-    <ToastComponent v-if="showToast"/>
+    
     <div class="text-center">
       <p class="font-bold text-gray-600 mt-2 animate-bounce">App in progress</p>
       <div class="loader m-auto mt-3"></div>
@@ -40,6 +40,8 @@
     <ModalComponent v-if="showModal" @close="showModal=false" @new-guest="addNewGuest"/>
     <trackComponent v-if="showTrackModal" @close-history="showTrackModal=false"/>
 
+    <ToastComponent v-if="showToast"/>
+    
     <div class="max-w-2xl mx-auto mt-8">
       <div v-if="guests.length > 0" class="flex flex-col m-5">
         <div class="overflow-x-auto shadow-md rounded-xl">
