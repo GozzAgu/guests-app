@@ -47,7 +47,7 @@
         <div class="overflow-x-auto shadow-md rounded-xl">
             <div class="inline-block min-w-full align-middle">
                 <div class="overflow-hidden">
-                    <table class="min-w-full divide-y divide-gray-200 table-fixed">
+                    <table class="guests min-w-full divide-y divide-gray-200 table-fixed">
                         <thead class="bg-blue-50">
                             <tr>
                                 <th scope="col" class="p-3">
@@ -78,19 +78,19 @@
                         </thead>
                        
                         <tbody v-for="guest in searchGuests" :key="guest" class="divide-y divide-gray-200">
-                            <tr class="hover:bg-gray-50">
-                              <td  class="p-3 w-3">
+                            <tr>
+                              <td class="p-3 w-3">
                                   <div class="flex items-center">
                                       <input v-model="checked" :value="guest" id="checkbox-table-1" type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300">
                                       <label for="checkbox-table-1" class="sr-only">checkbox</label>
                                   </div>
                               </td>
-                              <td class="py-4 px-2 text-xs font-medium whitespace-nowrap text-gray-500">{{ guest.name }}</td>
-                              <td class="py-4 px-2 text-xs font-medium whitespace-nowrap text-gray-500">{{ guest.code}}</td>
-                              <td class="py-4 px-2 text-xs font-medium whitespace-nowrap"><i  @click="showTrackModal=true" class="text-blue-300 ri-mind-map"></i></td>
-                              <td class="py-4 px-2 text-xs font-medium whitespace-nowrap text-gray-500">{{ guest.gender }}</td>
-                              <td class="py-4 px-2 text-xs font-medium whitespace-nowrap text-gray-500">{{ guest.time }}</td>
-                              <td class="py-4 px-2 text-xs font-medium whitespace-nowrap"><i @click="deleteGuest(guest)" class="ri-delete-bin-5-fill text-red-400"></i></td>
+                              <td class="guest-text py-4 px-2 text-xs font-medium whitespace-nowrap text-gray-500">{{ guest.name }}</td>
+                              <td class="guest-text py-4 px-2 text-xs font-medium whitespace-nowrap text-gray-500">{{ guest.code}}</td>
+                              <td class="guest-text py-4 px-2 text-xs font-medium whitespace-nowrap"><i  @click="showTrackModal=true" class="text-blue-300 ri-mind-map"></i></td>
+                              <td class="guest-text py-4 px-2 text-xs font-medium whitespace-nowrap text-gray-500">{{ guest.gender }}</td>
+                              <td class="guest-text py-4 px-2 text-xs font-medium whitespace-nowrap text-gray-500">{{ guest.time }}</td>
+                              <td class="guest-text py-4 px-2 text-xs font-medium whitespace-nowrap"><i @click="deleteGuest(guest)" class="ri-delete-bin-5-fill text-red-400"></i></td>
                             </tr>
                         </tbody>
                     </table>
@@ -244,7 +244,7 @@ const showGuest = async() => {
   height: 850px;
 }
 .dark-mode {
-  background-color: #2c3e50;
+  background-color: #1f2b38;
   transition: background 1s;
   .tab {
     color: #aab8c6
@@ -260,7 +260,10 @@ const showGuest = async() => {
     .welcome-text {
       color: #e0e5eb
     }
-    .welcome-font {
+  }
+  .table {
+    background-color: #4a6076;
+    .welcome-text {
       color: #e0e5eb
     }
   }
