@@ -183,7 +183,7 @@ const toggleDark = () => {
 const addNewGuest = async(newGuest) => {
   console.log(newGuest)
   const guestOf = auth.currentUser.uid;
-  const docRef = await addDoc(collection(db, "guests" + ' ' + guestOf), {
+  const docRef = await addDoc(collection(db, "guests"), {
       ...newGuest,
       guestOf
   });
@@ -226,13 +226,14 @@ onMounted(() => {
 });
 
 const showGuest = async() => {
-  const guestOf = auth.currentUser.uid;
-  const querySnapshot = await getDocs(collection(db, "guests" + ' ' + guestOf));
+  const querySnapshot = await getDocs(collection(db, "guests"));
   querySnapshot.forEach((doc) => {
-    let guestData = doc.data();
-    guestData.id = doc.id;
-    guests.value.unshift(guestData);
-    console.log(guestData);
+    if (doc.data().guestOf === auth.currentUser.uid) {
+      let guestData = doc.data()
+      guestData.id = doc.id;
+      guests.value.unshift(guestData);
+      console.log(guestData);
+    }
   });
 }
 

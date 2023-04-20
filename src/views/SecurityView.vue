@@ -73,7 +73,6 @@
             <p class="font-serif text-gray-500">No Guests ! </p>
           </div>
         </div>
-        
       </div>
       <nav class="guests fixed bottom-0 right-0 left-0 bg-blue-50" aria-label="Page navigation">
         <ul class="guests list-style-none flex justify-center gap-x-2 mt-2 mb-1 bg-blue-50">
@@ -159,8 +158,7 @@
   });
   
   const showGuest = async() => {
-    const guestOf = auth.currentUser.uid;
-    const querySnapshot = await getDocs(collection(db, "guests" + ' ' + guestOf));
+    const querySnapshot = await getDocs(collection(db, "guests"));
     querySnapshot.forEach((doc) => {
       let guestData = doc.data();
       guestData.id = doc.id;
