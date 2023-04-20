@@ -77,7 +77,7 @@
                             </tr>
                         </thead>
                        
-                        <tbody v-for="guest in searchGuests" :key="guest" class=" divide-gray-200">
+                        <tbody v-for="guest in searchGuests" :key="guest" class="divide-y divide-gray-200">
                             <tr>
                               <td class="p-3 w-3">
                                   <div class="flex items-center">
