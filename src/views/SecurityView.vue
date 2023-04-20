@@ -30,7 +30,7 @@
   
       <ToastComponent v-if="showToast"/>
       
-      <div class="max-w-2xl mx-auto mt-8">
+      <div class="max-w-2xl mx-auto mt-8 mb-8">
         <div v-if="guests.length > 0" class="flex flex-col m-5">
           <div class="overflow-x-auto shadow-md rounded-xl">
               <div class="inline-block min-w-full align-middle">
