@@ -7,61 +7,32 @@ import ForgotPassword from '@/components/ForgotPassword.vue'
 
 const routes = [
   {
-
     path: '/',
+    name: 'home',
     component: HomeView,
     meta: {
       requiresAuth: true
-    },
-    children: [
-      {
-        path: 'security',
-        component: SecurityView,
-      },
-
-      {
-        path: 'signin',
-        component: SignIn
-      },
-
-      {
-        path: '/signup',
-        component: SignUp
-      },
-
-      {
-        path: 'forgot',
-        component: ForgotPassword
-      }
-    ],
-
-
-//     path: '/',
-//     name: 'home',
-//     component: HomeView,
-//     meta: {
-//       requiresAuth: true
-//     }
-//   },
-//   {
-//     path: '/security',
-//     name: 'security',
-//     component: SecurityView,
-//   },
-//   {
-//     path: '/signin',
-//     name: 'signin',
-//     component: SignIn
-//   },
-//   {
-//     path: '/signup',
-//     name: 'signup',
-//     component: SignUp
-//   },
-//   {
-//     path: '/forgot',
-//     name: 'forgot',
-//     component: ForgotPassword
+    }
+  },
+  {
+    path: '/security',
+    name: 'security',
+    component: SecurityView,
+  },
+  {
+    path: '/signin',
+    name: 'signin',
+    component: SignIn
+  },
+  {
+    path: '/signup',
+    name: 'signup',
+    component: SignUp
+  },
+  {
+    path: '/forgot',
+    name: 'forgot',
+    component: ForgotPassword
   },
 ]
 
