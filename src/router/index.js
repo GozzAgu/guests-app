@@ -18,6 +18,9 @@ const routes = [
     path: '/security',
     name: 'security',
     component: SecurityView,
+    meta: {
+      requiresAuth: true
+    }
   },
   {
     path: '/signin',

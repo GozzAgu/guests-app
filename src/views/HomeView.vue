@@ -107,7 +107,6 @@
       </div>
       
     </div>
-    <router-link to="/security">security</router-link>
     <FooterComponent @modal="showModal=true"/>
     <nav class="guests fixed bottom-0 right-0 left-0 bg-blue-50" aria-label="Page navigation">
       <ul class="guests list-style-none flex justify-center gap-x-2 mt-2 mb-1 bg-blue-50">
