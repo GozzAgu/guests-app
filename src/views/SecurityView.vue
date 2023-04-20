@@ -17,7 +17,7 @@
         <div class="flex justify-around">
           <div class="bg-opacity-0 p-3 flex justify-around bg-blue-50 border-dotted border-2 rounded-xl m-2 w-40">
             <p class="guest-text text-gray-700"> Total </p>
-            <i class="guest-text ri-user-fill text-gray-600 ">{{ guests.length }}</i>
+            <i class="guest-text ri-user-fill text-gray-600 ">{{ searchGuests.length }}</i>
           </div>
           <div class="bg-opacity-0 p-3 flex justify-around bg-blue-50 m-2 w-40">
             <button @click="toggleDark">
@@ -30,7 +30,7 @@
   
       <ToastComponent v-if="showToast"/>
       
-      <div class="max-w-2xl mx-auto mt-8 mb-8">
+      <div class="max-w-2xl mx-auto mt-8 mb-16">
         <div v-if="guests.length > 0" class="flex flex-col m-5">
           <div class="overflow-x-auto shadow-md rounded-xl">
               <div class="inline-block min-w-full align-middle">

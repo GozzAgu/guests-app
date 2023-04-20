@@ -28,7 +28,7 @@
       <div class="flex justify-around">
         <div class="bg-opacity-0 p-3 flex justify-around bg-blue-50 border-dotted border-2 rounded-xl m-2 w-40">
           <p class="guest-text text-gray-700"> Total </p>
-          <i class="guest-text ri-user-fill text-gray-600 ">{{ guests.length }}</i>
+          <i class="guest-text ri-user-fill text-gray-600 ">{{ searchGuests.length }}</i>
         </div>
         <div class="bg-opacity-0 p-3 flex justify-around bg-blue-50 border-dotted border-2 rounded-xl m-2 w-40">
           <p class="guest-text text-gray-700"> Selected </p>
