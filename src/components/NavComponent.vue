@@ -9,7 +9,7 @@
         </div>
         
         <div v-if="isLoggedIn" class="mt-2 mb-2">
-            <router-link to="/signin" 
+            <router-link to="" 
                 class=
                 "w-60 
                 text-center
@@ -28,12 +28,12 @@
                 transform"
                 @click="logout"
             >
-                SignOut
+              SignOut
             </router-link> 
         </div>
 
         <div v-else class="mt-2 mb-2">
-            <router-link to="/signin" 
+            <router-link to="signin" 
                 class=
                 "w-60 
                 text-center
@@ -61,7 +61,9 @@
 import { ref, onMounted } from 'vue';
 import { auth } from '@/main';
 import { onAuthStateChanged, signOut } from '@firebase/auth';
+import { useRouter } from 'vue-router';
 
+const router = useRouter();
 const isLoggedIn = ref(false);
 
 onMounted(() => {
@@ -76,7 +78,12 @@ onMounted(() => {
 });
 
 const logout = () => {
-  signOut(auth);
+    setTimeout(function(){
+      signOut(auth);
+        router.push('/signin');
+    }, 3000);
+
+    
   console.log(auth)
 }
 </script>
