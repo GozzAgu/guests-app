@@ -9,15 +9,11 @@ const routes = [
   {
 
     path: '/',
+    component: HomeView,
+    meta: {
+      requiresAuth: true
+    },
     children: [
-      {
-        path: '/home',
-        component: HomeView,
-        meta: {
-          requiresAuth: true
-        }
-      },
-
       {
         path: 'security',
         component: SecurityView,
