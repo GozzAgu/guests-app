@@ -38,6 +38,12 @@
                       <table class="guests min-w-full divide-y divide-gray-200 table-fixed">
                           <thead class="bg-blue-50">
                               <tr>
+                                  <th scope="col" class="p-3">
+                                      <div class="flex items-center">
+                                          <!-- <input id="checkbox-all" type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300"> -->
+                                          <!-- <label for="checkbox-all" class="sr-only">checkbox</label> -->
+                                      </div>
+                                  </th>
                                   <th scope="col" class="py-3 px-3 text-xs font-bold tracking-wider text-left text-gray-700 uppercase">
                                       Name
                                   </th>
@@ -55,6 +61,12 @@
                          
                           <tbody v-for="guest in searchGuests" :key="guest" class="divide-y divide-gray-200">
                               <tr>
+                                <td class="p-3 w-3">
+                                  <div class="flex items-center">
+                                      <input v-model="checked" :value="guest" id="checkbox-table-1" type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300">
+                                      <label for="checkbox-table-1" class="sr-only">checkbox</label>
+                                  </div>
+                                </td>
                                 <td class="guest-text py-4 px-3 text-xs font-medium whitespace-nowrap text-gray-500">{{ guest.name }}</td>
                                 <td class="guest-text py-4 px-3 text-xs font-medium whitespace-nowrap text-gray-500">{{ guest.code}}</td>
                                 <td class="guest-text py-4 px-3 text-xs font-medium whitespace-nowrap text-gray-500">{{ guest.gender }}</td>
@@ -122,16 +134,13 @@
   
   <script setup>
   import ToastComponent from '@/components/ToastComponent.vue';
-  import { auth } from '@/main';
-  import { onAuthStateChanged } from '@firebase/auth';
   import { ref, onMounted, computed } from 'vue';
   import { db } from '../main.js';
   import { collection, getDocs } from 'firebase/firestore';
   
-  const displayName = ref('');
-  const isLoggedIn = ref(false);
   const isDark = ref(false);
   const guests = ref([]);
+  const checked = ref([])
   const search = ref('');
   const showToast = ref(false);
   
@@ -146,15 +155,7 @@
   });
   
   onMounted(() => {
-    onAuthStateChanged(auth, (user) => {
-      if(user) {
-        isLoggedIn.value = true;
-        displayName.value = auth.currentUser.displayName;
-      } else {
-        isLoggedIn.value = false;
-      }
-      showGuest();
-    });
+    showGuest();
   });
   
   const showGuest = async() => {
