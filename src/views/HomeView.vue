@@ -197,10 +197,10 @@ const addNewGuest = async(newGuest) => {
 
 const deleteGuest = async (guestID) => {
   if(confirm("Do you want to delete guest?")){
-    const guestOf = auth.currentUser.uid;
+    // const guestOf = auth.currentUser.uid;
     guests.value.splice(guests.value.indexOf(guestID), 1);
     try {
-      await deleteDoc(doc(db, `guests ${guestOf}`, guestID.id));
+      await deleteDoc(doc(db, `guests`, guestID.id));
     }catch(error) {
       console.log(error)
     }
