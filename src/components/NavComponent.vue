@@ -58,11 +58,12 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, defineEmits } from 'vue';
 import { auth } from '@/main';
 import { onAuthStateChanged, signOut } from '@firebase/auth';
 import { useRouter } from 'vue-router';
 
+const emit = defineEmits(['signing-out'])
 const router = useRouter();
 const isLoggedIn = ref(false);
 
@@ -82,8 +83,7 @@ const logout = () => {
       signOut(auth);
         router.push('/signin');
     }, 3000);
-
-    
+    emit('signing-out');
   console.log(auth)
 }
 </script>
