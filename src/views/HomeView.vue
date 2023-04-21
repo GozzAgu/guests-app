@@ -1,6 +1,6 @@
 <template>
   <div class="body" :class="[isDark ? 'dark-mode' : '']">
-    <NavComponent/>
+    <NavComponent @signing-out="isSigningOut=true"/>
     
     <div class="text-center">
       <p class="font-bold text-gray-600 mt-2 animate-bounce">App in progress</p>
@@ -38,7 +38,7 @@
     </div>
 
     <ModalComponent v-if="showModal" @close="showModal=false" @new-guest="addNewGuest"/>
-    <LoaderComponent/>
+    <LoaderComponent v-if="isSigningOut"/>
     <trackComponent v-if="showTrackModal" @close-history="showTrackModal=false"/>
 
     <ToastComponent v-if="showToast"/>
@@ -177,6 +177,7 @@ const guests = ref([]);
 const checked = ref([]);
 const search = ref('');
 const showToast = ref(false);
+const isSigningOut = ref(false);
 
 const toggleDark = () => {
   isDark.value = !isDark.value;
