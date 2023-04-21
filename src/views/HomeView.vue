@@ -229,7 +229,7 @@ const showGuest = async() => {
   const querySnapshot = await getDocs(collection(db, "guests"));
   querySnapshot.forEach((doc) => {
     if (doc.data().guestOf === auth.currentUser.uid) {
-      let guestData = doc.data()
+      let guestData = doc.data();
       guestData.id = doc.id;
       guests.value.unshift(guestData);
       console.log(guestData);
