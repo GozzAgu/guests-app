@@ -38,6 +38,7 @@
     </div>
 
     <ModalComponent v-if="showModal" @close="showModal=false" @new-guest="addNewGuest"/>
+    <LoaderComponent/>
     <trackComponent v-if="showTrackModal" @close-history="showTrackModal=false"/>
 
     <ToastComponent v-if="showToast"/>
@@ -160,6 +161,7 @@ import ToastComponent from '@/components/ToastComponent.vue';
 import trackComponent from '@/components/trackComponent.vue';
 import NavComponent from '../components/NavComponent.vue';
 import FooterComponent from '@/components/FooterComponent.vue';
+import LoaderComponent from '@/components/LoaderComponent.vue';
 import { auth } from '@/main';
 import { onAuthStateChanged } from '@firebase/auth';
 import { ref, onMounted, computed } from 'vue';
