@@ -1,5 +1,6 @@
 <template>
-    <div class="max-w-full mx-auto flex justify-between shadow-md p-5 text-gray-700 text-s">
+    <div class="max-w-full mx-auto bg-blue-50 shadow-md">
+      <div class="p-3 flex justify-between md:justify-around lg:justify-around rounded-lg">
         <div>
             <img src="../assets/Guest-Logo.png"
                 class=
@@ -7,7 +8,7 @@
                 mt-4" 
             />
         </div>
-        
+
         <div v-if="isLoggedIn" class="mt-2 mb-2">
             <router-link to="" 
                 class=
@@ -28,7 +29,7 @@
                 transform"
                 @click="logout"
             >
-              SignOut
+              <i class="ri-logout-circle-r-line text-semibold"></i>
             </router-link> 
         </div>
 
@@ -51,9 +52,10 @@
                 duration-500 
                 transform"
             >
-                SignIn
+              <i class="ri-login-circle-line text-semibold"></i>
             </router-link> 
         </div>
+      </div>
     </div>
 </template>
 
