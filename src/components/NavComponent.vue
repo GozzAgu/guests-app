@@ -1,5 +1,5 @@
 <template>
-    <div class="m-auto flex justify-between shadow-md p-5 text-gray-700 text-s">
+    <div class="max-w-full mx-auto flex justify-between shadow-md p-5 text-gray-700 text-s">
         <div>
             <img src="../assets/Guest-Logo.png"
                 class=

@@ -1,5 +1,5 @@
 <template>
-  <div class="body" :class="[isDark ? 'dark-mode' : '']">
+  <!-- <div class="body" :class="[isDark ? 'dark-mode' : '']"> -->
     <NavComponent @signing-out="isSigningOut=true"/>
     
     <div class="text-center">
@@ -7,33 +7,25 @@
       <div class="loader m-auto mt-3"></div>
     </div>
 
-    <div class="welcome bg-blue-50 m-5 lg:ml-60 lg:mr-60 h-20 rounded-2xl flex justify-between md:justify-around">
-      <p class="welcome-text p-5 font-bold text-large text-gray-600"> <i @click="showTrackModal=true" class="ri-shield-user-line"></i> Welcome, {{ displayName }}</p>
-      <div class="p-5">
-        <button @click="toggleDark">
-          <i v-if="isDark" class="ri-sun-fill text-2xl text-orange-200"></i>
-          <i v-else class="ri-moon-clear-fill text-2xl text-gray-600"></i>
-        </button>
-      </div> 
-    </div>
-
-    <div class="guests bg-blue-50 m-5 lg:ml-60 lg:mr-60 rounded-2xl">
-      <div class="p-5 flex justify-between md:justify-around lg:justify-around">
-        <h1 class="text-center font-bold text-gray-600 mt-1 guest-text"><i class="ri-file-user-fill"></i> GUESTS </h1>
-        <div class="flex bg-white border-2 rounded-lg gap-x-1 w-40">
-          <i class="ri-search-2-line pl-2 mt-1"></i>
-          <input v-model="search" class="p-1 w-full focus:outline-none" type="text" placeholder="search for guest" />
+    <div class="guests max-w-4xl mx-auto mt-8">
+      <div class="p-3 flex justify-between md:justify-around lg:justify-around bg-blue-50 m-5 rounded-lg">
+        <p class="welcome-text font-bold text-gray-600"> <i @click="showTrackModal=true" class="ri-shield-user-line text-blue-400"></i> Welcome, {{ displayName }}</p>
+        <div class="">
+          <button @click="toggleDark">
+            <i v-if="isDark" class="ri-sun-fill text-2xl text-orange-200"></i>
+            <i v-else class="ri-moon-clear-fill text-2xl text-gray-400"></i>
+          </button>
         </div>  
       </div>
-      <div class="flex justify-around">
-        <div class="bg-opacity-0 p-3 flex justify-around bg-blue-50 border-dotted border-2 rounded-xl m-2 w-40">
-          <p class="guest-text text-gray-700"> Total </p>
-          <i class="guest-text ri-user-fill text-gray-600 ">{{ searchGuests.length }}</i>
-        </div>
-        <div class="bg-opacity-0 p-3 flex justify-around bg-blue-50 border-dotted border-2 rounded-xl m-2 w-40">
-          <p class="guest-text text-gray-700"> Selected </p>
-          <i class="guest-text ri-user-follow-fill text-gray-600">{{ checked.length }}</i>
-        </div>
+    </div>
+
+    <div class="guests max-w-4xl mx-auto mt-8">
+      <div class="p-3 flex justify-between md:justify-around lg:justify-around bg-blue-50 m-5 rounded-lg gap-x-2">
+        <h1 class="text-center font-semibold text-gray-600 guest-text mt-1"><i class="guest-text ri-user-fill text-gray-600 mr-1">{{ searchGuests.length }}</i> GUESTS </h1>
+        <div class="flex bg-white  rounded-lg gap-x-1 w-40">
+          <i class="ri-search-2-line pl-1 text-gray-400 mt-1"></i>
+          <input v-model="search" class=" w-full focus:outline-none" type="text" placeholder="search for guest" />
+        </div>  
       </div>
     </div>
 
@@ -43,9 +35,9 @@
 
     <ToastComponent v-if="showToast"/>
     
-    <div class="max-w-2xl mx-auto mt-8">
+    <div class="max-w-4xl mx-auto mt-8">
       <div v-if="guests.length > 0" class="flex flex-col m-5">
-        <div class="overflow-x-auto shadow-md rounded-xl">
+        <div class="overflow-x-auto shadow-md rounded-lg">
             <div class="inline-block min-w-full align-middle">
                 <div class="overflow-hidden">
                     <table class="guests min-w-full divide-y divide-gray-200 table-fixed">
@@ -77,12 +69,7 @@
                        
                         <tbody v-for="guest in searchGuests" :key="guest" class="divide-y divide-gray-200">
                             <tr>
-                              <td class="p-3 w-3">
-                                  <div class="flex items-center">
-                                      <input v-model="checked" :value="guest" id="checkbox-table-1" type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300">
-                                      <label for="checkbox-table-1" class="sr-only">checkbox</label>
-                                  </div>
-                              </td>
+                              <td class="guest-text py-4 px-2 text-s font-medium whitespace-nowrap text-green-300"><i class="ri-checkbox-circle-fill"></i></td>
                               <td class="guest-text py-4 px-2 text-xs font-medium whitespace-nowrap text-gray-500">{{ guest.name }}</td>
                               <td class="guest-text py-4 px-2 text-xs font-medium whitespace-nowrap text-gray-500">{{ guest.code}}</td>
                               <td class="guest-text py-4 px-2 text-xs font-medium whitespace-nowrap text-gray-500">{{ guest.gender }}</td>
@@ -115,7 +102,7 @@
         @update:modelValue="showGuest"
       />
     </div>
-  </div>
+  <!-- </div> -->
 </template>
 
 <script setup>
@@ -129,7 +116,7 @@ import { auth } from '@/main';
 import { onAuthStateChanged } from '@firebase/auth';
 import { ref, onMounted, computed } from 'vue';
 import { db } from '../main.js';
-import { collection, addDoc, getDocs, doc, deleteDoc, documentSnapshots } from 'firebase/firestore';
+import { collection, addDoc, getDocs, doc, deleteDoc } from 'firebase/firestore';
 import VPagination from "@hennge/vue3-pagination";
 import "@hennge/vue3-pagination/dist/vue3-pagination.css";
 
@@ -139,15 +126,13 @@ const isDark = ref(false);
 const showModal = ref(false);
 const showTrackModal = ref(false);
 const guests = ref([]);
-const checked = ref([]);
 const search = ref('');
 const showToast = ref(false);
 const isSigningOut = ref(false);
 const currentPage = ref(1);
-// const guestsPerPage = ref(0);
-// const pageCount = ref(null);
-const lastVisible = ref('');
-const firstVisible = ref('');
+
+// const lastVisible = ref('');
+// const firstVisible = ref('');
 
 const toggleDark = () => {
   isDark.value = !isDark.value;
@@ -204,9 +189,9 @@ const showGuest = async() => {
       let guestData = doc.data();
       guestData.id = doc.id;
       guests.value.unshift(guestData);
-      lastVisible.value = documentSnapshots.docs[documentSnapshots.docs.length - 1]
-      firstVisible.value = documentSnapshots.docs[0]
-      console.log(guestData, firstVisible);
+      // lastVisible.value = documentSnapshots.docs[documentSnapshots.docs.length - 1]
+      // firstVisible.value = documentSnapshots.docs[0]
+      console.log(guestData);
     }
   });
 }
@@ -217,31 +202,31 @@ const showGuest = async() => {
 .body {
   height: 850px;
 }
-.dark-mode {
-  background-color: #1f2b38;
-  transition: background 1s;
-  .tab {
-    color: #aab8c6
-  }
-  .guests {
-    background-color: #4a6076;
-    .guest-text {
-      color: #e0e5eb
-    }
-  }
-  .welcome {
-    background-color: #4a6076;
-    .welcome-text {
-      color: #e0e5eb
-    }
-  }
-  .table {
-    background-color: #4a6076;
-    .welcome-text {
-      color: #e0e5eb
-    }
-  }
-}
+// .dark-mode {
+//   background-color: #1f2b38;
+//   transition: background 1s;
+//   .tab {
+//     color: #aab8c6
+//   }
+//   .guests {
+//     background-color: #4a6076;
+//     .guest-text {
+//       color: #e0e5eb
+//     }
+//   }
+//   .welcome {
+//     background-color: #4a6076;
+//     .welcome-text {
+//       color: #e0e5eb
+//     }
+//   }
+//   .table {
+//     background-color: #4a6076;
+//     .welcome-text {
+//       color: #e0e5eb
+//     }
+//   }
+// }
 
 .loader {
   border: 5px solid #f3f3f3;
