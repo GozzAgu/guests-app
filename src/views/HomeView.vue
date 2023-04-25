@@ -8,7 +8,7 @@
     </div>
 
     <div class="welcome bg-blue-50 m-5 lg:ml-60 lg:mr-60 h-20 rounded-2xl flex justify-between md:justify-around">
-      <p class="welcome-text p-5 font-bold text-large text-gray-600">Welcome, {{ displayName }}</p>
+      <p class="welcome-text p-5 font-bold text-large text-gray-600"> <i @click="showTrackModal=true" class="ri-shield-user-line"></i> Welcome, {{ displayName }}</p>
       <div class="p-5">
         <button @click="toggleDark">
           <i v-if="isDark" class="ri-sun-fill text-2xl text-orange-200"></i>
@@ -63,9 +63,6 @@
                                 <th scope="col" class="py-3 px-1 text-xs font-bold tracking-wider text-left text-gray-700 uppercase">
                                     Code
                                 </th>
-                                <th scope="col" class="py-3 px-1 text-xs font-medium text-left text-gray-700 uppercase">
-                                    
-                                  </th>
                                 <th scope="col" class="py-3 px-1 text-xs font-bold tracking-wider text-left text-gray-700 uppercase">
                                     Gender
                                 </th>
@@ -88,7 +85,6 @@
                               </td>
                               <td class="guest-text py-4 px-2 text-xs font-medium whitespace-nowrap text-gray-500">{{ guest.name }}</td>
                               <td class="guest-text py-4 px-2 text-xs font-medium whitespace-nowrap text-gray-500">{{ guest.code}}</td>
-                              <td class="guest-text py-4 px-2 text-sm font-medium whitespace-nowrap"><i  @click="showTrackModal=true" class="text-blue-300 ri-mind-map"></i></td>
                               <td class="guest-text py-4 px-2 text-xs font-medium whitespace-nowrap text-gray-500">{{ guest.gender }}</td>
                               <td class="guest-text py-4 px-2 text-xs font-medium whitespace-nowrap text-gray-500">{{ guest.time }}</td>
                               <td class="guest-text py-4 px-2 text-sm font-medium whitespace-nowrap"><i @click="deleteGuest(guest)" class="ri-delete-bin-5-fill text-red-400"></i></td>

@@ -1,7 +1,14 @@
 <template>
     <div class="overlay" @click="close"></div>
-    <div class="modal max-w-sm p-2 h-40 w-60 mx-auto bg-white border-gray-200 shadow rounded-xl hover:shadow-lg">
-        <h1 class="text-lg font-bold text-gray-700">Guest History</h1>
+    <div class="modal max-w-sm p-4 h-50 w-60 mx-auto bg-blue-50 shadow rounded-xl hover:shadow-lg">
+        <h1 class="text-lg font-bold text-gray-700">Estate Residential Card</h1>
+        <div class="rounded-full bg-blue-100 w-16 h-16 flex mb-2 mt-2">
+			<h1 class="m-auto font-bold text-gray-700">JD</h1> 
+		</div>
+        <div>
+            <p class="text-gray-700">Name: John Doe</p>
+            <p class="text-gray-700">Res no: RUM/1234</p>
+        </div>
     </div>
 </template>
 
@@ -12,6 +19,12 @@ const emit = defineEmits(['close-history']);
 const close = () => {
     emit('close-history');
 }
+
+// const initials = () => {
+// 	const firstname = user.firstName === "" ? " " : user.firstName.split("");
+// 	const lastname = user.lastName === "" ? " " : user.lastName.split("");
+// 	return `${firstname[0]} ${lastname[0]}`.toUpperCase();
+// };
 </script>
 
 <style scoped>
@@ -27,7 +40,6 @@ const close = () => {
 }
 
 .modal {
-    background-color: white;
     z-index: 1;
     position: absolute;
     left: 50%;
