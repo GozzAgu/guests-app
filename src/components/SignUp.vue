@@ -183,13 +183,17 @@ import ErrorToastComponent from '@/components/ErrorToastComponent.vue'
 
 const router = useRouter();
 const noUser = ref(false);
-const signingUp = ref(false)
+const signingUp = ref(false);
 
 const user = ref({
-    accountType: '',
+    accountType: 
+    {
+        admin: '',
+        user: ''
+    },
     email: '',
     password: ''
-})
+});
 
 const signUp = () => {
     createUserWithEmailAndPassword(auth, user.value.email, user.value.password)

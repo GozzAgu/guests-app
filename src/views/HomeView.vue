@@ -105,49 +105,16 @@
       
     </div>
     <FooterComponent @modal="showModal=true"/>
-    <nav class="guests fixed bottom-0 right-0 left-0 bg-blue-50" aria-label="Page navigation">
-      <ul class="guests list-style-none flex justify-center gap-x-2 mt-2 mb-1 bg-blue-50">
-        <li>
-          <a
-            class="pointer-events-none relative block rounded bg-transparent px-3 py-1.5 text-sm text-neutral-500 transition-all duration-300 dark:text-neutral-400"
-            >Previous</a
-          >
-        </li>
-        <li>
-          <a
-            class="relative block rounded bg-blue-100 px-3 py-1.5 text-sm font-medium text-blue-700 transition-all duration-300"
-            href="#!"
-            >1
-            <span
-              class="absolute -m-px h-px w-px overflow-hidden whitespace-nowrap border-0 p-0 [clip:rect(0,0,0,0)]"
-              >(current)</span
-            >
-          </a
-          >
-        </li>
-        <li aria-current="page">
-          <a
-          class="relative block rounded bg-transparent px-3 py-1.5 text-sm text-neutral-600 transition-all duration-300 hover:bg-neutral-100  dark:text-gray-500 dark:hover:bg-blue-300 dark:hover:text-white"
-            href="#!"
-            >2 
-          </a>
-        </li>
-        <li>
-          <a
-            class="relative block rounded bg-transparent px-3 py-1.5 text-sm text-neutral-600 transition-all duration-300 hover:bg-neutral-100 dark:text-gray-500 dark:hover:bg-blue-300 dark:hover:text-white"
-            href="#!"
-            >3</a
-          >
-        </li>
-        <li>
-          <a
-            class="relative block rounded bg-transparent px-3 py-1.5 text-sm text-neutral-600 transition-all duration-300 hover:bg-neutral-100 dark:text-gray-500 dark:hover:bg-blue-300 dark:hover:text-white"
-            href="#!"
-            >Next</a
-          >
-        </li>
-      </ul>
-    </nav>
+
+    <div class="flex items-center justify-center p-4">
+      <v-pagination
+        v-model="currentPage"
+        :pages="pageCount"
+        :range-size="1"
+        active-color="#DCEDFF"
+        @update:modelValue="showGuest"
+      />
+    </div>
   </div>
 </template>
 
@@ -162,7 +129,9 @@ import { auth } from '@/main';
 import { onAuthStateChanged } from '@firebase/auth';
 import { ref, onMounted, computed } from 'vue';
 import { db } from '../main.js';
-import { collection, addDoc, getDocs, doc, deleteDoc } from 'firebase/firestore';
+import { collection, addDoc, getDocs, doc, deleteDoc, documentSnapshots } from 'firebase/firestore';
+import VPagination from "@hennge/vue3-pagination";
+import "@hennge/vue3-pagination/dist/vue3-pagination.css";
 
 const displayName = ref('');
 const isLoggedIn = ref(false);
@@ -174,6 +143,11 @@ const checked = ref([]);
 const search = ref('');
 const showToast = ref(false);
 const isSigningOut = ref(false);
+const currentPage = ref(1);
+// const guestsPerPage = ref(0);
+// const pageCount = ref(null);
+const lastVisible = ref('');
+const firstVisible = ref('');
 
 const toggleDark = () => {
   isDark.value = !isDark.value;
@@ -191,12 +165,11 @@ const addNewGuest = async(newGuest) => {
   setTimeout(function(){
     showToast.value = false;
   }, 3000);
-  console.log(docRef)
+  console.log(docRef);
 }
 
 const deleteGuest = async (guestID) => {
   if(confirm("Do you want to delete guest?")){
-    // const guestOf = auth.currentUser.uid;
     guests.value.splice(guests.value.indexOf(guestID), 1);
     try {
       await deleteDoc(doc(db, `guests`, guestID.id));
@@ -231,7 +204,9 @@ const showGuest = async() => {
       let guestData = doc.data();
       guestData.id = doc.id;
       guests.value.unshift(guestData);
-      console.log(guestData);
+      lastVisible.value = documentSnapshots.docs[documentSnapshots.docs.length - 1]
+      firstVisible.value = documentSnapshots.docs[0]
+      console.log(guestData, firstVisible);
     }
   });
 }
