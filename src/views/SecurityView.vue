@@ -61,9 +61,6 @@
                                 <th scope="col" class="py-3 px-1 text-xs font-bold text-left text-gray-700 uppercase">
                                     Access
                                 </th>
-                                <th scope="col" class="py-3 px-1 text-xs font-bold text-left text-gray-700 uppercase">
-                                    Deny
-                                </th>
                             </tr>
                         </thead>
                        
@@ -77,20 +74,13 @@
                               <td class="guest-text py-4 px-2 text-xs font-medium whitespace-nowrap text-gray-500">{{ guest.code}}</td>
                               <td class="guest-text py-4 px-2 text-xs font-medium whitespace-nowrap text-gray-500">{{ guest.gender }}</td>
                               <td class="guest-text py-4 px-2 text-xs font-medium whitespace-nowrap text-gray-500">{{ guest.time }}</td>
-                              <td class="guest-text py-4 px-2 text-sm font-medium whitespace-nowrap"><i class="ri-thumb-up-line text-green-500 text-md"></i></td>
-                              <td class="guest-text py-4 px-2 text-sm font-medium whitespace-nowrap"><i class="ri-thumb-down-line text-red-500 text-md"></i></td>
+                              <td class="guest-text py-4 px-2 text-sm font-medium whitespace-nowrap">
+                                <i class="ri-thumb-up-line text-green-500 text-lg"></i>
+                                <i class="ri-thumb-down-line text-red-500 text-lg ml-3"></i>
+                              </td>
                             </tr>
                         </tbody>
                     </table>
-                    <div class="loading">
-                      <span></span>
-                      <span></span>
-                      <span></span>
-                      <span></span>
-                      <span></span>
-                      <span></span>
-                      <span></span>
-                    </div>
                 </div>
             </div>
         </div>
