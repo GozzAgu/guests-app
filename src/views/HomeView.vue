@@ -40,7 +40,7 @@
         <div class="overflow-x-auto shadow-md rounded-lg">
             <div class="inline-block min-w-full align-middle">
                 <div class="overflow-hidden">
-                  <div class="guests max-w-4xl mx-auto bg-blue-50">
+                  <div class="guests max-w-4xl mx-auto bg-blue-100">
                     <div class="p-3 flex justify-between md:justify-around lg:justify-around p-8 rounded-lg gap-x-2">
                       <h1 class="text-center font-semibold text-gray-600 guest-text mt-1"><i class="guest-text ri-user-fill text-gray-600 mr-1">{{ searchGuests.length }}</i> GUESTS </h1>
                       <div class="flex bg-white  rounded-lg gap-x-1 w-40">
