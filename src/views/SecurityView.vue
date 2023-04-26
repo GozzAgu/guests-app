@@ -1,5 +1,6 @@
 <template>
-    <div class="body" :class="[isDark ? 'dark-mode' : '']">
+  <NavComponent @signing-out="isSigningOut=true"/>
+    <!-- <div class="body" :class="[isDark ? 'dark-mode' : '']"> -->
       <div class="text-center">
         <p class="font-bold text-gray-600 mt-2 animate-bounce">App in progress</p>
         <div class="loader m-auto mt-3"></div>
@@ -29,6 +30,7 @@
       </div>
   
       <ToastComponent v-if="showToast"/>
+      <LoaderComponent v-if="isSigningOut"/>
       
       <div class="max-w-2xl mx-auto mt-8 mb-16">
         <div v-if="guests.length > 0" class="flex flex-col m-5">
@@ -129,11 +131,13 @@
           </li>
         </ul>
       </nav>
-    </div>
+    <!-- </div> -->
   </template>
   
   <script setup>
   import ToastComponent from '@/components/ToastComponent.vue';
+  import NavComponent from '../components/NavComponent.vue';
+  import LoaderComponent from '@/components/LoaderComponent.vue';
   import { ref, onMounted, computed } from 'vue';
   import { db } from '../main.js';
   import { collection, getDocs } from 'firebase/firestore';
@@ -143,6 +147,7 @@
   const checked = ref([])
   const search = ref('');
   const showToast = ref(false);
+  const isSigningOut = ref(false);
   
   const toggleDark = () => {
     isDark.value = !isDark.value;

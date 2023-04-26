@@ -222,9 +222,15 @@ const signIn = () => {
         })
         console.log(credential.user.uid);
         signingIn.value = true;
-        setTimeout(function(){
-            router.push('/');
-        }, 3000);
+        if(user.value.email === 'admin@gmail.com') {
+            setTimeout(function(){
+                router.push('/security');
+            }, 3000);
+        } else {
+            setTimeout(function(){
+                router.push('/');
+            }, 3000);
+        }
         
         console.log(auth.currentUser.displayName)
         console.log(credential)
