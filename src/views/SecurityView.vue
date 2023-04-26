@@ -77,8 +77,8 @@
                               <td class="guest-text py-4 px-2 text-xs font-medium whitespace-nowrap text-gray-500">{{ guest.code}}</td>
                               <td class="guest-text py-4 px-2 text-xs font-medium whitespace-nowrap text-gray-500">{{ guest.gender }}</td>
                               <td class="guest-text py-4 px-2 text-xs font-medium whitespace-nowrap text-gray-500">{{ guest.time }}</td>
-                              <td class="guest-text py-4 px-2 text-sm font-medium whitespace-nowrap"><i class="ri-thumb-up-line text-green-500"></i></td>
-                              <td class="guest-text py-4 px-2 text-sm font-medium whitespace-nowrap"><i class="ri-thumb-down-line text-red-500"></i></td>
+                              <td class="guest-text py-4 px-2 text-sm font-medium whitespace-nowrap"><i class="ri-thumb-up-line text-green-500 text-md"></i></td>
+                              <td class="guest-text py-4 px-2 text-sm font-medium whitespace-nowrap"><i class="ri-thumb-down-line text-red-500 text-md"></i></td>
                             </tr>
                         </tbody>
                     </table>
