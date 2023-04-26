@@ -1,6 +1,6 @@
 <template>
     <div class="max-w-full mx-auto bg-blue-50 shadow-md">
-      <div class="p-3 flex justify-between md:justify-around lg:justify-around rounded-lg">
+      <div class="p-3 pl-8 pr-8 flex justify-between md:justify-around lg:justify-around rounded-lg">
         <div>
             <img src="../assets/Guest-Logo.png"
                 class=
