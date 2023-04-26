@@ -40,6 +40,15 @@
         <div class="overflow-x-auto shadow-md rounded-lg">
             <div class="inline-block min-w-full align-middle">
                 <div class="overflow-hidden">
+                  <div v-if="loading" class="loading">
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                    </div>
                     <table class="guests min-w-full divide-y divide-gray-200 table-fixed">
                         <thead class="bg-blue-50">
                             <tr>
@@ -92,28 +101,7 @@
       
     </div>
 
-    <div class="loading">
-      <span></span>
-      <span></span>
-      <span></span>
-      <span></span>
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
-
     <FooterComponent @modal="showModal=true"/>
-
-    <div class="flex items-center justify-center p-4">
-      <v-pagination
-        v-model="currentPage"
-        :pages="pageCount"
-        :range-size="1"
-        active-color="#DCEDFF"
-        @update:modelValue="showGuest"
-      />
-    </div>
-  <!-- </div> -->
 </template>
 
 <script setup>
@@ -128,8 +116,6 @@ import { onAuthStateChanged } from '@firebase/auth';
 import { ref, onMounted, computed } from 'vue';
 import { db } from '../main.js';
 import { collection, addDoc, getDocs, doc, deleteDoc } from 'firebase/firestore';
-import VPagination from "@hennge/vue3-pagination";
-import "@hennge/vue3-pagination/dist/vue3-pagination.css";
 
 const displayName = ref('');
 const isLoggedIn = ref(false);
@@ -140,10 +126,7 @@ const guests = ref([]);
 const search = ref('');
 const showToast = ref(false);
 const isSigningOut = ref(false);
-const currentPage = ref(1);
-
-// const lastVisible = ref('');
-// const firstVisible = ref('');
+const loading = ref(false);
 
 const toggleDark = () => {
   isDark.value = !isDark.value;
@@ -151,6 +134,10 @@ const toggleDark = () => {
 
 const addNewGuest = async(newGuest) => {
   console.log(newGuest)
+  loading.value = true;
+  setTimeout(function(){
+    loading.value = false;
+  }, 2000);
   const guestOf = auth.currentUser.uid;
   const docRef = await addDoc(collection(db, "guests"), {
       ...newGuest,
@@ -200,8 +187,6 @@ const showGuest = async() => {
       let guestData = doc.data();
       guestData.id = doc.id;
       guests.value.unshift(guestData);
-      // lastVisible.value = documentSnapshots.docs[documentSnapshots.docs.length - 1]
-      // firstVisible.value = documentSnapshots.docs[0]
       console.log(guestData);
     }
   });
