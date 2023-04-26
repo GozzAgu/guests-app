@@ -7,7 +7,7 @@
       <div class="loader m-auto mt-3"></div>
     </div>
 
-    <div class="guests max-w-4xl mx-auto mt-8">
+    <div class="guests max-w-5xl mx-auto mt-8">
       <div class="p-3 flex justify-between md:justify-around lg:justify-around bg-blue-50 m-5 rounded-lg">
         <p class="welcome-text font-bold text-gray-600"> <i @click="showTrackModal=true" class="ri-shield-user-line text-blue-400"></i> Welcome, {{ displayName }}</p>
         <div class="">
@@ -19,7 +19,7 @@
       </div>
     </div>
 
-    <div class="guests max-w-4xl mx-auto mt-8">
+    <div class="guests max-w-5xl mx-auto mt-8">
       <div class="p-3 flex justify-between md:justify-around lg:justify-around bg-blue-100 m-5 rounded-lg gap-x-2">
         <h1 class="text-center font-semibold text-gray-600 guest-text mt-1"><i class="guest-text ri-user-fill text-gray-600 mr-1">{{ searchGuests.length }}</i> GUESTS </h1>
         <div class="flex bg-white  rounded-lg gap-x-1 w-40">
@@ -35,7 +35,7 @@
 
     <ToastComponent v-if="showToast"/>
     
-    <div class="max-w-4xl mx-auto mt-8">
+    <div class="max-w-5xl mx-auto mt-8">
       <div v-if="guests.length > 0" class="flex flex-col m-5">
         <div class="overflow-x-auto shadow-md rounded-lg">
             <div class="inline-block min-w-full align-middle">
