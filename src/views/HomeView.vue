@@ -91,6 +91,17 @@
       </div>
       
     </div>
+
+    <div class="loading">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
     <FooterComponent @modal="showModal=true"/>
 
     <div class="flex items-center justify-center p-4">
@@ -240,5 +251,58 @@ const showGuest = async() => {
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
+}
+
+.loading span {
+  display: inline-block;
+  vertical-align: middle;
+  width: .6em;
+  height: .6em;
+  margin: .19em;
+  background: #007DB6;
+  border-radius: .6em;
+  animation: loading 1s infinite alternate;
+}
+
+/*
+ * Dots Colors
+ * Smarter targeting vs nth-of-type?
+ */
+.loading span:nth-of-type(2) {
+  background: #008FB2;
+  animation-delay: 0.2s;
+}
+.loading span:nth-of-type(3) {
+  background: #009B9E;
+  animation-delay: 0.4s;
+}
+.loading span:nth-of-type(4) {
+  background: #67badb;
+  animation-delay: 0.6s;
+}
+.loading span:nth-of-type(5) {
+  background: #6cccf1;
+  animation-delay: 0.8s;
+}
+.loading span:nth-of-type(6) {
+  background: #73d2f8;
+  animation-delay: 1.0s;
+}
+.loading span:nth-of-type(7) {
+  background: #89deff;
+  animation-delay: 1.2s;
+}
+
+/*
+ * Animation keyframes
+ * Use transition opacity instead of keyframes?
+ */
+@keyframes loading {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 </style>
