@@ -19,7 +19,7 @@
   </div>
 
     <div class="guests max-w-5xl mx-auto mt-8">
-      <div class="p-3 flex justify-between md:justify-around lg:justify-around bg-blue-100 m-5 rounded-lg gap-x-2">
+      <div class="p-3 flex justify-between md:justify-around lg:justify-around bg-slate-100 m-5 rounded-lg gap-x-2">
         <h1 class="text-center font-semibold text-gray-600 guest-text mt-1"><i class="guest-text ri-user-fill text-gray-600 mr-1">{{ searchGuests.length }}</i> GUESTS </h1>
         <div class="flex bg-white  rounded-lg gap-x-1 w-40">
           <i class="ri-search-2-line pl-1 text-gray-400 mt-1"></i>
@@ -70,10 +70,10 @@
                                 <input v-model="checked" :value="guest" id="checkbox-table-1" type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300">
                                 <label for="checkbox-table-1" class="sr-only">checkbox</label>
                             </div>
-                            <td class="guest-text py-4 px-2 text-xs font-medium whitespace-nowrap text-gray-500">{{ guest.name }}</td>
-                            <td class="guest-text py-4 px-2 text-xs font-medium whitespace-nowrap text-gray-500">{{ guest.code}}</td>
-                            <td class="guest-text py-4 px-2 text-xs font-medium whitespace-nowrap text-gray-500">{{ guest.gender }}</td>
-                            <td class="guest-text py-4 px-2 text-xs font-medium whitespace-nowrap text-gray-500">{{ guest.time }}</td>
+                            <td class="guest-text py-4 px-2 text-xs font-normal whitespace-nowrap text-slate-500">{{ guest.name }}</td>
+                            <td class="guest-text py-4 px-2 text-xs font-normal whitespace-nowrap text-slate-500">{{ guest.code}}</td>
+                            <td class="guest-text py-4 px-2 text-xs font-normal whitespace-nowrap text-slate-500">{{ guest.gender }}</td>
+                            <td class="guest-text py-4 px-2 text-xs font-normal whitespace-nowrap text-slate-500">{{ guest.time }}</td>
                             <td class="guest-text py-4 px-2 text-sm font-medium whitespace-nowrap">
                               <i @click="grant(guest)" class="ri-thumb-up-line text-green-500 text-lg"></i>
                               <i @click="deny(guest)" class="ri-thumb-down-line text-red-500 text-lg ml-3"></i>

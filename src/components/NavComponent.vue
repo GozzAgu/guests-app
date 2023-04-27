@@ -29,7 +29,7 @@
                 transform"
                 @click="logout"
             >
-              <i class="ri-logout-circle-r-line text-semibold"></i>
+              <i class="ri-logout-box-r-line text-xl text-semibold"></i>
             </router-link> 
         </div>
 
@@ -52,7 +52,7 @@
                 duration-500 
                 transform"
             >
-              <i class="ri-login-circle-line text-semibold"></i>
+              <i class="ri-login-box-line text-xl text-semibold"></i>
             </router-link> 
         </div>
       </div>
