@@ -99,13 +99,15 @@
 import ToastComponent from '@/components/ToastComponent.vue';
 import NavComponent from '../components/NavComponent.vue';
 import LoaderComponent from '@/components/LoaderComponent.vue';
-import { ref, onMounted, computed } from 'vue';
+import { ref, onMounted, computed, defineEmits } from 'vue';
 import { db } from '../main.js';
 import { collection, getDocs } from 'firebase/firestore';
 import { auth } from '@/main';
 import { onAuthStateChanged } from '@firebase/auth';
 
 // const isDark = ref(false);
+const emit = defineEmits(['granted', 'denied']);
+
 const guests = ref([]);
 const displayName = ref('');
 const checked = ref([])
@@ -114,7 +116,9 @@ const showToast = ref(false);
 const isSigningOut = ref(false);
 const isLoggedIn = ref(false);
 const grantedGuests = ref([]);
-const deniedGuests = ref([])
+const deniedGuests = ref([]);
+const granted = ref(false);
+const denied = ref(false);
 
 // const toggleDark = () => {
 //   isDark.value = !isDark.value;
@@ -122,19 +126,24 @@ const deniedGuests = ref([])
 
 const grant = async (guestID) => {
   console.log(guestID);
-  if(confirm('Are you sure?')) {
+  if(confirm('Are you sure  you want to grant access?')) {
     grantedGuests.value.push(guestID);
+    granted.value = true;
+    emit('granted')
   }
-  guests.value.splice(guests.value.indexOf(guestID), 1);
+
+  // guests.value.splice(guests.value.indexOf(guestID), 1);
   console.log('granted guests', grantedGuests.value);
 };
 
 const deny = async (guestID) => {
   console.log(guestID);
-  if(confirm('Are you sure?')) {
+  if(confirm('Are you sure you want to deny access?')) {
     deniedGuests.value.push(guestID);
+    denied.value = true;
+    emit('granted')
   }
-  guests.value.splice(guests.value.indexOf(guestID), 1);
+  // guests.value.splice(guests.value.indexOf(guestID), 1);
   console.log('denied guests', deniedGuests.value);
 };
 
