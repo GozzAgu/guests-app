@@ -20,7 +20,7 @@
   </div>
 
   <div class="guests max-w-5xl mx-auto mt-8">
-    <div class="p-3 flex justify-between md:justify-around lg:justify-around bg-slate-100 m-5 rounded-lg gap-x-2">
+    <div class="p-3 flex justify-between md:justify-around lg:justify-around bg-blue-50 m-5 rounded-lg gap-x-2">
       <h1 class="text-center font-semibold text-slate-500 guest-text mt-1"><i class="guest-text ri-user-3-line text-slate-500 mr-1"> {{ searchGuests.length }}</i> GUESTS </h1>
       <div class="flex bg-white rounded-lg gap-x-1 w-40">
         <i class="ri-search-2-line pl-1 text-slate-500 mt-1"></i>
@@ -50,7 +50,7 @@
                     <span></span>
                   </div>
                   <table class="guests min-w-full divide-y divide-gray-200 table-fixed">
-                      <thead class="bg-blue-50">
+                      <thead class="bg-slate-100">
                           <tr>
                               <th scope="col" class="p-3">
                                   <div class="flex items-center">

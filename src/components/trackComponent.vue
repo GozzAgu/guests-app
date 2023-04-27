@@ -1,13 +1,13 @@
 <template>
     <div class="overlay" @click="close"></div>
-    <div class="modal max-w-sm p-4 h-50 w-60 mx-auto bg-blue-50 shadow rounded-xl hover:shadow-lg">
-        <h1 class="text-lg font-bold text-gray-700">Estate Residential Card</h1>
-        <div class="rounded-full bg-blue-100 w-16 h-16 flex mb-2 mt-2">
-			<h1 class="m-auto font-bold text-gray-700">JD</h1> 
+    <div class="modal max-w-sm p-4 h-50 w-60 mx-auto bg-slate-50 shadow rounded-xl hover:shadow-lg">
+        <h1 class="text-lg font-bold text-slate-500">Estate Residential Card</h1>
+        <div class="rounded-full bg-slate-200 w-16 h-16 flex mb-2 mt-2">
+			<h1 class="m-auto font-bold text-slate-700">JD</h1> 
 		</div>
         <div>
-            <p class="text-gray-700">Name: John Doe</p>
-            <p class="text-gray-700">Res no: RUM/1234</p>
+            <p class="text-slate-500">Name: John Doe</p>
+            <p class="text-slate-500">Res no: RUM/1234</p>
         </div>
     </div>
 </template>

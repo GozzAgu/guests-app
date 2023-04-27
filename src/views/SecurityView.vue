@@ -8,7 +8,7 @@
 
     <div class="guests max-w-5xl mx-auto mt-8">
     <div class="p-3 flex justify-between md:justify-around lg:justify-around bg-blue-50 m-5 rounded-lg">
-      <p class="welcome-text font-bold text-gray-600"> <i @click="showTrackModal=true" class="ri-shield-user-line text-blue-400"></i> Welcome, {{ displayName }}</p>
+      <p class="welcome-text font-semibold text-slate-500"> <i @click="showTrackModal=true" class="ri-shield-user-line text-blue-400"></i> Welcome, {{ displayName }}</p>
       <div class="">
         <button @click="toggleDark">
           <i v-if="isDark" class="ri-sun-fill text-2xl text-orange-200"></i>
@@ -18,15 +18,15 @@
     </div>
   </div>
 
-    <div class="guests max-w-5xl mx-auto mt-8">
-      <div class="p-3 flex justify-between md:justify-around lg:justify-around bg-slate-100 m-5 rounded-lg gap-x-2">
-        <h1 class="text-center font-semibold text-gray-600 guest-text mt-1"><i class="guest-text ri-user-fill text-gray-600 mr-1">{{ searchGuests.length }}</i> GUESTS </h1>
-        <div class="flex bg-white  rounded-lg gap-x-1 w-40">
-          <i class="ri-search-2-line pl-1 text-gray-400 mt-1"></i>
-          <input v-model="search" class=" w-full focus:outline-none" type="text" placeholder="search for guest" />
-        </div>  
-      </div>
+  <div class="guests max-w-5xl mx-auto mt-8">
+    <div class="p-3 flex justify-between md:justify-around lg:justify-around bg-blue-50 m-5 rounded-lg gap-x-2">
+      <h1 class="text-center font-semibold text-slate-500 guest-text mt-1"><i class="guest-text ri-user-3-line text-slate-500 mr-1"> {{ searchGuests.length }}</i> GUESTS </h1>
+      <div class="flex bg-white rounded-lg gap-x-1 w-40">
+        <i class="ri-search-2-line pl-1 text-slate-500 mt-1"></i>
+        <input v-model="search" class=" w-full focus:outline-none" type="text" placeholder="search for guest" />
+      </div>  
     </div>
+  </div>
 
 
     <ToastComponent v-if="showToast"/>
@@ -38,7 +38,7 @@
           <div class="inline-block min-w-full align-middle">
               <div class="overflow-hidden">
                   <table class="guests min-w-full divide-y divide-gray-200 table-fixed">
-                      <thead class="bg-blue-50">
+                      <thead class="bg-slate-100">
                           <tr>
                               <th scope="col" class="p-3">
                                   <div class="flex items-center">
