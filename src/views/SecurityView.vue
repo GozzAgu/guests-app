@@ -125,7 +125,7 @@ const grant = async (guestID) => {
   if(confirm('Are you sure?')) {
     grantedGuests.value.push(guestID);
   }
-  // guests.value.splice(guests.value.indexOf(guestID), 1);
+  guests.value.splice(guests.value.indexOf(guestID), 1);
   console.log('granted guests', grantedGuests.value);
 };
 
@@ -134,7 +134,7 @@ const deny = async (guestID) => {
   if(confirm('Are you sure?')) {
     deniedGuests.value.push(guestID);
   }
-  // guests.value.splice(guests.value.indexOf(guestID), 1);
+  guests.value.splice(guests.value.indexOf(guestID), 1);
   console.log('denied guests', deniedGuests.value);
 };
 
