@@ -9,7 +9,7 @@
 
   <div class="guests max-w-5xl mx-auto mt-8">
     <div class="p-3 flex justify-between md:justify-around lg:justify-around bg-blue-50 m-5 rounded-lg">
-      <p class="welcome-text font-bold text-gray-600"> <i @click="showTrackModal=true" class="ri-shield-user-line text-blue-400"></i> Welcome, {{ displayName }}</p>
+      <p class="welcome-text font-semibold text-slate-500"> <i @click="showTrackModal=true" class="ri-account-pin-box-line text-slate-500"></i> Welcome, {{ displayName }}</p>
       <div class="">
         <button @click="toggleDark">
           <i v-if="isDark" class="ri-sun-fill text-2xl text-orange-200"></i>
@@ -20,10 +20,10 @@
   </div>
 
   <div class="guests max-w-5xl mx-auto mt-8">
-    <div class="p-3 flex justify-between md:justify-around lg:justify-around bg-blue-100 m-5 rounded-lg gap-x-2">
-      <h1 class="text-center font-semibold text-gray-600 guest-text mt-1"><i class="guest-text ri-user-fill text-gray-600 mr-1">{{ searchGuests.length }}</i> GUESTS </h1>
-      <div class="flex bg-white  rounded-lg gap-x-1 w-40">
-        <i class="ri-search-2-line pl-1 text-gray-400 mt-1"></i>
+    <div class="p-3 flex justify-between md:justify-around lg:justify-around bg-slate-100 m-5 rounded-lg gap-x-2">
+      <h1 class="text-center font-semibold text-slate-500 guest-text mt-1"><i class="guest-text ri-user-3-line text-slate-500 mr-1"> {{ searchGuests.length }}</i> GUESTS </h1>
+      <div class="flex bg-white rounded-lg gap-x-1 w-40">
+        <i class="ri-search-2-line pl-1 text-slate-500 mt-1"></i>
         <input v-model="search" class=" w-full focus:outline-none" type="text" placeholder="search for guest" />
       </div>  
     </div>
@@ -58,19 +58,19 @@
                                       <!-- <label for="checkbox-all" class="sr-only">checkbox</label> -->
                                   </div>
                               </th>
-                              <th scope="col" class="py-3 px-1 text-xs font-bold tracking-wider text-left text-gray-700 uppercase">
+                              <th scope="col" class="py-3 px-1 text-xs font-bold tracking-wider text-left text-slate-500 uppercase">
                                   Name
                               </th>
-                              <th scope="col" class="py-3 px-1 text-xs font-bold tracking-wider text-left text-gray-700 uppercase">
+                              <th scope="col" class="py-3 px-1 text-xs font-bold tracking-wider text-left text-slate-500 uppercase">
                                   Code
                               </th>
-                              <th scope="col" class="py-3 px-1 text-xs font-bold tracking-wider text-left text-gray-700 uppercase">
+                              <th scope="col" class="py-3 px-1 text-xs font-bold tracking-wider text-left text-slate-500 uppercase">
                                   Gender
                               </th>
-                              <th scope="col" class="py-3 px-1 text-xs font-bold tracking-wider text-left text-gray-700 uppercase">
+                              <th scope="col" class="py-3 px-1 text-xs font-bold tracking-wider text-left text-slate-500 uppercase">
                                   Time
                               </th>
-                              <th scope="col" class="py-3 px-1 text-xs font-medium text-left text-gray-700 uppercase">
+                              <th scope="col" class="py-3 px-1 text-xs font-medium text-left text-slate-500 uppercase">
                                   
                               </th>
                           </tr>
@@ -78,11 +78,11 @@
                       
                       <tbody v-for="guest in searchGuests" :key="guest" class="divide-y divide-gray-200">
                           <tr>
-                            <td class="guest-text py-4 px-2 text-s font-medium whitespace-nowrap text-green-300">{{  }}</td>
-                            <td class="guest-text py-4 px-2 text-xs font-medium whitespace-nowrap text-gray-500">{{ guest.name }}</td>
-                            <td class="guest-text py-4 px-2 text-xs font-medium whitespace-nowrap text-gray-500">{{ guest.code}}</td>
-                            <td class="guest-text py-4 px-2 text-xs font-medium whitespace-nowrap text-gray-500">{{ guest.gender }}</td>
-                            <td class="guest-text py-4 px-2 text-xs font-medium whitespace-nowrap text-gray-500">{{ guest.time }}</td>
+                            <td class="guest-text py-4 px-2 text-s font-medium whitespace-nowrap text-green-300"><i class="ri-checkbox-circle-line text-green-400"></i></td>
+                            <td class="guest-text py-4 px-2 text-xs font-normal whitespace-nowrap text-slate-500">{{ guest.name }}</td>
+                            <td class="guest-text py-4 px-2 text-xs font-normal whitespace-nowrap text-slate-500">{{ guest.code}}</td>
+                            <td class="guest-text py-4 px-2 text-xs font-normal whitespace-nowrap text-slate-500">{{ guest.gender }}</td>
+                            <td class="guest-text py-4 px-2 text-xs font-normal whitespace-nowrap text-slate-500">{{ guest.time }}</td>
                             <td class="guest-text py-4 px-2 text-sm font-medium whitespace-nowrap"><i @click="deleteGuest(guest)" class="ri-delete-bin-5-fill text-red-400"></i></td>
                           </tr>
                       </tbody>
