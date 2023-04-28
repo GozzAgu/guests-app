@@ -1,4 +1,5 @@
 import { createApp } from 'vue';
+import { createPinia } from 'pinia'
 import App from './App.vue';
 import router from './router';
 import {initializeApp} from 'firebase/app'
@@ -16,8 +17,11 @@ const config = {
     measurementId: "G-TZSJ8Q2E0C"
   };
 
+const pinia = createPinia()
+
 createApp(App)
 .use(router)
+.use(pinia)
 .mount('#app')
 
 const firebase = initializeApp(config);

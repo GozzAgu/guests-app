@@ -129,9 +129,8 @@ const grant = async (guestID) => {
   if(confirm('Are you sure  you want to grant access?')) {
     grantedGuests.value.push(guestID);
     granted.value = true;
-    emit('granted')
+    emit('granted', grantedGuests.value);
   }
-
   // guests.value.splice(guests.value.indexOf(guestID), 1);
   console.log('granted guests', grantedGuests.value);
 };
