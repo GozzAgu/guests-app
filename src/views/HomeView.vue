@@ -129,69 +129,68 @@ const isSigningOut = ref(false);
 const loading = ref(false);
 
 const toggleDark = () => {
-isDark.value = !isDark.value;
+  isDark.value = !isDark.value;
 }
 
 const addNewGuest = async(newGuest) => {
-console.log(newGuest)
-loading.value = true;
-setTimeout(function(){
-  loading.value = false;
-}, 2000);
-const guestOf = auth.currentUser.uid;
-const docRef = await addDoc(collection(db, "guests"), {
-    ...newGuest,
-    guestOf
-});
-guests.value.unshift(newGuest);
-showToast.value = true;
-setTimeout(function(){
-  showToast.value = false;
-}, 3000);
-console.log(docRef);
+  console.log(newGuest)
+  loading.value = true;
+  setTimeout(function(){
+    loading.value = false;
+  }, 2000);
+  const guestOf = auth.currentUser.uid;
+  const docRef = await addDoc(collection(db, "guests"), {
+      ...newGuest,
+      guestOf
+  });
+  guests.value.unshift(newGuest);
+  showToast.value = true;
+  setTimeout(function(){
+    showToast.value = false;
+  }, 3000);
+  console.log(docRef);
 }
 
 const deleteGuest = async (guestID) => {
-if(confirm("Do you want to delete guest?")){
-  guests.value.splice(guests.value.indexOf(guestID), 1);
-  try {
-    await deleteDoc(doc(db, `guests`, guestID.id));
-  }catch(error) {
-    console.log(error)
+  if(confirm("Do you want to delete guest?")){
+    guests.value.splice(guests.value.indexOf(guestID), 1);
+    try {
+      await deleteDoc(doc(db, `guests`, guestID.id));
+    }catch(error) {
+      console.log(error)
+    }
   }
-}
 };
 
 const searchGuests = computed(() => {
-return guests.value.filter((guest) => {
-  return guest.name.toLowerCase().match(search.value.toLowerCase());
-});
+  return guests.value.filter((guest) => {
+    return guest.name.toLowerCase().match(search.value.toLowerCase());
+  });
 });
 
 onMounted(() => {
-onAuthStateChanged(auth, (user) => {
-  if(user) {
-    isLoggedIn.value = true;
-    displayName.value = auth.currentUser.displayName;
-  } else {
-    isLoggedIn.value = false;
-  }
-  showGuest();
-});
+  onAuthStateChanged(auth, (user) => {
+    if(user) {
+      isLoggedIn.value = true;
+      displayName.value = auth.currentUser.displayName;
+    } else {
+      isLoggedIn.value = false;
+    }
+    showGuest();
+  });
 });
 
 const showGuest = async() => {
-const querySnapshot = await getDocs(collection(db, "guests"));
-querySnapshot.forEach((doc) => {
-  if (doc.data().guestOf === auth.currentUser.uid) {
-    let guestData = doc.data();
-    guestData.id = doc.id;
-    guests.value.unshift(guestData);
-    console.log(guestData);
-  }
-});
+  const querySnapshot = await getDocs(collection(db, "guests"));
+  querySnapshot.forEach((doc) => {
+    if (doc.data().guestOf === auth.currentUser.uid) {
+      let guestData = doc.data();
+      guestData.id = doc.id;
+      guests.value.unshift(guestData);
+      console.log(guestData);
+    }
+  });
 }
-
 </script>
 
 <style lang="scss">
