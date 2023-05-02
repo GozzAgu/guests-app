@@ -98,7 +98,6 @@
         <p class="font-serif text-gray-500">No Guests ! </p>
       </div>
     </div>
-    
   </div>
 
   <FooterComponent @modal="showModal=true"/>
