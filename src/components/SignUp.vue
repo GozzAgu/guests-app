@@ -204,7 +204,7 @@ const signUp = () => {
         console.log(credential.user.uid);
         signingUp.value = true;
         setTimeout(function(){
-            router.push('/');
+            router.push('/home');
         }, 3000);
     })
     .catch(error=>{
