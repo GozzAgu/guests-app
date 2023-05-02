@@ -6,6 +6,7 @@ import {initializeApp} from 'firebase/app'
 import { getFirestore } from 'firebase/firestore';
 import { getAuth } from 'firebase/auth';
 import 'remixicon/fonts/remixicon.css';
+import VueParticles from 'vue-particles'
 
 const config = {
     apiKey: 'AIzaSyAH-o0-TVc4p6TVuJAvhGgnP2vgDaYuSWA',
@@ -22,6 +23,7 @@ const pinia = createPinia()
 createApp(App)
 .use(router)
 .use(pinia)
+.use(VueParticles)
 .mount('#app')
 
 const firebase = initializeApp(config);

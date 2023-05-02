@@ -13,9 +13,11 @@
     "core-js": "^3.8.3",
     "firebase": "^9.19.1",
     "firebase-tools": "^11.28.0",
+    "particles.vue3": "^2.9.3",
     "pinia": "^2.0.35",
     "remixicon": "^3.0.0",
     "vue": "^3.2.13",
+    "vue-particles": "^1.0.9",
     "vue-router": "^4.0.3",
     "vuedraggable": "^2.24.3"
   },
