@@ -16,7 +16,7 @@
             "
         >
             <div class="text-center">
-                <p class="font-bold text-gray-600 mt-2 animate-bounce">App in progress</p>
+                <p class="font-bold text-gray-600 animate-bounce">App in progress</p>
                 <div class="loader m-auto mt-3"></div>
             </div>
             
@@ -24,7 +24,7 @@
                 <img src="../assets/Guest-Logo.png"
                     class=
                     "w-60
-                    mt-4
+                    mt-2
                     mb-8" 
                 />
             </div>
@@ -33,7 +33,7 @@
                 <img src="../assets/undraw_Everywhere_together_re_xe5a-removebg-preview.png"
                     class=
                     "w-100 
-                    mt-8
+                    mt-4
                     mb-8" 
                 />
             </div>
