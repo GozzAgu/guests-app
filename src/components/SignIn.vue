@@ -228,7 +228,7 @@ const signIn = () => {
             }, 3000);
         } else {
             setTimeout(function(){
-                router.push('/');
+                router.push('/home');
             }, 3000);
         }
         
