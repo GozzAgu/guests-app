@@ -3,11 +3,12 @@ import HomeView from '../views/HomeView.vue'
 import SecurityView from '@/views/SecurityView.vue'
 import SignIn from '@/components/SignIn.vue'
 import SignUp from '@/components/SignUp.vue'
+import Landing from '@/views/LandingView.vue'
 import ForgotPassword from '@/components/ForgotPassword.vue'
 
 const routes = [
   {
-    path: '/',
+    path: '/home',
     name: 'home',
     component: HomeView,
     meta: {
@@ -21,6 +22,11 @@ const routes = [
     meta: {
       requiresAuth: true
     }
+  },
+  {
+    path: '/',
+    name: 'landing',
+    component: Landing
   },
   {
     path: '/signin',

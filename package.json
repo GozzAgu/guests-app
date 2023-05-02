@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@hennge/vue3-pagination": "^1.0.17",
+    "chart.js": "^4.3.0",
     "core-js": "^3.8.3",
     "firebase": "^9.19.1",
     "firebase-tools": "^11.28.0",
