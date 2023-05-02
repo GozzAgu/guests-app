@@ -18,10 +18,10 @@
             />
         </div>
 
-        <div>
+        <div class="flex justify-center">
             <img src="../assets/undraw_Everywhere_together_re_xe5a-removebg-preview.png"
                 class=
-                "w-full 
+                "w-100 
                 mt-8
                 mb-8" 
             />
@@ -46,6 +46,7 @@
                 pr-5 
                 rounded 
                 hover:bg-blue-500 
+                hover:text-blue-100 
                 h-10
                 transition 
                 delay-50 
@@ -75,6 +76,7 @@
                 pr-5 
                 rounded 
                 hover:bg-blue-500 
+                hover:text-blue-100 
                 h-10
                 transition 
                 delay-50 
