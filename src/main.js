@@ -26,6 +26,7 @@ createApp(App)
 .use(VueParticles)
 .mount('#app')
 
+
 const firebase = initializeApp(config);
 
 export const db = getFirestore(firebase);
