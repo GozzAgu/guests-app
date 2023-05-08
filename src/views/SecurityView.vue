@@ -104,10 +104,12 @@ import { db } from '../main.js';
 import { collection, getDocs } from 'firebase/firestore';
 import { auth } from '@/main';
 import { onAuthStateChanged } from '@firebase/auth';
+import { useGrantedStore } from '@/store/store';
 
 // const isDark = ref(false);
 const emit = defineEmits(['granted', 'denied']);
 
+const grantedStore = useGrantedStore();
 const guests = ref([]);
 const displayName = ref('');
 const checked = ref([])
@@ -115,7 +117,6 @@ const search = ref('');
 const showToast = ref(false);
 const isSigningOut = ref(false);
 const isLoggedIn = ref(false);
-const grantedGuests = ref([]);
 const deniedGuests = ref([]);
 const granted = ref(false);
 const denied = ref(false);
@@ -127,12 +128,12 @@ const denied = ref(false);
 const grant = async (guestID) => {
   console.log(guestID);
   if(confirm('Are you sure  you want to grant access?')) {
-    grantedGuests.value.push(guestID);
+    grantedStore.value.push(guestID);
     granted.value = true;
-    emit('granted', grantedGuests.value);
+    emit('granted', grantedStore.value);
   }
   // guests.value.splice(guests.value.indexOf(guestID), 1);
-  console.log('granted guests', grantedGuests.value);
+  console.log('granted guests', grantedStore.value);
 };
 
 const deny = async (guestID) => {
