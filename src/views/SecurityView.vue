@@ -21,6 +21,7 @@
   <div class="guests max-w-5xl mx-auto mt-8">
     <div class="p-3 flex justify-between md:justify-around lg:justify-around bg-blue-50 m-5 rounded-lg gap-x-2">
       <h1 class="text-center font-semibold text-slate-500 guest-text mt-1"><i class="guest-text ri-user-3-line text-slate-500 mr-1"> {{ searchGuests.length }}</i> GUESTS </h1>
+      <h1 class="text-center font-semibold text-slate-500 guest-text mt-1"><i class="ri-thumb-up-line text-green-500 text-lg"> {{ grantedStore.grantedGuests.length }}</i></h1>
       <div class="flex bg-white rounded-lg gap-x-1 w-40">
         <i class="ri-search-2-line pl-1 text-slate-500 mt-1"></i>
         <input v-model="search" class=" w-full focus:outline-none" type="text" placeholder="search for guest" />
@@ -76,7 +77,6 @@
                             <td class="guest-text py-4 px-2 text-xs font-normal whitespace-nowrap text-slate-500">{{ guest.time }}</td>
                             <td class="guest-text py-4 px-2 text-sm font-medium whitespace-nowrap">
                               <i @click="grant(guest)" class="ri-thumb-up-line text-green-500 text-lg"></i>
-                              <i @click="deny(guest)" class="ri-thumb-down-line text-red-500 text-lg ml-3"></i>
                             </td>
                           </tr>
                       </tbody>
@@ -97,17 +97,13 @@
 
 <script setup>
 import ToastComponent from '@/components/ToastComponent.vue';
-import NavComponent from '../components/NavComponent.vue';
+import NavComponent from '@/components/NavComponent.vue';
 import LoaderComponent from '@/components/LoaderComponent.vue';
-import { ref, onMounted, computed, defineEmits } from 'vue';
-import { db } from '../main.js';
+import { ref, onMounted, computed } from 'vue';
 import { collection, getDocs } from 'firebase/firestore';
-import { auth } from '@/main';
+import { auth, db } from '@/main';
 import { onAuthStateChanged } from '@firebase/auth';
 import { useGrantedStore } from '@/store/store';
-
-// const isDark = ref(false);
-const emit = defineEmits(['granted', 'denied']);
 
 const grantedStore = useGrantedStore();
 const guests = ref([]);
@@ -117,35 +113,6 @@ const search = ref('');
 const showToast = ref(false);
 const isSigningOut = ref(false);
 const isLoggedIn = ref(false);
-const deniedGuests = ref([]);
-const granted = ref(false);
-const denied = ref(false);
-
-// const toggleDark = () => {
-//   isDark.value = !isDark.value;
-// }
-
-const grant = async (guestID) => {
-  console.log(guestID);
-  if(confirm('Are you sure  you want to grant access?')) {
-    grantedStore.value.push(guestID);
-    granted.value = true;
-    emit('granted', grantedStore.value);
-  }
-  // guests.value.splice(guests.value.indexOf(guestID), 1);
-  console.log('granted guests', grantedStore.value);
-};
-
-const deny = async (guestID) => {
-  console.log(guestID);
-  if(confirm('Are you sure you want to deny access?')) {
-    deniedGuests.value.push(guestID);
-    denied.value = true;
-    emit('granted')
-  }
-  // guests.value.splice(guests.value.indexOf(guestID), 1);
-  console.log('denied guests', deniedGuests.value);
-};
 
 const searchGuests = computed(() => {
   return guests.value.filter((guest) => {
@@ -164,6 +131,11 @@ onMounted(() => {
     showGuest();
   });
 });
+
+const grant = (guestID) => {
+  console.log(guestID)
+  guestID.granted = !guestID.granted;
+}
 
 const showGuest = async() => {
   const querySnapshot = await getDocs(collection(db, "guests"));

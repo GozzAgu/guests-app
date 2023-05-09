@@ -104,18 +104,19 @@
 </template>
 
 <script setup>
-import ModalComponent from '../components/ModalComponent.vue';
+import ModalComponent from '@/components/ModalComponent.vue';
 import ToastComponent from '@/components/ToastComponent.vue';
 import trackComponent from '@/components/trackComponent.vue';
-import NavComponent from '../components/NavComponent.vue';
+import NavComponent from '@/components/NavComponent.vue';
 import FooterComponent from '@/components/FooterComponent.vue';
 import LoaderComponent from '@/components/LoaderComponent.vue';
-import { auth } from '@/main';
+import { auth, db } from '@/main';
 import { onAuthStateChanged } from '@firebase/auth';
 import { ref, onMounted, computed } from 'vue';
-import { db } from '../main.js';
 import { collection, addDoc, getDocs, doc, deleteDoc } from 'firebase/firestore';
+import { useGrantedStore } from '@/store/store';
 
+const grantedStore = useGrantedStore();
 const displayName = ref('');
 const isLoggedIn = ref(false);
 const isDark = ref(false);
@@ -126,10 +127,6 @@ const search = ref('');
 const showToast = ref(false);
 const isSigningOut = ref(false);
 const loading = ref(false);
-
-const toggleDark = () => {
-  isDark.value = !isDark.value;
-}
 
 const addNewGuest = async(newGuest) => {
   console.log(newGuest)
@@ -176,6 +173,7 @@ onMounted(() => {
       isLoggedIn.value = false;
     }
     showGuest();
+    console.log('granted =>', grantedStore.grantedGuests);
   });
 });
 
@@ -196,31 +194,6 @@ const showGuest = async() => {
 .body {
 height: 850px;
 }
-// .dark-mode {
-//   background-color: #1f2b38;
-//   transition: background 1s;
-//   .tab {
-//     color: #aab8c6
-//   }
-//   .guests {
-//     background-color: #4a6076;
-//     .guest-text {
-//       color: #e0e5eb
-//     }
-//   }
-//   .welcome {
-//     background-color: #4a6076;
-//     .welcome-text {
-//       color: #e0e5eb
-//     }
-//   }
-//   .table {
-//     background-color: #4a6076;
-//     .welcome-text {
-//       color: #e0e5eb
-//     }
-//   }
-// }
 
 .loader {
 border: 5px solid #f3f3f3;
