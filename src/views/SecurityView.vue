@@ -100,7 +100,7 @@ import ToastComponent from '@/components/ToastComponent.vue';
 import NavComponent from '@/components/NavComponent.vue';
 import LoaderComponent from '@/components/LoaderComponent.vue';
 import { ref, onMounted, computed } from 'vue';
-import { collection, getDocs } from 'firebase/firestore';
+import { collection, getDocs, setDoc, doc } from 'firebase/firestore';
 import { auth, db } from '@/main';
 import { onAuthStateChanged } from '@firebase/auth';
 import { useGrantedStore } from '@/store/store';
@@ -134,7 +134,9 @@ onMounted(() => {
 
 const grant = (guestID) => {
   console.log(guestID)
-  guestID.granted = !guestID.granted;
+  setDoc(doc(db, "guests", guestID.id), {
+    
+  });
 }
 
 const showGuest = async() => {
