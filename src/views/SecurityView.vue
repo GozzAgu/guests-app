@@ -20,8 +20,7 @@
 
   <div class="guests max-w-5xl mx-auto mt-8">
     <div class="p-3 flex justify-between md:justify-around lg:justify-around bg-blue-50 m-5 rounded-lg gap-x-2">
-      <h1 class="text-center font-semibold text-slate-500 guest-text mt-1"><i class="guest-text ri-user-3-line text-slate-500 mr-1"> {{ searchGuests.length }}</i> GUESTS </h1>
-      <h1 class="text-center font-semibold text-slate-500 guest-text mt-1"><i class="ri-thumb-up-line text-green-500 text-lg"> {{ grantedStore.grantedGuests.length }}</i></h1>
+      <h1 class="text-center font-semibold text-slate-500 guest-text mt-1"><i class="guest-text ri-user-3-line text-slate-500 mr-1"> {{ store.guests.length }}</i> GUESTS </h1>
       <div class="flex bg-white rounded-lg gap-x-1 w-40">
         <i class="ri-search-2-line pl-1 text-slate-500 mt-1"></i>
         <input v-model="search" class=" w-full focus:outline-none" type="text" placeholder="search for guest" />
@@ -34,7 +33,7 @@
     <LoaderComponent v-if="isSigningOut"/>
     
     <div class="max-w-5xl mx-auto mt-8">
-    <div v-if="guests.length > 0" class="flex flex-col m-5">
+    <div v-if="store.guests.length > 0" class="flex flex-col m-5">
       <div class="overflow-x-auto shadow-md rounded-lg">
           <div class="inline-block min-w-full align-middle">
               <div class="overflow-hidden">
@@ -65,7 +64,7 @@
                           </tr>
                       </thead>
                       
-                      <tbody v-for="guest in searchGuests" :key="guest" class="divide-y divide-gray-200">
+                      <tbody v-for="guest in store.guests" :key="guest" class="divide-y divide-gray-200">
                           <tr>
                             <div class="flex mt-5 justify-center">
                                 <input v-model="checked" :value="guest" id="checkbox-table-1" type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300">
@@ -99,26 +98,19 @@
 import ToastComponent from '@/components/ToastComponent.vue';
 import NavComponent from '@/components/NavComponent.vue';
 import LoaderComponent from '@/components/LoaderComponent.vue';
-import { ref, onMounted, computed } from 'vue';
-import { collection, getDocs, setDoc, doc } from 'firebase/firestore';
+import { ref, onMounted } from 'vue';
+import { collection, getDocs, doc, updateDoc } from 'firebase/firestore';
 import { auth, db } from '@/main';
 import { onAuthStateChanged } from '@firebase/auth';
-import { useGrantedStore } from '@/store/store';
+import { useGuestStore } from '@/store/store';
 
-const grantedStore = useGrantedStore();
-const guests = ref([]);
+const store = useGuestStore();
 const displayName = ref('');
 const checked = ref([])
 const search = ref('');
 const showToast = ref(false);
 const isSigningOut = ref(false);
 const isLoggedIn = ref(false);
-
-const searchGuests = computed(() => {
-  return guests.value.filter((guest) => {
-    return guest.name.toLowerCase().match(search.value.toLowerCase());
-  });
-});
 
 onMounted(() => {
   onAuthStateChanged(auth, (user) => {
@@ -134,9 +126,18 @@ onMounted(() => {
 
 const grant = (guestID) => {
   console.log(guestID)
-  setDoc(doc(db, "guests", guestID.id), {
-    
-  });
+  if(confirm("Do you want to grant access?") === true){
+    updateDoc(doc(db, "guests", guestID.id),
+    {
+      granted: !guestID.granted,
+      name: guestID.name,
+      code: guestID.code,
+      gender: guestID.gender,
+      time: guestID.time,
+      date: guestID.date
+    } 
+  );
+  }
 }
 
 const showGuest = async() => {
@@ -144,7 +145,7 @@ const showGuest = async() => {
   querySnapshot.forEach((doc) => {
     let guestData = doc.data();
     guestData.id = doc.id;
-    guests.value.unshift(guestData);
+    store.guests.unshift(guestData);
     console.log(guestData);
   });
 }
