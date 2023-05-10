@@ -113,7 +113,7 @@ import LoaderComponent from '@/components/LoaderComponent.vue';
 import { auth, db } from '@/main';
 import { onAuthStateChanged } from '@firebase/auth';
 import { ref, onMounted } from 'vue';
-import { collection, addDoc, getDocs, doc, deleteDoc } from 'firebase/firestore';
+import { collection, addDoc, doc, deleteDoc } from 'firebase/firestore';
 import { useGuestStore } from '@/store/store';
 
 const displayName = ref('');
@@ -171,15 +171,7 @@ onMounted(() => {
 });
 
 const showGuest = async() => {
-  const querySnapshot = await getDocs(collection(db, "guests"));
-  querySnapshot.forEach((doc) => {
-    if (doc.data().guestOf === auth.currentUser.uid) {
-      let guestData = doc.data();
-      guestData.id = doc.id;
-      store.guests.unshift(guestData)
-      console.log(guestData);
-    }
-  });
+  store.showUserGuest()
 }
 </script>
 

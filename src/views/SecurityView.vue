@@ -74,7 +74,7 @@
                             <td class="guest-text py-4 px-2 text-xs font-normal whitespace-nowrap text-slate-500">{{ guest.code}}</td>
                             <td class="guest-text py-4 px-2 text-xs font-normal whitespace-nowrap text-slate-500">{{ guest.gender }}</td>
                             <td class="guest-text py-4 px-2 text-xs font-normal whitespace-nowrap text-slate-500">{{ guest.time }}</td>
-                            <td class="guest-text py-4 px-2 text-sm font-medium whitespace-nowrap">
+                            <td class="guest-text py-4 px-4 text-sm font-medium whitespace-nowrap">
                               <i @click="grant(guest)" class="ri-thumb-up-line text-green-500 text-lg"></i>
                             </td>
                           </tr>
@@ -99,7 +99,7 @@ import ToastComponent from '@/components/ToastComponent.vue';
 import NavComponent from '@/components/NavComponent.vue';
 import LoaderComponent from '@/components/LoaderComponent.vue';
 import { ref, onMounted } from 'vue';
-import { collection, getDocs, doc, updateDoc } from 'firebase/firestore';
+import { doc, updateDoc } from 'firebase/firestore';
 import { auth, db } from '@/main';
 import { onAuthStateChanged } from '@firebase/auth';
 import { useGuestStore } from '@/store/store';
@@ -141,13 +141,7 @@ const grant = (guestID) => {
 }
 
 const showGuest = async() => {
-  const querySnapshot = await getDocs(collection(db, "guests"));
-  querySnapshot.forEach((doc) => {
-    let guestData = doc.data();
-    guestData.id = doc.id;
-    store.guests.unshift(guestData);
-    console.log(guestData);
-  });
+  store.showAdminGuest();
 }
 </script>
 
