@@ -95,7 +95,7 @@ const addNewGuest = () => {
         newGuest.value.gender = selected.value;
         newGuest.value.code = Math.floor(Math.random() * 10000) + 1;
         newGuest.value.time = getTime();
-        newGuest.value.granted = granted;
+        newGuest.value.granted = granted.value;
         newGuest.value.date = new Date();
         emit('new-guest', newGuest.value);
         emit('close');

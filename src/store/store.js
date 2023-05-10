@@ -1,8 +1,8 @@
 import { defineStore } from 'pinia'
 
-export const useGrantedStore = defineStore('granted', {
+export const useGuestStore = defineStore('guests', {
   state: () => ({
-    grantedGuests: [],
+    guests: [],
   }),
  
   actions: {

@@ -21,7 +21,7 @@
 
   <div class="guests max-w-5xl mx-auto mt-8">
     <div class="p-3 flex justify-between md:justify-around lg:justify-around bg-blue-50 m-5 rounded-lg gap-x-2">
-      <h1 class="text-center font-semibold text-slate-500 guest-text mt-1"><i class="guest-text ri-user-3-line text-slate-500 mr-1"> {{ searchGuests.length }}</i> GUESTS </h1>
+      <h1 class="text-center font-semibold text-slate-500 guest-text mt-1"><i class="guest-text ri-user-3-line text-slate-500 mr-1"> {{ store.guests.length }}</i> GUESTS </h1>
       <div class="flex bg-white rounded-lg gap-x-1 w-40">
         <i class="ri-search-2-line pl-1 text-slate-500 mt-1"></i>
         <input v-model="search" class=" w-full focus:outline-none" type="text" placeholder="search for guest" />
@@ -36,7 +36,7 @@
   <ToastComponent v-if="showToast"/>
   
   <div class="max-w-5xl mx-auto mt-8">
-    <div v-if="guests.length > 0" class="flex flex-col m-5">
+    <div v-if="store.guests.length > 0" class="flex flex-col m-5">
       <div class="overflow-x-auto shadow-md rounded-lg">
           <div class="inline-block min-w-full align-middle">
               <div class="overflow-hidden">
@@ -76,7 +76,7 @@
                           </tr>
                       </thead>
                       
-                      <tbody v-for="guest in searchGuests" :key="guest" class="divide-y divide-gray-200">
+                      <tbody v-for="guest in store.guests" :key="guest" class="divide-y divide-gray-200">
                           <tr>
                             <td class="guest-text py-4 px-2 text-s font-medium whitespace-nowrap text-green-300"><i class="ri-checkbox-circle-line text-green-400"></i></td>
                             <td class="guest-text py-4 px-2 text-xs font-normal whitespace-nowrap text-slate-500">{{ guest.name }}</td>
@@ -112,17 +112,16 @@ import FooterComponent from '@/components/FooterComponent.vue';
 import LoaderComponent from '@/components/LoaderComponent.vue';
 import { auth, db } from '@/main';
 import { onAuthStateChanged } from '@firebase/auth';
-import { ref, onMounted, computed } from 'vue';
+import { ref, onMounted } from 'vue';
 import { collection, addDoc, getDocs, doc, deleteDoc } from 'firebase/firestore';
-import { useGrantedStore } from '@/store/store';
+import { useGuestStore } from '@/store/store';
 
-const grantedStore = useGrantedStore();
 const displayName = ref('');
 const isLoggedIn = ref(false);
 const isDark = ref(false);
 const showModal = ref(false);
 const showTrackModal = ref(false);
-const guests = ref([]);
+const store = useGuestStore();
 const search = ref('');
 const showToast = ref(false);
 const isSigningOut = ref(false);
@@ -139,7 +138,7 @@ const addNewGuest = async(newGuest) => {
       ...newGuest,
       guestOf
   });
-  guests.value.unshift(newGuest);
+  store.guests.unshift(newGuest)
   showToast.value = true;
   setTimeout(function(){
     showToast.value = false;
@@ -149,7 +148,7 @@ const addNewGuest = async(newGuest) => {
 
 const deleteGuest = async (guestID) => {
   if(confirm("Do you want to delete guest?")){
-    guests.value.splice(guests.value.indexOf(guestID), 1);
+    store.guests.splice(store.guests.indexOf(guestID), 1);
     try {
       await deleteDoc(doc(db, `guests`, guestID.id));
     }catch(error) {
@@ -157,12 +156,6 @@ const deleteGuest = async (guestID) => {
     }
   }
 };
-
-const searchGuests = computed(() => {
-  return guests.value.filter((guest) => {
-    return guest.name.toLowerCase().match(search.value.toLowerCase());
-  });
-});
 
 onMounted(() => {
   onAuthStateChanged(auth, (user) => {
@@ -173,7 +166,7 @@ onMounted(() => {
       isLoggedIn.value = false;
     }
     showGuest();
-    console.log('granted =>', grantedStore.grantedGuests);
+    console.log('granted =>', store.guests);
   });
 });
 
@@ -183,7 +176,7 @@ const showGuest = async() => {
     if (doc.data().guestOf === auth.currentUser.uid) {
       let guestData = doc.data();
       guestData.id = doc.id;
-      guests.value.unshift(guestData);
+      store.guests.unshift(guestData)
       console.log(guestData);
     }
   });
