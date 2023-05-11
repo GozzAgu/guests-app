@@ -5,6 +5,7 @@ import { auth, db } from '@/main';
 export const useGuestStore = defineStore('guests', {
   state: () => ({
     guests: [],
+    grantedGuests: [],
   }),
 
   actions: {
@@ -22,7 +23,7 @@ export const useGuestStore = defineStore('guests', {
     },
 
     async showAdminGuest(){
-      this.guest = []
+      this.guests = []
       const querySnapshot = await getDocs(collection(db, "guests"));
       querySnapshot.forEach((doc) => {
         let guestData = doc.data();
@@ -32,6 +33,10 @@ export const useGuestStore = defineStore('guests', {
       });
     },
 
-
+    async updateGuestStatus (id){
+      const idx = this.guests.findIndex (guest => guest.id === id)
+      this.guests[idx].granted = !this.guests[idx].granted
+      console.log(this.guests)
+    }
   },
 })
