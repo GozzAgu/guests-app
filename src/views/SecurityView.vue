@@ -129,7 +129,7 @@ const grant = async(guestID) => {
   if(confirm("Do you want to grant access?") === true){
     updateDoc(doc(db, "guests", guestID.id),
     {
-      granted: guestID.granted,
+      granted: !guestID.granted,
       name: guestID.name,
       code: guestID.code,
       gender: guestID.gender,
