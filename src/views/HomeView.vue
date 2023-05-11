@@ -165,14 +165,9 @@ onMounted(() => {
     } else {
       isLoggedIn.value = false;
     }
-    showGuest();
-    console.log('granted =>', store.guests);
+    store.showUserGuest()
   });
 });
-
-const showGuest = async() => {
-  store.showUserGuest()
-}
 </script>
 
 <style lang="scss">

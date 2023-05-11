@@ -28,7 +28,6 @@
     </div>
   </div>
 
-
     <ToastComponent v-if="showToast"/>
     <LoaderComponent v-if="isSigningOut"/>
     
@@ -63,6 +62,8 @@
                               </th>
                           </tr>
                       </thead>
+
+                     
                       
                       <tbody v-for="guest in store.guests" :key="guest" class="divide-y divide-gray-200">
                           <tr>
@@ -120,29 +121,26 @@ onMounted(() => {
     } else {
       isLoggedIn.value = false;
     }
-    showGuest();
+    store.showAdminGuest();
   });
 });
 
-const grant = (guestID) => {
-  console.log(guestID)
+const grant = async(guestID) => {
   if(confirm("Do you want to grant access?") === true){
     updateDoc(doc(db, "guests", guestID.id),
     {
-      granted: !guestID.granted,
+      granted: guestID.granted,
       name: guestID.name,
       code: guestID.code,
       gender: guestID.gender,
       time: guestID.time,
       date: guestID.date
     } 
-  );
+  ).then(()=>{store.updateGuestStatus(guestID.id)})
   }
 }
 
-const showGuest = async() => {
-  store.showAdminGuest();
-}
+
 </script>
 
 <style lang="scss">
