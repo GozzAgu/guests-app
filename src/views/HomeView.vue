@@ -9,7 +9,16 @@
   
     <div class="guests max-w-5xl mx-auto mt-8">
       <div class="p-3 flex justify-between md:justify-around lg:justify-around bg-blue-50 m-5 rounded-lg">
-        <p class="welcome-text font-semibold text-slate-500"> <i @click="showTrackModal=true" class="ri-account-pin-box-line text-slate-500"></i> Welcome, {{ displayName }}</p>
+        <p class="welcome-text font-semibold text-slate-500">
+          <svg @click="showTrackModal=true" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24">
+            <path fill="currentColor" d="M19 2H5a2 2 0 0 0-2 2v14c0 1.1.9 2 2 
+              2h4l2.29 2.29c.39.39 1.02.39 1.41 0L15 20h4c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-7 
+              3.3c1.49 0 2.7 1.21 2.7 2.7s-1.21 2.7-2.7 2.7S9.3 9.49 9.3 8s1.21-2.7 2.7-2.7zM18 
+              16H6v-.9c0-2 4-3.1 6-3.1s6 1.1 6 3.1v.9z"
+            />
+          </svg> 
+          Welcome, {{ displayName }}
+        </p>
         <div class="">
           <button @click="toggleDark">
             <i v-if="isDark" class="ri-sun-fill text-2xl text-orange-200"></i>
@@ -21,7 +30,11 @@
   
     <div class="guests max-w-5xl mx-auto mt-8">
       <div class="p-3 flex justify-between md:justify-around lg:justify-around bg-blue-50 m-5 rounded-lg gap-x-2">
-        <h1 class="text-center font-semibold text-slate-500 guest-text mt-1"><i class="guest-text ri-user-3-line text-slate-500 mr-1"> {{ store.guests.length }}</i> GUESTS </h1>
+        <div class="flex">
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><g fill="currentColor"><circle cx="15" cy="6" r="3" opacity=".4"/><ellipse cx="16" cy="17" opacity=".4" rx="5" ry="3"/><circle cx="9.001" cy="6" r="4"/><ellipse cx="9.001" cy="17.001" rx="7" ry="4"/></g></svg>
+          <h1 class="text-center font-semibold text-slate-500 guest-text mt-1">{{ store.guests.length }} GUESTS </h1>
+        </div>
+        
         <div class="flex bg-white rounded-lg gap-x-1 w-40">
           <i class="ri-search-2-line pl-1 text-slate-500 mt-1"></i>
           <input v-model="search" class=" w-full focus:outline-none" type="text" placeholder="search for guest" />
@@ -79,14 +92,34 @@
                         <tbody v-for="guest in store.guests" :key="guest" class="divide-y divide-gray-200">
                             <tr>
                               <div class="flex justify-center">
-                                <td v-if="guest.granted === true" class="guest-text py-4 px-2 text-s font-medium whitespace-nowrap text-green-300"><i class="ri-checkbox-circle-line text-green-400"></i></td>
-                                <td v-else class="guest-text py-4 px-2 text-s font-medium whitespace-nowrap text-orange-300"><i class="ri-timer-2-line text-orange-300"></i></td>
+                                <td v-if="guest.granted === true" class="guest-text py-4 px-2 text-s font-medium whitespace-nowrap text-green-300"><i class="ri-checkbox-circle-line text-green-400 text-lg"></i></td>
+                                <td v-else class="guest-text py-4 px-2 text-s font-medium whitespace-nowrap text-orange-300"><i class="ri-timer-2-line text-orange-300 text-lg"></i></td>
                               </div>
                               <td class="guest-text py-4 px-2 text-xs font-normal whitespace-nowrap text-slate-500">{{ guest.name }}</td>
                               <td class="guest-text py-4 px-2 text-xs font-normal whitespace-nowrap text-slate-500">{{ guest.code}}</td>
                               <td class="guest-text py-4 px-2 text-xs font-normal whitespace-nowrap text-slate-500">{{ guest.gender }}</td>
                               <td class="guest-text py-4 px-2 text-xs font-normal whitespace-nowrap text-slate-500">{{ guest.time }}</td>
-                              <td class="guest-text py-4 px-2 text-sm font-medium whitespace-nowrap"><i @click="deleteGuest(guest)" class="ri-delete-bin-5-fill text-red-400"></i></td>
+                              <td class="guest-text py-4 px-2 text-sm font-medium whitespace-nowrap">
+                                <svg class="text-red-400" @click="deleteGuest(guest)" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
+                                  <g fill="currentColor">
+                                    <path d="M3 6.386c0-.484.345-.877.771-.877h2.665c.529-.016.996-.399 
+                                      1.176-.965l.03-.1l.115-.391c.07-.24.131-.45.217-.637c.338-.739.964-1.252 
+                                      1.687-1.383c.184-.033.378-.033.6-.033h3.478c.223 0 .417 0 .6.033c.723.131 
+                                      1.35.644 1.687 1.383c.086.187.147.396.218.637l.114.391l.03.1c.18.566.74.95 
+                                      1.27.965h2.57c.427 0 .772.393.772.877s-.345.877-.771.877H3.77c-.425 0-.77-.393-.77-.877Z"
+                                    />
+                                    <path fill-rule="evenodd" d="M9.425 11.482c.413-.044.78.273.821.707l.5 
+                                      5.263c.041.433-.26.82-.671.864c-.412.043-.78-.273-.821-.707l-.5-5.263c-.041-.434.26-.821.671-.864Zm5.15 
+                                      0c.412.043.713.43.671.864l-.5 5.263c-.04.434-.408.75-.82.707c-.413-.044-.713-.43-.672-.864l.5-5.264c.041-.433.409-.75.82-.707Z" 
+                                      clip-rule="evenodd"
+                                    />
+                                    <path d="M11.596 22h.808c2.783 0 4.174 0 5.08-.886c.904-.886.996-2.339 
+                                      1.181-5.245l.267-4.188c.1-1.577.15-2.366-.303-2.865c-.454-.5-1.22-.5-2.753-.5H8.124c-1.533 
+                                      0-2.3 0-2.753.5c-.454.5-.404 1.288-.303 2.865l.267 4.188c.185 2.906.277 4.36 1.182 5.245c.905.886 2.296.886 5.079.886Z" opacity=".5"
+                                    />
+                                  </g>
+                                </svg>
+                              </td>
                             </tr>
                         </tbody>
                     </table>
