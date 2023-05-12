@@ -21,7 +21,7 @@
 <script setup>
 import { defineEmits, ref } from 'vue';
 
-let draggableContainer = ref(null)
+let draggableContainer = ref(null);
 
 const emit = defineEmits(['modal']);
 
