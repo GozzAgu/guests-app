@@ -80,16 +80,19 @@
                       
                       <tbody v-for="guest in store.guests" :key="guest" class="divide-y divide-gray-200">
                           <tr>
-                            <div class="flex mt-5 justify-center">
-                                <!-- <input v-model="checked" :value="guest" id="checkbox-table-1" type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300">
-                                <label for="checkbox-table-1" class="sr-only">checkbox</label> -->
+                            <div class="flex mt-6 justify-center">
+                                <input v-model="checked" :value="guest" id="checkbox-table-1" type="checkbox" class="w-3 h-3 text-blue-600 bg-gray-100 rounded border-gray-300">
+                                <label for="checkbox-table-1" class="sr-only">checkbox</label>
                             </div>
                             <td class="guest-text py-4 px-2 text-xs font-normal whitespace-nowrap text-slate-500">{{ guest.name }}</td>
                             <td class="guest-text py-4 px-2 text-xs font-normal whitespace-nowrap text-slate-500">{{ guest.code}}</td>
                             <td class="guest-text py-4 px-2 text-xs font-normal whitespace-nowrap text-slate-500">{{ guest.gender }}</td>
                             <td class="guest-text py-4 px-2 text-xs font-normal whitespace-nowrap text-slate-500">{{ guest.time }}</td>
                             <td class="guest-text py-4 px-4 text-sm font-medium whitespace-nowrap">
-                              <i @click="grant(guest)" class="ri-thumb-up-line text-green-500 text-lg"></i>
+                              <button>
+                                <i v-if="!guest.granted" @click="grant(guest)" class="ri-thumb-up-line text-green-500 text-lg"></i>
+                                <i v-else class="ri-checkbox-circle-line text-green-400 text-lg"></i>
+                              </button>
                             </td>
                           </tr>
                       </tbody>
@@ -120,6 +123,7 @@ import { useGuestStore } from '@/store/store';
 
 const store = useGuestStore();
 const displayName = ref('');
+const checked = ref([])
 const search = ref('');
 const showToast = ref(false);
 const isSigningOut = ref(false);
@@ -149,9 +153,9 @@ const grant = async(guestID) => {
       date: guestID.date
     } 
   )
-  .then(()=>{
-    store.updateGuestStatus(guestID.id)
-  })
+  // .then(()=>{
+  //   store.updateGuestStatus(guestID.id)
+  // })
   }
 }
 

@@ -37,10 +37,10 @@ export const useGuestStore = defineStore('guests', {
       })
     },
 
-    updateGuestStatus (id){
-      const idx = this.guests.findIndex (guest => guest.id === id);
-      this.guests[idx].granted = !this.guests[idx].granted;
-      console.log(this.guests);
-    }
+    // updateGuestStatus (id){
+    //   const idx = this.guests.findIndex (guest => guest.id === id);
+    //   this.guests[idx].granted = !this.guests[idx].granted;
+    //   console.log(this.guests);
+    // }
   },
 })
