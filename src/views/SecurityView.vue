@@ -136,10 +136,12 @@ const grant = async(guestID) => {
       time: guestID.time,
       date: guestID.date
     } 
-  ).then(()=>{store.updateGuestStatus(guestID.id)})
+  )
+  .then(()=>{
+    store.updateGuestStatus(guestID.id)
+  })
   }
 }
-
 
 </script>
 

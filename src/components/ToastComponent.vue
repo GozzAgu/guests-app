@@ -14,7 +14,7 @@
     position: absolute;
     left: 30%;
     right: 30%;
-    top: 56%;
+    top: 46%;
     animation: fadeIn 2s;
 }
 @keyframes fadeIn {
