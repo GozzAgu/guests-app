@@ -81,8 +81,8 @@
                       <tbody v-for="guest in store.guests" :key="guest" class="divide-y divide-gray-200">
                           <tr>
                             <div class="flex mt-5 justify-center">
-                                <input v-model="checked" :value="guest" id="checkbox-table-1" type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300">
-                                <label for="checkbox-table-1" class="sr-only">checkbox</label>
+                                <!-- <input v-model="checked" :value="guest" id="checkbox-table-1" type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300">
+                                <label for="checkbox-table-1" class="sr-only">checkbox</label> -->
                             </div>
                             <td class="guest-text py-4 px-2 text-xs font-normal whitespace-nowrap text-slate-500">{{ guest.name }}</td>
                             <td class="guest-text py-4 px-2 text-xs font-normal whitespace-nowrap text-slate-500">{{ guest.code}}</td>
@@ -120,7 +120,6 @@ import { useGuestStore } from '@/store/store';
 
 const store = useGuestStore();
 const displayName = ref('');
-const checked = ref([])
 const search = ref('');
 const showToast = ref(false);
 const isSigningOut = ref(false);
