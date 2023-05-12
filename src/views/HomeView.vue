@@ -78,8 +78,10 @@
                         
                         <tbody v-for="guest in store.guests" :key="guest" class="divide-y divide-gray-200">
                             <tr>
-                              <td v-if="guest.granted===true" class="guest-text py-4 px-2 text-s font-medium whitespace-nowrap text-green-300"><i class="ri-checkbox-circle-line text-green-400"></i></td>
-                              <td v-else class="guest-text py-4 px-2 text-s font-medium whitespace-nowrap text-orange-300"><i class="ri-timer-2-line text-orange-300"></i></td>
+                              <div class="flex justify-center">
+                                <td v-if="guest.granted===true" class="guest-text py-4 px-2 text-s font-medium whitespace-nowrap text-green-300"><i class="ri-checkbox-circle-line text-green-400"></i></td>
+                                <td v-else class="guest-text py-4 px-2 text-s font-medium whitespace-nowrap text-orange-300"><i class="ri-timer-2-line text-orange-300"></i></td>
+                              </div>
                               <td class="guest-text py-4 px-2 text-xs font-normal whitespace-nowrap text-slate-500">{{ guest.name }}</td>
                               <td class="guest-text py-4 px-2 text-xs font-normal whitespace-nowrap text-slate-500">{{ guest.code}}</td>
                               <td class="guest-text py-4 px-2 text-xs font-normal whitespace-nowrap text-slate-500">{{ guest.gender }}</td>
