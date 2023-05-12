@@ -143,7 +143,7 @@
         guestOf
     });
 
-    store.guests.unshift(newGuest);
+    // store.guests.unshift(newGuest);
     showToast.value = true;
     setTimeout(function(){
       showToast.value = false;

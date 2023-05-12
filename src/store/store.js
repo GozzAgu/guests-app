@@ -11,9 +11,9 @@ export const useGuestStore = defineStore('guests', {
   actions: {
     async showUserGuest(){
       const querySnapshot = collection(db, "guests")
-      await onSnapshot(querySnapshot, (snapshot) => {
+      await onSnapshot(querySnapshot, (GuestsSnapshot) => {
         this.guests = [];
-        snapshot.forEach((doc) => {
+        GuestsSnapshot.forEach((doc) => {
           if (doc.data().guestOf === auth.currentUser.uid) {
           let guestData = doc.data();
           guestData.id = doc.id;
@@ -26,9 +26,9 @@ export const useGuestStore = defineStore('guests', {
 
     async showAdminGuest(){
       const querySnapshot = collection(db, "guests")
-      await onSnapshot(querySnapshot, (snapshot) => {
+      await onSnapshot(querySnapshot, (GuestsSnapshot) => {
         this.guests = [];
-        snapshot.forEach((doc) => {
+        GuestsSnapshot.forEach((doc) => {
           let guestData = doc.data();
           guestData.id = doc.id;
           this.guests.unshift(guestData);
