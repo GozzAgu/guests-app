@@ -1,13 +1,13 @@
 <template>
   <NavComponent @signing-out="isSigningOut=true"/>
   <!-- <div class="body" :class="[isDark ? 'dark-mode' : '']"> -->
-    <div class="text-center">
+    <!-- <div class="text-center">
       <p class="font-bold text-gray-600 mt-2 animate-bounce">App in progress</p>
       <div class="loader m-auto mt-3"></div>
-    </div>
+    </div> -->
 
     <div class="guests max-w-5xl mx-auto mt-8">
-    <div class="p-3 flex justify-between md:justify-around lg:justify-around bg-blue-50 m-5 rounded-lg">
+    <div class="p-3 flex justify-between md:justify-around lg:justify-around bg-blue-50 m-5 rounded-3xl">
       <p class="welcome-text font-semibold text-slate-500">
         <svg @click="showTrackModal=true" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24">
           <g fill="currentColor">
@@ -28,15 +28,15 @@
   </div>
 
   <div class="guests max-w-5xl mx-auto mt-8">
-      <div class="p-3 flex justify-between md:justify-around lg:justify-around bg-blue-50 m-5 rounded-lg gap-x-2">
+      <div class="pl-3 pr-3 pt-4 pb-4 flex justify-between md:justify-around lg:justify-around bg-blue-50 m-5 rounded-3xl gap-x-2">
         <div class="flex">
           <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><g fill="currentColor"><circle cx="15" cy="6" r="3" opacity=".4"/><ellipse cx="16" cy="17" opacity=".4" rx="5" ry="3"/><circle cx="9.001" cy="6" r="4"/><ellipse cx="9.001" cy="17.001" rx="7" ry="4"/></g></svg>
           <h1 class="text-center font-semibold text-slate-500 guest-text mt-1">{{ store.guests.length }} GUESTS </h1>
         </div>
         
-        <div class="flex bg-white rounded-lg gap-x-1 w-40">
+        <div class="flex bg-white rounded-2xl gap-x-1 w-40">
           <i class="ri-search-2-line pl-1 text-slate-500 mt-1"></i>
-          <input v-model="search" class=" w-full focus:outline-none" type="text" placeholder="search for guest" />
+          <input v-model="search" class=" w-full focus:outline-none rounded-2xl" type="text" placeholder="search for guest" />
         </div>  
       </div>
     </div>
