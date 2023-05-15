@@ -70,19 +70,19 @@
                                         <!-- <label for="checkbox-all" class="sr-only">checkbox</label> -->
                                     </div>
                                 </th>
-                                <th scope="col" class="py-3 px-1 text-xs font-bold tracking-wider text-left text-slate-500 uppercase">
+                                <th scope="col" class="py-3 px-2 text-xs font-bold tracking-wider text-left text-slate-500 uppercase">
                                     Name
                                 </th>
-                                <th scope="col" class="py-3 px-1 text-xs font-bold tracking-wider text-left text-slate-500 uppercase">
+                                <th scope="col" class="py-3 px-2 text-xs font-bold tracking-wider text-left text-slate-500 uppercase">
                                     Code
                                 </th>
-                                <th scope="col" class="py-3 px-1 text-xs font-bold tracking-wider text-left text-slate-500 uppercase">
+                                <th scope="col" class="py-3 px-2 text-xs font-bold tracking-wider text-left text-slate-500 uppercase">
                                     Gender
                                 </th>
-                                <th scope="col" class="py-3 px-1 text-xs font-bold tracking-wider text-left text-slate-500 uppercase">
+                                <th scope="col" class="py-3 px-2 text-xs font-bold tracking-wider text-left text-slate-500 uppercase">
                                     Time
                                 </th>
-                                <th scope="col" class="py-3 px-1 text-xs font-medium text-left text-slate-500 uppercase">
+                                <th scope="col" class="py-3 px-2 text-xs font-medium text-left text-slate-500 uppercase">
                                     
                                 </th>
                             </tr>
@@ -91,8 +91,15 @@
                         <tbody v-for="guest in store.guests" :key="guest" class="divide-y divide-gray-200">
                             <tr>
                               <div class="flex justify-center">
-                                <td v-if="guest.granted === true" class="guest-text py-4 px-2 text-s font-medium whitespace-nowrap text-green-300"><i class="ri-checkbox-circle-line text-green-400 text-lg"></i></td>
-                                <td v-else class="guest-text py-4 px-2 text-s font-medium whitespace-nowrap text-orange-300"><i class="ri-timer-2-line text-orange-300 text-lg"></i></td>
+                                <div v-if="guest.granted === true" class="py-3">
+                                  <td class="guest-text px-2 text-s font-medium whitespace-nowrap text-green-500"><i class="ri-checkbox-circle-line text-green-400 text-lg"></i></td>
+                                  <!-- <p class="text-xs text-green-500">Access</p> -->
+                                </div>
+
+                                <div v-else class="py-3">
+                                  <td class="guest-text px-2 text-s font-medium whitespace-nowrap text-orange-500"><i class="ri-timer-2-line text-orange-300 text-lg"></i></td>
+                                  <!-- <p class="text-xs text-orange-500">Pending</p> -->
+                                </div>
                               </div>
                               <td class="guest-text py-4 px-2 text-xs font-normal whitespace-nowrap text-slate-500">{{ guest.name }}</td>
                               <td class="guest-text py-4 px-2 text-xs font-normal whitespace-nowrap text-slate-500">{{ guest.code}}</td>

@@ -58,16 +58,16 @@
                                       <!-- <label for="checkbox-all" class="sr-only">checkbox</label> -->
                                   </div>
                               </th>
-                              <th scope="col" class="py-3 px-1 text-xs font-bold tracking-wider text-left text-gray-700 uppercase">
+                              <th scope="col" class="py-3 px-2 text-xs font-bold tracking-wider text-left text-gray-700 uppercase">
                                   Name
                               </th>
-                              <th scope="col" class="py-3 px-1 text-xs font-bold tracking-wider text-left text-gray-700 uppercase">
+                              <th scope="col" class="py-3 px-2 text-xs font-bold tracking-wider text-left text-gray-700 uppercase">
                                   Code
                               </th>
-                              <th scope="col" class="py-3 px-1 text-xs font-bold tracking-wider text-left text-gray-700 uppercase">
+                              <th scope="col" class="py-3 px-2 text-xs font-bold tracking-wider text-left text-gray-700 uppercase">
                                   Gender
                               </th>
-                              <th scope="col" class="py-3 px-1 text-xs font-bold tracking-wider text-left text-gray-700 uppercase">
+                              <th scope="col" class="py-3 px-2 text-xs font-bold tracking-wider text-left text-gray-700 uppercase">
                                   Time
                               </th>
                               <th scope="col" class="py-3 px-1 text-xs font-bold text-left text-gray-700 uppercase">
@@ -84,14 +84,20 @@
                                 <input v-model="checked" :value="guest" id="checkbox-table-1" type="checkbox" class="w-3 h-3 text-blue-600 bg-gray-100 rounded border-gray-300">
                                 <label for="checkbox-table-1" class="sr-only">checkbox</label>
                             </div>
-                            <td class="guest-text py-4 px-2 text-xs font-normal whitespace-nowrap text-slate-500">{{ guest.name }}</td>
-                            <td class="guest-text py-4 px-2 text-xs font-normal whitespace-nowrap text-slate-500">{{ guest.code}}</td>
-                            <td class="guest-text py-4 px-2 text-xs font-normal whitespace-nowrap text-slate-500">{{ guest.gender }}</td>
-                            <td class="guest-text py-4 px-2 text-xs font-normal whitespace-nowrap text-slate-500">{{ guest.time }}</td>
-                            <td class="guest-text py-4 px-4 text-sm font-medium whitespace-nowrap">
+                            <td class="guest-text py-3 px-2 text-xs font-normal whitespace-nowrap text-slate-500">{{ guest.name }}</td>
+                            <td class="guest-text py-3 px-2 text-xs font-normal whitespace-nowrap text-slate-500">{{ guest.code}}</td>
+                            <td class="guest-text py-3 px-2 text-xs font-normal whitespace-nowrap text-slate-500">{{ guest.gender }}</td>
+                            <td class="guest-text py-3 px-2 text-xs font-normal whitespace-nowrap text-slate-500">{{ guest.time }}</td>
+                            <td class="guest-text py-2 px-1 text-sm font-medium whitespace-nowrap">
                               <button>
-                                <i v-if="!guest.granted" @click="grant(guest)" class="ri-thumb-up-line text-green-500 text-lg"></i>
-                                <i v-else class="ri-checkbox-circle-line text-green-400 text-lg"></i>
+                                <div v-if="!guest.granted" @click="grant(guest)" class="bg-slate-400 shadow mt-2 mb-2 pt-2 pb-2 pl-4 pr-4 rounded-lg">
+                                  <p class="text-xs text-slate-50">Grant</p>
+                                </div>
+
+                                <div v-else>
+                                  <i class="ri-checkbox-circle-line text-green-400 text-lg ml-3"></i>
+                                  <p class="text-xs text-green-300 ml-3">Granted</p>
+                                </div>
                               </button>
                             </td>
                           </tr>
