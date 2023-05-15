@@ -49,6 +49,7 @@
     
     <div class="max-w-5xl mx-auto mt-8">
       <div v-if="store.guests.length > 0" class="flex flex-col m-5">
+        <p>{{ startPage }}</p>
         <div class="overflow-x-auto shadow-md rounded-lg">
             <div class="inline-block min-w-full align-middle">
                 <div class="overflow-hidden">
@@ -165,7 +166,14 @@
   const showToast = ref(false);
   const isSigningOut = ref(false);
   const loading = ref(false);
-  
+  // const currentPage = ref(0);
+
+  // const startPage = computed(() => {
+  //   if(currentPage.value === 1) {
+  //     return 1
+  //   }
+  // });
+
   const addNewGuest = async(newGuest) => {
     console.log(newGuest)
     loading.value = true;
