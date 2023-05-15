@@ -65,7 +65,7 @@
                         <thead class="bg-slate-100">
                             <tr>
                               <th scope="col" class="py-3 px-2 text-xs font-bold tracking-wider text-left text-slate-500 uppercase">
-                                    Status
+                                    Access
                               </th>
                               <th scope="col" class="py-3 px-2 text-xs font-bold tracking-wider text-left text-slate-500 uppercase border-l">
                                   Name
@@ -90,7 +90,7 @@
                               <div class="flex justify-center">
                                 <div v-if="guest.granted === true" class="py-2">
                                   <td class="guest-text px-2 text-s font-medium whitespace-nowrap text-green-500"><i class="ri-checkbox-circle-line text-green-400 text-lg"></i></td>
-                                  <p class="text-xs text-green-500">Access</p>
+                                  <p class="text-xs text-green-500">Granted</p>
                                 </div>
 
                                 <div v-else class="py-2">
