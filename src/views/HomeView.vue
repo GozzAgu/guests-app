@@ -89,13 +89,13 @@
                             <tr>
                               <div class="flex justify-center">
                                 <div v-if="guest.granted === true" class="py-2">
-                                  <td class="guest-text px-2 text-s font-medium whitespace-nowrap text-green-500"><i class="ri-checkbox-circle-line text-green-400 text-lg"></i></td>
-                                  <p class="text-xs text-green-500">Granted</p>
+                                  <td class="guest-text px-2 text-s font-medium whitespace-nowrap text-green-400"><i class="ri-checkbox-circle-line text-green-400 text-lg ml-1"></i></td>
+                                  <p class="text-xs text-green-300">Granted</p>
                                 </div>
 
                                 <div v-else class="py-2">
-                                  <td class="guest-text px-2 text-s font-medium whitespace-nowrap text-orange-500"><i class="ri-timer-2-line text-orange-300 text-lg"></i></td>
-                                  <p class="text-xs text-orange-500">Pending</p>
+                                  <td class="guest-text px-2 text-s font-medium whitespace-nowrap text-orange-400"><i class="ri-timer-2-line text-orange-300 text-lg ml-1"></i></td>
+                                  <p class="text-xs text-orange-300">Pending</p>
                                 </div>
                               </div>
                               <td class="guest-text py-4 px-2 text-xs font-normal whitespace-nowrap text-slate-500 border-l">{{ guest.name }}</td>
