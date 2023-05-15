@@ -203,9 +203,16 @@ const signUp = () => {
         })
         console.log(credential.user.uid);
         signingUp.value = true;
-        setTimeout(function(){
-            router.push('/home');
-        }, 3000);
+
+        if(user.value.email === 'security@access.com') {
+            setTimeout(function(){
+                router.push('/security');
+            }, 3000);
+        } else {
+            setTimeout(function(){
+                router.push('/home');
+            }, 3000);
+        }
     })
     .catch(error=>{
             console.log(error.message)
