@@ -95,8 +95,8 @@
                                 </div>
 
                                 <div v-else>
-                                  <i class="ri-checkbox-circle-line text-green-400 text-lg ml-3"></i>
-                                  <p class="text-xs text-green-300 ml-3">Granted</p>
+                                  <i class="ri-checkbox-circle-line text-green-400 text-lg ml-2"></i>
+                                  <p class="text-xs text-green-300 ml-2">Granted</p>
                                 </div>
                               </button>
                             </td>
