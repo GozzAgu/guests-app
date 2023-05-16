@@ -90,7 +90,7 @@
                         
                         <tbody v-for="guest in store.guests" :key="guest" class="divide-y divide-gray-200">
                             <tr>
-                              <div class="flex justify-center bg-slate-50 dark:bg-slate-400">
+                              <div class="flex justify-center bg-slate-50 dark:bg-slate-600">
                                 <div v-if="guest.granted === true" class="py-2">
                                   <td class="guest-text px-2 text-s font-medium whitespace-nowrap text-green-400"><i class="ri-checkbox-circle-line text-green-400 text-lg ml-1"></i></td>
                                   <p class="text-xs text-green-300">Granted</p>
