@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@hennge/vue3-pagination": "^1.0.17",
+    "@vueuse/core": "^10.1.2",
     "chart.js": "^4.3.0",
     "core-js": "^3.8.3",
     "firebase": "^9.19.1",
@@ -17,6 +18,7 @@
     "pinia": "^2.0.35",
     "remixicon": "^3.0.0",
     "vue": "^3.2.13",
+    "vue-pagination-2": "^3.1.0",
     "vue-particles": "^1.0.9",
     "vue-router": "^4.0.3",
     "vuedraggable": "^2.24.3"

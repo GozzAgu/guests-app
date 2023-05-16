@@ -1,5 +1,5 @@
 <template>
-  <!-- <div class="body" :class="[isDark ? 'dark-mode' : '']"> -->
+  <div class="bg-white dark:bg-slate-700 h-full pb-1">
     <NavComponent @signing-out="isSigningOut=true"/>
     
     <!-- <div class="text-center">
@@ -8,30 +8,31 @@
     </div> -->
   
     <div class="guests max-w-5xl mx-auto mt-8">
-      <div class="p-3 flex justify-between md:justify-around lg:justify-around bg-blue-50 m-5 rounded-3xl">
-        <p class="welcome-text font-semibold text-slate-500">
-        <svg @click="showTrackModal=true" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24">
-          <g fill="currentColor">
-            <circle cx="12" cy="6" r="4"/>
-            <path d="M20 17.5c0 2.485 0 4.5-8 4.5s-8-2.015-8-4.5S7.582 13 12 13s8 2.015 8 4.5Z" opacity=".5"/>
-          </g>
-        </svg>
-        Welcome, {{ displayName }}
-      </p>
-        <div class="">
-          <button @click="toggleDark">
+      <div class="p-3 flex justify-between md:justify-around lg:justify-around bg-blue-50 dark:bg-slate-400 m-5 rounded-3xl">
+        <p class="welcome-text font-semibold text-slate-500 dark:text-slate-50">
+          <svg @click="showTrackModal=true" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24">
+            <g fill="currentColor">
+              <circle cx="12" cy="6" r="4"/>
+              <path d="M20 17.5c0 2.485 0 4.5-8 4.5s-8-2.015-8-4.5S7.582 13 12 13s8 2.015 8 4.5Z" opacity=".5"/>
+            </g>
+          </svg>
+          Welcome, {{ displayName }}
+        </p>
+        <div>
+          <darkMode/>
+          <!-- <button @click="toggleDark">
             <i v-if="isDark" class="ri-sun-fill text-2xl text-orange-200"></i>
             <i v-else class="ri-moon-clear-fill text-2xl text-gray-400"></i>
-          </button>
+          </button> -->
         </div>  
       </div>
     </div>
-  
+
     <div class="guests max-w-5xl mx-auto mt-8">
-      <div class="pl-3 pr-3 pt-4 pb-4 flex justify-between md:justify-around lg:justify-around bg-blue-50 m-5 rounded-3xl gap-x-2">
+      <div class="pl-3 pr-3 pt-4 pb-4 flex justify-between md:justify-around lg:justify-around bg-blue-50 dark:bg-slate-400 m-5 rounded-3xl gap-x-2">
         <div class="flex">
           <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><g fill="currentColor"><circle cx="15" cy="6" r="3" opacity=".4"/><ellipse cx="16" cy="17" opacity=".4" rx="5" ry="3"/><circle cx="9.001" cy="6" r="4"/><ellipse cx="9.001" cy="17.001" rx="7" ry="4"/></g></svg>
-          <h1 class="text-center font-semibold text-slate-500 guest-text mt-1">{{ store.guests.length }} GUESTS </h1>
+          <h1 class="text-center font-semibold text-slate-500 dark:text-slate-50 guest-text mt-1">{{ store.guests.length }} GUESTS </h1>
         </div>
         
         <div class="flex bg-white rounded-2xl gap-x-1 w-40">
@@ -47,9 +48,9 @@
   
     <ToastComponent v-if="showToast"/>
 
-    <p>{{ startPage }}</p>
+    <p>{{ paginatedGuests }}</p>
     
-    <div class="max-w-5xl mx-auto mt-8">
+    <div class="max-w-5xl mx-auto mt-8 mb-16">
       <div v-if="store.guests.length > 0" class="flex flex-col m-5">
         <div class="overflow-x-auto shadow-md rounded-lg">
             <div class="inline-block min-w-full align-middle">
@@ -63,25 +64,25 @@
                       <span></span>
                       <span></span>
                     </div>
-                    <table class="guests min-w-full divide-y divide-gray-200 table-fixed">
-                        <thead class="bg-slate-100">
+                    <table class="guests min-w-full divide-y divide-gray-200 table-fixed dark:border-slate-500 border-2">
+                        <thead class="bg-slate-100 dark:bg-slate-500">
                             <tr>
-                              <th scope="col" class="py-3 px-1 text-xs text-center font-bold tracking-wider text-left text-slate-500 uppercase">
+                              <th scope="col" class="py-3 px-1 text-xs text-center font-bold tracking-wider text-left dark:text-slate-50 text-slate-500 uppercase">
                                     Access
                               </th>
-                              <th scope="col" class="py-3 px-2 text-xs font-bold tracking-wider text-left text-slate-500 uppercase border-l">
+                              <th scope="col" class="py-3 px-2 text-xs font-bold tracking-wider text-left dark:text-slate-50 text-slate-500 uppercase border-l">
                                   Name
                               </th>
-                              <th scope="col" class="py-3 px-2 text-xs font-bold tracking-wider text-left text-slate-500 uppercase">
+                              <th scope="col" class="py-3 px-2 text-xs font-bold tracking-wider text-left dark:text-slate-50 text-slate-500 uppercase">
                                   Code
                               </th>
-                              <th scope="col" class="py-3 px-2 text-xs font-bold tracking-wider text-left text-slate-500 uppercase">
+                              <th scope="col" class="py-3 px-2 text-xs font-bold tracking-wider text-left dark:text-slate-50 text-slate-500 uppercase">
                                   Gender
                               </th>
-                              <th scope="col" class="py-3 px-2 text-xs font-bold tracking-wider text-left text-slate-500 uppercase">
+                              <th scope="col" class="py-3 px-2 text-xs font-bold tracking-wider text-left dark:text-slate-50 text-slate-500 uppercase">
                                   Time
                               </th>
-                              <th scope="col" class="py-3 px-2 text-xs font-medium text-left text-slate-500 uppercase">
+                              <th scope="col" class="py-3 px-2 text-xs font-medium text-left dark:text-slate-50 text-slate-500 uppercase">
                                   
                               </th>
                             </tr>
@@ -89,7 +90,7 @@
                         
                         <tbody v-for="guest in store.guests" :key="guest" class="divide-y divide-gray-200">
                             <tr>
-                              <div class="flex justify-center bg-slate-50">
+                              <div class="flex justify-center bg-slate-50 dark:bg-slate-400">
                                 <div v-if="guest.granted === true" class="py-2">
                                   <td class="guest-text px-2 text-s font-medium whitespace-nowrap text-green-400"><i class="ri-checkbox-circle-line text-green-400 text-lg ml-1"></i></td>
                                   <p class="text-xs text-green-300">Granted</p>
@@ -100,10 +101,10 @@
                                   <p class="text-xs text-orange-300">Pending</p>
                                 </div>
                               </div>
-                              <td class="guest-text py-4 px-2 text-xs font-normal whitespace-nowrap text-slate-500 border-l">{{ guest.name }}</td>
-                              <td class="guest-text py-4 px-2 text-xs font-normal whitespace-nowrap text-slate-500">{{ guest.code}}</td>
-                              <td class="guest-text py-4 px-2 text-xs font-normal whitespace-nowrap text-slate-500">{{ guest.gender }}</td>
-                              <td class="guest-text py-4 px-2 text-xs font-normal whitespace-nowrap text-slate-500">{{ guest.time }}</td>
+                              <td class="guest-text py-4 px-2 text-xs font-normal whitespace-nowrap text-slate-500 dark:text-slate-300 border-l">{{ guest.name }}</td>
+                              <td class="guest-text py-4 px-2 text-xs font-normal whitespace-nowrap text-slate-500 dark:text-slate-300">{{ guest.code}}</td>
+                              <td class="guest-text py-4 px-2 text-xs font-normal whitespace-nowrap text-slate-500 dark:text-slate-300">{{ guest.gender }}</td>
+                              <td class="guest-text py-4 px-2 text-xs font-normal whitespace-nowrap text-slate-500 dark:text-slate-300">{{ guest.time }}</td>
                               <td class="guest-text py-4 px-2 text-sm font-medium whitespace-nowrap">
                                 <svg class="text-red-400" @click="deleteGuest(guest)" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
                                   <g fill="currentColor">
@@ -140,8 +141,11 @@
         </div>
       </div>
     </div>
+
+    <pagination v-model="page" :records="500" @paginate="myCallback"/>
   
     <FooterComponent @modal="showModal=true"/>
+  </div>
   </template>
   
   <script setup>
@@ -150,13 +154,15 @@
   import trackComponent from '@/components/trackComponent.vue';
   import NavComponent from '@/components/NavComponent.vue';
   import FooterComponent from '@/components/FooterComponent.vue';
+  import darkMode from '@/components/darkMode.vue';
   import LoaderComponent from '@/components/LoaderComponent.vue';
   import { auth, db } from '@/main';
   import { onAuthStateChanged } from '@firebase/auth';
   import { ref, onMounted, computed } from 'vue';
   import { collection, addDoc, doc, deleteDoc } from 'firebase/firestore';
   import { useGuestStore } from '@/store/store';
-  
+
+  const page = ref(1)
   const displayName = ref('');
   const isLoggedIn = ref(false);
   const isDark = ref(false);
@@ -167,13 +173,6 @@
   const showToast = ref(false);
   const isSigningOut = ref(false);
   const loading = ref(false);
-  const currentPage = ref(0);
-
-  const startPage = computed(() => {
-    if(currentPage.value === 1) {
-      return 1
-    }
-  });
 
   const addNewGuest = async(newGuest) => {
     console.log(newGuest)
