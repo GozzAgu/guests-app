@@ -1,6 +1,6 @@
 <template>
   <NavComponent @signing-out="isSigningOut=true"/>
-  <!-- <div class="body" :class="[isDark ? 'dark-mode' : '']"> -->
+  <div class="bg-white dark:bg-slate-700 h-full pb-1">
     <!-- <div class="text-center">
       <p class="font-bold text-gray-600 mt-2 animate-bounce">App in progress</p>
       <div class="loader m-auto mt-3"></div>
@@ -44,7 +44,7 @@
     <ToastComponent v-if="showToast"/>
     <LoaderComponent v-if="isSigningOut"/>
     
-    <div class="max-w-5xl mx-auto mt-8">
+    <div class="max-w-5xl mx-auto mt-8 mb-16">
     <div v-if="store.guests.length > 0" class="flex flex-col m-5">
       <div class="overflow-x-auto shadow-md rounded-lg">
           <div class="inline-block min-w-full align-middle">
@@ -114,6 +114,7 @@
         <p class="font-serif text-gray-500">No Guests ! </p>
       </div>
     </div>
+  </div>
   </div>
 </template>
 

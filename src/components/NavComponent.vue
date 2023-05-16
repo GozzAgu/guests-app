@@ -1,5 +1,5 @@
 <template>
-    <div class="max-w-full mx-auto bg-blue-50 shadow-md">
+    <div class="max-w-full mx-auto bg-blue-50 shadow-md dark:bg-slate-400">
       <div class="p-3 pl-8 pr-8 flex justify-between md:justify-around lg:justify-around rounded-lg">
         <div>
             <img src="../assets/Guest-Logo.png"
