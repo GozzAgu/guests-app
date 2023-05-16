@@ -46,10 +46,11 @@
     <trackComponent v-if="showTrackModal" @close-history="showTrackModal=false"/>
   
     <ToastComponent v-if="showToast"/>
+
+    <p>{{ startPage }}</p>
     
     <div class="max-w-5xl mx-auto mt-8">
       <div v-if="store.guests.length > 0" class="flex flex-col m-5">
-        <p>{{ startPage }}</p>
         <div class="overflow-x-auto shadow-md rounded-lg">
             <div class="inline-block min-w-full align-middle">
                 <div class="overflow-hidden">
@@ -88,7 +89,7 @@
                         
                         <tbody v-for="guest in store.guests" :key="guest" class="divide-y divide-gray-200">
                             <tr>
-                              <div class="flex justify-center">
+                              <div class="flex justify-center bg-slate-100">
                                 <div v-if="guest.granted === true" class="py-2">
                                   <td class="guest-text px-1 text-s font-medium whitespace-nowrap text-green-400"><i class="ri-checkbox-circle-line text-green-400 text-lg ml-1"></i></td>
                                   <p class="text-xs text-green-300">Granted</p>
@@ -152,7 +153,7 @@
   import LoaderComponent from '@/components/LoaderComponent.vue';
   import { auth, db } from '@/main';
   import { onAuthStateChanged } from '@firebase/auth';
-  import { ref, onMounted } from 'vue';
+  import { ref, onMounted, computed } from 'vue';
   import { collection, addDoc, doc, deleteDoc } from 'firebase/firestore';
   import { useGuestStore } from '@/store/store';
   
@@ -166,13 +167,13 @@
   const showToast = ref(false);
   const isSigningOut = ref(false);
   const loading = ref(false);
-  // const currentPage = ref(0);
+  const currentPage = ref(0);
 
-  // const startPage = computed(() => {
-  //   if(currentPage.value === 1) {
-  //     return 1
-  //   }
-  // });
+  const startPage = computed(() => {
+    if(currentPage.value === 1) {
+      return 1
+    }
+  });
 
   const addNewGuest = async(newGuest) => {
     console.log(newGuest)
