@@ -65,7 +65,7 @@
                     <table class="guests min-w-full divide-y divide-gray-200 table-fixed">
                         <thead class="bg-slate-100">
                             <tr>
-                              <th scope="col" class="py-3 px-2 text-xs font-bold tracking-wider text-left text-slate-500 uppercase">
+                              <th scope="col" class="py-3 px-1 text-xs text-center font-bold tracking-wider text-left text-slate-500 uppercase">
                                     Access
                               </th>
                               <th scope="col" class="py-3 px-2 text-xs font-bold tracking-wider text-left text-slate-500 uppercase border-l">
@@ -90,12 +90,12 @@
                             <tr>
                               <div class="flex justify-center">
                                 <div v-if="guest.granted === true" class="py-2">
-                                  <td class="guest-text px-2 text-s font-medium whitespace-nowrap text-green-400"><i class="ri-checkbox-circle-line text-green-400 text-lg ml-1"></i></td>
+                                  <td class="guest-text px-1 text-s font-medium whitespace-nowrap text-green-400"><i class="ri-checkbox-circle-line text-green-400 text-lg ml-1"></i></td>
                                   <p class="text-xs text-green-300">Granted</p>
                                 </div>
 
                                 <div v-else class="py-2">
-                                  <td class="guest-text px-2 text-s font-medium whitespace-nowrap text-orange-400"><i class="ri-timer-2-line text-orange-300 text-lg ml-1"></i></td>
+                                  <td class="guest-text px-1 text-s font-medium whitespace-nowrap text-orange-400"><i class="ri-timer-2-line text-orange-300 text-lg ml-1"></i></td>
                                   <p class="text-xs text-orange-300">Pending</p>
                                 </div>
                               </div>
