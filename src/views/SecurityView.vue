@@ -19,10 +19,10 @@
       </p>
       
       <div class="">
-        <button @click="toggleDark">
+        <!-- <button @click="toggleDark">
           <i v-if="isDark" class="ri-sun-fill text-2xl text-orange-200"></i>
           <i v-else class="ri-moon-clear-fill text-2xl text-gray-400"></i>
-        </button>
+        </button> -->
       </div>  
     </div>
   </div>
