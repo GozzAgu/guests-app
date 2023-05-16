@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-white dark:bg-slate-700 h-full pb-1">
+  <div class="bg-white dark:bg-slate-700 pb-1">
     <NavComponent @signing-out="isSigningOut=true"/>
     
     <!-- <div class="text-center">
