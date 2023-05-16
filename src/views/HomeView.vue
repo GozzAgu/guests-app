@@ -91,12 +91,12 @@
                             <tr>
                               <div class="flex justify-center bg-slate-50">
                                 <div v-if="guest.granted === true" class="py-2">
-                                  <td class="guest-text px-1 text-s font-medium whitespace-nowrap text-green-400"><i class="ri-checkbox-circle-line text-green-400 text-lg ml-1"></i></td>
+                                  <td class="guest-text px-2 text-s font-medium whitespace-nowrap text-green-400"><i class="ri-checkbox-circle-line text-green-400 text-lg ml-1"></i></td>
                                   <p class="text-xs text-green-300">Granted</p>
                                 </div>
 
                                 <div v-else class="py-2">
-                                  <td class="guest-text px-1 text-s font-medium whitespace-nowrap text-orange-400"><i class="ri-timer-2-line text-orange-300 text-lg ml-1"></i></td>
+                                  <td class="guest-text px-2 text-s font-medium whitespace-nowrap text-orange-400"><i class="ri-timer-2-line text-orange-300 text-lg ml-1"></i></td>
                                   <p class="text-xs text-orange-300">Pending</p>
                                 </div>
                               </div>
